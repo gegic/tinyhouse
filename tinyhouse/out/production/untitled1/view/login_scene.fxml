@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="125.0" layoutY="78.0" maxWidth="500.0" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="78.0">
+         <children>
+            <Label alignment="TOP_CENTER" stylesheets="@../styles/style.css" text="PRIJAVA" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Label>
+            <TextField fx:id="k_ime" maxWidth="600.0" onKeyPressed="#enter_prijavljen" prefHeight="40.0" promptText="korisničko ime" stylesheets="@../styles/style.css">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="lozinka" maxWidth="600.0" onKeyPressed="#enter_prijavljen" prefHeight="40.0" promptText="lozinka" stylesheets="@../styles/style.css">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </PasswordField>
+            <Button fx:id="prijava" mnemonicParsing="false" onMouseClicked="#prijavljen" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="prijava">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
