@@ -4,7 +4,10 @@
  * Purpose: Defines the Class Proizvod
  ***********************************************************************/
 
+import javafx.scene.image.Image;
+
 import java.util.*;
+import java.util.List;
 
 public class Proizvod {
    private String naziv;
