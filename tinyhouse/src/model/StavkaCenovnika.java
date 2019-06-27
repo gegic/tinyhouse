@@ -1,6 +1,6 @@
 /***********************************************************************
  * Module:  StavkaCenovnika.java
- * Author:  goca
+ * author:
  * Purpose: Defines the Class StavkaCenovnika
  ***********************************************************************/
 

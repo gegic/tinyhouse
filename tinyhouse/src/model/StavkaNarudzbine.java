@@ -1,6 +1,6 @@
 /***********************************************************************
  * Module:  StavkaNarudzbenice.java
- * Author:  goca
+ * author:
  * Purpose: Defines the Class StavkaNarudzbenice
  ***********************************************************************/
 
