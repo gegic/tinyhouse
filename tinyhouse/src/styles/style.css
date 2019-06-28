@@ -6,11 +6,21 @@
 }
 .button:hover{
     -fx-opacity: 1;
+    -fx-cursor: hand;
 }
 
 .button:pressed{
     -fx-background-color: darkred;
 }
+
+.label{
+    -fx-text-fill: red;
+    -fx-opacity: 0.8;
+}
+.label:hover {
+    -fx-opacity: 1;
+}
+
 
 .text-field{
     -fx-background-color:transparent;
@@ -22,12 +32,55 @@
     -fx-border-color: black;
 }
 
-.label{
-    -fx-text-fill: red;
-    -fx-opacity: 0.6;
-
+#tile_text{
+    -fx-text-fill: black;
+    -fx-opacity: 1;
 }
 
-.label:hover {
+#moderator_item .label{
+    -fx-text-fill: black;
+    -fx-font-size: 3px;
+}
+
+#upper_button{
+    -fx-background-color:  transparent;
+    -fx-text-fill: black;
+}
+
+#upper_button:hover{
+    -fx-background-color: lightgray;
+}
+
+#upper_button:pressed{
+    -fx-background-color: darkgray;
+}
+
+#tile {
+    -fx-background-color: transparent;
+    -fx-border-color: gray;
+    -fx-border-width: 2px;
+}
+
+#tile:hover {
+    -fx-border-width: 3px;
+}
+
+#tile_button{
+    -fx-background-color: black;
+}
+
+#tile_button:hover{
+    -fx-opacity: 0.9;
+}
+#tile_button:pressed{
     -fx-opacity: 1;
+}
+
+#tile_icon:hover{
+    -fx-opacity: 0.7;
+}
+
+#title{
+    -fx-font-weight: bold;
+    -fx-font-size: 1.5em;
 }

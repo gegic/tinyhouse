@@ -3,12 +3,10 @@
  * Author:  Gegic
  * Purpose: Defines the Class TipKorisnika
  ***********************************************************************/
-
-import java.util.*;
+package model;
 
 public enum TipKorisnika {
-   obican,
-   moderator,
-   admin;
-
+    obican,
+    moderator,
+    admin;
 }

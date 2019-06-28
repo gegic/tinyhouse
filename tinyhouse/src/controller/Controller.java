@@ -1,12 +1,21 @@
 package controller;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import model.Aplikacija;
+import model.Korisnik;
+
+import java.io.IOException;
 
 public class Controller {
     @FXML
@@ -14,17 +23,66 @@ public class Controller {
 
     @FXML
     private PasswordField lozinka;
+
+    private Stage stage;
+
+
+    private Aplikacija model;
+
+    public Controller(){
+        this.model = Aplikacija.getInstance();
+    }
+
     @FXML
     public void prijavljen(MouseEvent e){
-        System.out.println(k_ime.getText());
-        System.out.println(lozinka.getText());
-
+        prijava();
     }
 
     @FXML
     public void enter_prijavljen(KeyEvent e){
         if(e.getCode() == KeyCode.ENTER) {
-            prijavljen(null);
+            prijava();
         }
+    }
+
+    void prijava(){
+        Korisnik k = model.prijava(k_ime.getText(), lozinka.getText());
+        if (k != null){
+            model.setUlogovani(k);
+            try {
+                scenaAdminGlavna();
+            }catch (Exception ex) {
+                System.out.println("Couldn't load next scene");
+                System.out.println(ex.getMessage());
+            }
+        } else {
+            k_ime.setStyle("-fx-border-color: red");
+            lozinka.setStyle("-fx-border-color: red");
+        }
+    }
+    public void scenaAdminGlavna() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_main_scene.fxml"));
+        Parent root = loader.load();
+
+        AdminController c = loader.getController();
+        c.setStage(stage);
+
+        stage.setScene(new Scene(root, 800, 600));
+    }
+
+
+    public Aplikacija getModel() {
+        return model;
+    }
+
+    public void setModel(Aplikacija model) {
+        this.model = model;
+    }
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }
