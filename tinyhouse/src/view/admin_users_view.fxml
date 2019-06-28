@@ -53,11 +53,17 @@
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
             </Button>
             <Button id="upper_button" mnemonicParsing="false" onAction="#addModerator" stylesheets="@../styles/style.css" text="Dodaj moderatora">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
             </Button>
          </children>
       </HBox>

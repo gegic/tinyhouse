@@ -51,9 +51,9 @@
                   <Image url="@../styles/images/moderatoricon.png" />
                </image>
             </ImageView>
-            <Label id="tile_text" prefHeight="64.0" prefWidth="264.0" text="Pregledanje korisnika i dodavanje moderatora" textAlignment="CENTER" wrapText="true">
+            <Label id="tile_text" prefHeight="64.0" prefWidth="180.0" text="Korisnici i dodavanje moderatora" textAlignment="CENTER" wrapText="true">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <Button id="tile_button" mnemonicParsing="false" onAction="#pregledajModeratore" text="Pregledaj" />

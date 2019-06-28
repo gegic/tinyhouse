@@ -3,6 +3,7 @@
     -fx-background-radius: 15;
     -fx-opacity: 0.6;
     -fx-text-fill: white;
+    -fx-font-size: 17px;
 }
 .button:hover{
     -fx-opacity: 1;
@@ -18,7 +19,7 @@
 }
 .label{
     -fx-text-fill: red;
-    -fx-opacity: 0.8;
+    -fx-opacity: 0.6;
 }
 .label:hover {
     -fx-opacity: 1;

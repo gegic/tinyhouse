@@ -1,17 +1,23 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import model.Korisnik;
 import model.TipKorisnika;
 
+import javax.jws.WebParam;
 import java.io.IOException;
 
 public class KorisnikCellController extends ListCell<Korisnik> {
@@ -26,13 +32,27 @@ public class KorisnikCellController extends ListCell<Korisnik> {
     private Button izbrisi;
 
     @FXML
-    private HBox box;
-
-    @FXML
-    private Region region;
+    private AnchorPane box;
 
     private FXMLLoader mLLoader;
 
+    @FXML
+    public void brisanje(ActionEvent e){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_delete_view.fxml"));
+            Parent root = loader.load();
+
+            ModeratorDeleteController c = loader.getController();
+            Stage stage = (Stage)((Scene)((Button)e.getSource()).getScene()).getWindow();
+            c.setStage(stage);
+            c.setKorisnicko_ime(korisnicko_ime.getText());
+            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+            stage.setScene(scene);
+        } catch(Exception ex){
+            System.out.println("Nije moguće učitati scenu.");
+            System.out.println(ex.getMessage());
+        }
+    }
 
     @Override
     protected void updateItem(Korisnik k, boolean empty) {

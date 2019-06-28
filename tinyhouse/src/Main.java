@@ -14,6 +14,8 @@ public class Main extends Application {
         LoginController c = (LoginController)loader.getController();
         c.setStage(primaryStage);
         primaryStage.setTitle("tinyhouse");
+        primaryStage.setMinHeight(600);
+        primaryStage.setMinWidth(800);
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }

@@ -56,10 +56,24 @@ public class Aplikacija {
         // TODO: implement
     }
 
+    public boolean brisanjeModeratora(String k_ime){
+        for(Korisnik k : korisnici){
+            if(k.getUsername().equals(k_ime)){
+                korisnici.remove(k);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String dodajModeratora(String k_ime, String password){
         String k_ime_lower = k_ime.toLowerCase();
-        if(password.length() < 8){
+        if(password.length() < 8 || password.length() > 16){
             return "Lozinka mora imati bar 8 karaktera";
+        }
+        if(k_ime.length() < 6 || k_ime.contains(" ") || k_ime.length() > 10){
+            return "Korisničko ime mora imati između 6 i 10 karaktera bez razmaka";
+
         }
         for(Korisnik k : korisnici){
             if (k.getUsername().equals(k_ime_lower))
