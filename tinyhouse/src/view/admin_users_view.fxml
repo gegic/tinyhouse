@@ -54,7 +54,7 @@
                   <Insets bottom="10.0" left="10.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button id="upper_button" mnemonicParsing="false" stylesheets="@../styles/style.css" text="Dodaj moderatora">
+            <Button id="upper_button" mnemonicParsing="false" onAction="#addModerator" stylesheets="@../styles/style.css" text="Dodaj moderatora">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" top="10.0" />
                </HBox.margin>

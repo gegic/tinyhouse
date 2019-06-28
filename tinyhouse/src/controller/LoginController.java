@@ -1,7 +1,6 @@
 package controller;
 
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +16,7 @@ import model.Korisnik;
 
 import java.io.IOException;
 
-public class Controller {
+public class LoginController {
     @FXML
     private TextField k_ime;
 
@@ -29,7 +28,7 @@ public class Controller {
 
     private Aplikacija model;
 
-    public Controller(){
+    public LoginController(){
         this.model = Aplikacija.getInstance();
     }
 
@@ -61,10 +60,10 @@ public class Controller {
         }
     }
     public void scenaAdminGlavna() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_main_scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_main_view.fxml"));
         Parent root = loader.load();
 
-        AdminController c = loader.getController();
+        AdminMainController c = loader.getController();
         c.setStage(stage);
 
         stage.setScene(new Scene(root, 800, 600));

@@ -1,17 +1,17 @@
-import controller.Controller;
+import controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Korisnik;
+
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/login_scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/login_view.fxml"));
 
         Parent root = loader.load();
-        Controller c = (Controller)loader.getController();
+        LoginController c = (LoginController)loader.getController();
         c.setStage(primaryStage);
         primaryStage.setTitle("tinyhouse");
         primaryStage.setScene(new Scene(root, 800, 600));

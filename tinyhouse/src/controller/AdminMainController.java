@@ -10,14 +10,14 @@ import model.Aplikacija;
 
 import java.io.IOException;
 
-public class AdminController {
+public class AdminMainController {
 
     private Stage stage;
 
 
     private Aplikacija model;
 
-    public AdminController(){
+    public AdminMainController(){
         this.model = Aplikacija.getInstance();
     }
 
@@ -31,11 +31,11 @@ public class AdminController {
 
     @FXML
     public void odjava(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/login_scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/login_view.fxml"));
 
         Parent root = loader.load();
         model.setUlogovani(null);
-        Controller c = loader.getController();
+        LoginController c = loader.getController();
         c.setStage(stage);
 
         stage.setScene(new Scene(root, 800, 600));
@@ -43,7 +43,7 @@ public class AdminController {
 
     @FXML
     public void pregledajModeratore(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_moderator_view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_users_view.fxml"));
         Parent root = loader.load();
 
         AdminUsersController c = loader.getController();

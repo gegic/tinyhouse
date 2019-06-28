@@ -43,20 +43,30 @@ public class AdminUsersController {
 
     @FXML
     public void odjava(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/login_scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/login_view.fxml"));
         Parent root = loader.load();
         model.setUlogovani(null);
-        Controller c = loader.getController();
+        LoginController c = loader.getController();
         c.setStage(stage);
         stage.setScene(new Scene(root, 800, 600));
     }
 
     @FXML
     public void povratak(ActionEvent e) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_main_scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_main_view.fxml"));
         Parent root = loader.load();
 
-        AdminController c = loader.getController();
+        AdminMainController c = loader.getController();
+        c.setStage(stage);
+        stage.setScene(new Scene(root, 800, 600));
+    }
+
+    @FXML
+    public void addModerator(ActionEvent e) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/add_moderator_view.fxml"));
+        Parent root = loader.load();
+
+        AddModeratorController c = loader.getController();
         c.setStage(stage);
         stage.setScene(new Scene(root, 800, 600));
     }

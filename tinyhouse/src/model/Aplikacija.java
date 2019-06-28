@@ -56,6 +56,18 @@ public class Aplikacija {
         // TODO: implement
     }
 
+    public String dodajModeratora(String k_ime, String password){
+        String k_ime_lower = k_ime.toLowerCase();
+        if(password.length() < 8){
+            return "Lozinka mora imati bar 8 karaktera";
+        }
+        for(Korisnik k : korisnici){
+            if (k.getUsername().equals(k_ime_lower))
+                return "Već postoji korisnik sa ovim korisničkim imenom";
+        }
+        korisnici.add(new Korisnik(k_ime_lower, password, TipKorisnika.moderator));
+        return "";
+    }
     public void dodajKolicinu() {
         // TODO: implement
     }

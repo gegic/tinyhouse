@@ -12,7 +12,6 @@ import javafx.scene.layout.Region;
 import model.Korisnik;
 import model.TipKorisnika;
 
-import java.io.File;
 import java.io.IOException;
 
 public class KorisnikCellController extends ListCell<Korisnik> {
@@ -46,7 +45,7 @@ public class KorisnikCellController extends ListCell<Korisnik> {
 
         } else {
             if (mLLoader == null) {
-                mLLoader = new FXMLLoader(getClass().getResource("../view/useritem.fxml"));
+                mLLoader = new FXMLLoader(getClass().getResource("../view/korisnik_cell_view.fxml"));
                 mLLoader.setController(this);
                 try {
                     mLLoader.load();
@@ -63,6 +62,7 @@ public class KorisnikCellController extends ListCell<Korisnik> {
             } else if (k.getTip() == TipKorisnika.admin){
                 Image image = new Image(getClass().getResourceAsStream("/styles/images/adminicon.png"));
                 icon.setImage(image);
+                izbrisi.setDisable(true);
             }
             setText(null);
             setGraphic(box);
