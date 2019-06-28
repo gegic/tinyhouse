@@ -66,7 +66,7 @@ public class LoginController {
         AdminMainController c = loader.getController();
         c.setStage(stage);
 
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
     }
 
 

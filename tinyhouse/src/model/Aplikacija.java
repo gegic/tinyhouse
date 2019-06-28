@@ -91,7 +91,7 @@ public class Aplikacija {
      */
     public Korisnik prijava(String username, String password) {
         for (Korisnik k : korisnici) {
-            if (k.provera_informacija(username, password))
+            if (k.provera_informacija(username.toLowerCase(), password))
                 return k;
         }
         return null;

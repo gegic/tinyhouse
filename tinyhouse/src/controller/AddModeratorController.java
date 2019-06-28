@@ -72,7 +72,7 @@ public class AddModeratorController {
             AdminUsersController c = loader.getController();
             c.setStage(stage);
             c.populate();
-            Scene moderator_view = new Scene(root, 800, 600);
+            Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
             stage.setScene(moderator_view);
         } catch(Exception ex){
             System.out.println("Nije moguće učitati scenu.");

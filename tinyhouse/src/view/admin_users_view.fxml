@@ -44,7 +44,7 @@
       </HBox>
    </top>
    <center>
-      <ListView fx:id="modList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="modList" fixedCellSize="98.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <HBox BorderPane.alignment="CENTER">

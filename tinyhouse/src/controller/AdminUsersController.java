@@ -48,7 +48,7 @@ public class AdminUsersController {
         model.setUlogovani(null);
         LoginController c = loader.getController();
         c.setStage(stage);
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
     }
 
     @FXML
@@ -58,7 +58,7 @@ public class AdminUsersController {
 
         AdminMainController c = loader.getController();
         c.setStage(stage);
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
     }
 
     @FXML
@@ -68,6 +68,6 @@ public class AdminUsersController {
 
         AddModeratorController c = loader.getController();
         c.setStage(stage);
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
     }
 }
