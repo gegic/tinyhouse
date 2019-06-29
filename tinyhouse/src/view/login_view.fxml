@@ -5,9 +5,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="125.0" layoutY="78.0" maxWidth="500.0" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="78.0">
          <children>
@@ -26,6 +28,11 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </PasswordField>
+            <Label fx:id="lbGreska" textFill="#e80c04">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <Button fx:id="prijava" mnemonicParsing="false" onMouseClicked="#prijavljen" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="prijava">
                <VBox.margin>
                   <Insets top="20.0" />

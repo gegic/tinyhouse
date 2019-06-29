@@ -5,11 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Aplikacija;
 import model.Korisnik;
@@ -20,6 +22,9 @@ import java.io.IOException;
 public class LoginController {
     @FXML
     private TextField k_ime;
+
+    @FXML
+    private Label lbGreska;
 
     @FXML
     private PasswordField lozinka;
@@ -50,7 +55,9 @@ public class LoginController {
         if (k == null){
             k_ime.setStyle("-fx-border-color: red");
             lozinka.setStyle("-fx-border-color: red");
+            lbGreska.setText("Pogrešno uneti podaci, pokušaj ponovo!");
         } else if(k.getTip() == TipKorisnika.admin){
+            lbGreska.setText("");
             model.setUlogovani(k);
             try {
                 scenaAdminGlavna();
