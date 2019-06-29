@@ -48,7 +48,9 @@ public class Proizvod {
      * @param kolicina
      */
     public void uvecajKolicinu(int kolicina) {
-        // TODO: implement
+        if(kolicina > 0){
+            kolicinaZaOnline += kolicina;
+        }
     }
 
     /**

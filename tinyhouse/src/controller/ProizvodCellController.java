@@ -8,14 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Korisnik;
-import model.Prodavnica;
-import model.Proizvod;
-import model.TipKorisnika;
+import model.*;
 
 import java.io.IOException;
 
@@ -38,6 +38,12 @@ public class ProizvodCellController extends ListCell<Proizvod> {
 
     @FXML
     private ImageView icon;
+
+    @FXML
+    private TextField tfKolicina;
+
+    @FXML
+    private Button btUvecaj;
 
     private FXMLLoader mLLoader;
 
@@ -62,11 +68,65 @@ public class ProizvodCellController extends ListCell<Proizvod> {
 
     @FXML
     public void izmena(ActionEvent e) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/modify_proizvod_view.fxml"));
+            Parent root = loader.load();
+
+            ModifyProizvodController c = loader.getController();
+            Stage stage = (Stage)((Scene)((Button)e.getSource()).getScene()).getWindow();
+            c.setStage(stage);
+            c.setTfIdProizvoda(lb_id_proizvoda.getText());
+            c.setInfo();
+            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+            stage.setScene(scene);
+        } catch(Exception ex){
+            System.out.println("Nije moguće učitati scenu.");
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    public void enter_uvecanje_kolicine(KeyEvent e){
+        if(e.getCode() == KeyCode.ENTER){
+            uvecanjeKolicine(null);
+        }
     }
 
     @FXML
     public void uvecanjeKolicine(ActionEvent e){
-
+        Aplikacija model = Aplikacija.getInstance();
+        if(btUvecaj.getText().equals("Uvećaj količinu")) {
+            btUvecaj.setText("✓");
+            tfKolicina.setVisible(true);
+        } else{
+            String textKolicina = tfKolicina.getText();
+            try{
+                int kolicina = Integer.valueOf(textKolicina);
+                if(kolicina > 0) {
+                    btUvecaj.setText("Uvećaj količinu");
+                    tfKolicina.setVisible(false);
+                    int ukupno = model.uvecajKolicinuProizvoda(Integer.valueOf(lb_id_proizvoda.getText()), kolicina);
+                    if(ukupno > 999){
+                        lb_kolicina.setText("...");
+                    } else {
+                        lb_kolicina.setText(String.valueOf(ukupno)); // jer necemo da se bakcemo sa listenerima :D
+                    }
+                    tfKolicina.setStyle("-fx-border-color: lightgray");
+                    tfKolicina.setText("");
+                } else{
+                    tfKolicina.setStyle("-fx-border-color: red");
+                }
+            } catch (Exception ex){
+                if(textKolicina.equals("")){
+                    btUvecaj.setText("Uvećaj količinu");
+                    tfKolicina.setVisible(false);
+                    tfKolicina.setStyle("-fx-border-color: lightgray");
+                    tfKolicina.setText("");
+                } else {
+                    tfKolicina.setStyle("-fx-border-color: red");
+                }
+            }
+        }
     }
 
     @Override
@@ -92,7 +152,12 @@ public class ProizvodCellController extends ListCell<Proizvod> {
 
             lb_id_proizvoda.setText(String.valueOf(p.getId()));
             lb_naziv.setText(p.getNaziv());
-            lb_kolicina.setText(String.valueOf(p.getKolicinaZaOnline()));
+            int kolicina = p.getKolicinaZaOnline();
+            if(kolicina > 999){
+                lb_kolicina.setText("...");
+            }else {
+                lb_kolicina.setText(String.valueOf(kolicina));
+            }
             icon.setImage(p.getSlike()[0]);
             setText(null);
             setGraphic(box);

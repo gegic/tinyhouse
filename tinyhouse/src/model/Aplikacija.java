@@ -65,17 +65,50 @@ public class Aplikacija {
         // TODO: implement
     }
 
-    public boolean brisanjeProizvoda(int id){
+    public int uvecajKolicinuProizvoda(int id, int koliko){
+        Proizvod p = pronadjiProizvod(id);
+        p.uvecajKolicinu(koliko);
+        return p.getKolicinaZaOnline();
+    }
+
+    public String izmeniProizvod(int id, String naziv, String opis, Image[] slike){
+        if(naziv.length() < 3 || naziv.length() > 15){
+            return "Naziv proizvoda mora imati između 3 i 15 karaktera";
+        }
+        if(opis.length() < 3 || opis.length() > 255){
+            return "Opis proizvoda mora imati između 3 i 255 karaktera";
+        }
         for(Proizvod p : proizvodi){
             if(p.getId() == id){
-                proizvodi.remove(p);
-                return true;
+                p.setNaziv(naziv);
+                p.setOpis(opis);
+                p.setSlike(slike);
+                return "";
             }
+        }
+        return "Proizvod ne postoji - NE SMIJE DA SE DESI OVO";
+    }
+    public Proizvod pronadjiProizvod(int id){
+        for(Proizvod p : proizvodi){
+            if (p.getId() == id){
+                return p;
+            }
+        }
+        return null;
+    }
+    public boolean brisanjeProizvoda(int id){
+        Proizvod p;
+        if((p = pronadjiProizvod(id)) != null){
+            proizvodi.remove(p);
+            return true;
         }
         return false;
     }
 
     public String dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike){
+        if(id > 10000 || id < 1){
+            return "ID mora biti između 1 i 10000";
+        }
         if(naziv.length() < 3 || naziv.length() > 15){
             return "Naziv proizvoda mora imati između 3 i 15 karaktera";
         }
@@ -104,11 +137,10 @@ public class Aplikacija {
     }
 
     public boolean brisanjeProdavnice(int id){
-        for(Prodavnica p : prodavnice){
-            if(p.getIdProdavnice() == id){
-                prodavnice.remove(p);
-                return true;
-            }
+        Prodavnica p;
+        if((p = pronadji_prodavnicu(id)) != null){
+            prodavnice.remove(p);
+            return true;
         }
         return false;
     }
@@ -145,6 +177,9 @@ public class Aplikacija {
     }
 
     public String dodajProdavnicu(int id, String adresa, float g_sirina, float g_duzina){
+        if(id > 10000 || id < 1){
+            return "ID mora biti između 1 i 10000";
+        }
         if(adresa.length() < 4 || adresa.length() > 25) {
             return "Adresa mora biti između 4 i 25 karaktera duga";
         }

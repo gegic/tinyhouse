@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Aplikacija;
 import model.Korisnik;
 import model.Prodavnica;
 import model.TipKorisnika;
@@ -69,7 +70,8 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
         } catch(Exception ex){
             System.out.println("Nije moguće učitati scenu.");
             System.out.println(ex.getMessage());
-        }    }
+        }
+    }
 
     @Override
     protected void updateItem(Prodavnica p, boolean empty) {
