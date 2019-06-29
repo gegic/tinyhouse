@@ -11,13 +11,10 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import model.Korisnik;
 import model.TipKorisnika;
 
-import javax.jws.WebParam;
 import java.io.IOException;
 
 public class KorisnikCellController extends ListCell<Korisnik> {
@@ -39,10 +36,10 @@ public class KorisnikCellController extends ListCell<Korisnik> {
     @FXML
     public void brisanje(ActionEvent e){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_delete_view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/delete_moderator_view.fxml"));
             Parent root = loader.load();
 
-            ModeratorDeleteController c = loader.getController();
+            DeleteModeratorController c = loader.getController();
             Stage stage = (Stage)((Scene)((Button)e.getSource()).getScene()).getWindow();
             c.setStage(stage);
             c.setKorisnicko_ime(korisnicko_ime.getText());

@@ -7,30 +7,33 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Aplikacija;
 
 import java.io.IOException;
 
-public class ModeratorDeleteController {
+public class DeleteProdavnicaController {
 
     @FXML
-    private Label label;
+    private Label id_prodavnice_label;
+
+    @FXML
+    private Label adresa_label;
 
     @FXML
     private Button obrisi_button;
-    private String korisnicko_ime;
+
+    private int id_prodavnice;
+
+    private String adresa;
 
     private Stage stage;
 
     private Aplikacija model;
 
-    public ModeratorDeleteController(){
+    public DeleteProdavnicaController(){
         this.model = Aplikacija.getInstance();
     }
 
@@ -43,7 +46,7 @@ public class ModeratorDeleteController {
     public void enter_brisi(KeyEvent e){if (e.getCode() == KeyCode.ENTER) brisi();}
 
     public void brisi(){
-        if(!model.brisanjeModeratora(korisnicko_ime)){
+        if(!model.brisanjeProdavnice(id_prodavnice)){
             System.out.println("Doslo je do greske!");
         } else{
             povratak();
@@ -57,10 +60,10 @@ public class ModeratorDeleteController {
 
     public void povratak() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_users_view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_stores_view.fxml"));
             Parent root = loader.load();
 
-            AdminUsersController c = loader.getController();
+            ModeratorStoresController c = loader.getController();
             c.setStage(stage);
             c.populate();
             Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
@@ -77,16 +80,22 @@ public class ModeratorDeleteController {
         this.stage = stage;
     }
 
-    public String getKorisnicko_ime() {
-        return korisnicko_ime;
+    public int getId_prodavnice() {
+        return id_prodavnice;
     }
 
-    public void setKorisnicko_ime(String korisnicko_ime) {
-        this.korisnicko_ime = korisnicko_ime;
-        label.setText(korisnicko_ime);
-        if(korisnicko_ime.equals(model.getUlogovani().getUsername())){
-            obrisi_button.setDisable(true);
-        }
+    public void setId_prodavnice(int id_prodavnice) {
+        this.id_prodavnice = id_prodavnice;
+        id_prodavnice_label.setText(String.valueOf(id_prodavnice));
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
+        adresa_label.setText(adresa);
     }
 }
 

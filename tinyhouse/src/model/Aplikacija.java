@@ -68,6 +68,16 @@ public class Aplikacija {
         return false;
     }
 
+    public boolean brisanjeProdavnice(int id){
+        for(Prodavnica p : prodavnice){
+            if(p.getIdProdavnice() == id){
+                prodavnice.remove(p);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String dodajProdavnicu(int id, String adresa, float g_sirina, float g_duzina){
         if(adresa.length() < 4 || adresa.length() > 25) {
             return "Adresa mora biti između 4 i 25 karaktera duga";
