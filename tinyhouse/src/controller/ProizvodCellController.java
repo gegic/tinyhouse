@@ -133,9 +133,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
     @Override
     protected void updateItem(Proizvod p, boolean empty) {
         super.updateItem(p, empty);
-
         if(empty || p == null) {
-            //
             setText(null);
             setGraphic(null);
 
