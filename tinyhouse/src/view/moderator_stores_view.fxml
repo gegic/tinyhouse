@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModeratorStoresController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModeratorItemsController">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -18,7 +18,7 @@
                   <Insets bottom="10.0" left="10.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button id="upper_button" mnemonicParsing="false" onAction="#addProdavnica" stylesheets="@../styles/style.css" text="Dodaj prodavnicu">
+            <Button id="upper_button" mnemonicParsing="false" onAction="#addProizvod" stylesheets="@../styles/style.css" text="Dodaj proizvod">
                <font>
                   <Font size="16.0" />
                </font>

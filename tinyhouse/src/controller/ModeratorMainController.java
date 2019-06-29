@@ -57,7 +57,7 @@ public class ModeratorMainController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_items_view.fxml"));
         Parent root = loader.load();
 
-        ModeratorItemController c = loader.getController();
+        ModeratorItemsController c = loader.getController();
         c.setStage(stage);
         c.populate();
         Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());

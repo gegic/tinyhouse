@@ -19,10 +19,10 @@ import model.TipKorisnika;
 
 import java.io.IOException;
 
-public class ItemCellController extends ListCell<Proizvod> {
+public class ProizvodCellController extends ListCell<Proizvod> {
 
     @FXML
-    private Label lbIdItem;
+    private Label lb_id_proizvoda;
 
     @FXML
     private Button izbrisi;
@@ -31,7 +31,10 @@ public class ItemCellController extends ListCell<Proizvod> {
     private AnchorPane box;
 
     @FXML
-    private Label lbKolicina;
+    private Label lb_kolicina;
+
+    @FXML
+    private Label lb_naziv;
 
     private FXMLLoader mLLoader;
 
@@ -42,6 +45,11 @@ public class ItemCellController extends ListCell<Proizvod> {
 
     @FXML
     public void izmena(ActionEvent e) {
+    }
+
+    @FXML
+    public void uvecanjeKolicine(ActionEvent e){
+
     }
 
     @Override
@@ -65,8 +73,9 @@ public class ItemCellController extends ListCell<Proizvod> {
 
             }
 
-            lbIdItem.setText(String.valueOf("DJE JE NAZIV"));
-            lbKolicina.setText(String.valueOf("A DJE KOLICINA"));
+            lb_id_proizvoda.setText(String.valueOf(p.getId()));
+            lb_naziv.setText(p.getNaziv());
+            lb_kolicina.setText(String.valueOf(p.getKolicinaZaOnline()));
             setText(null);
             setGraphic(box);
         }

@@ -10,12 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.Aplikacija;
-import model.Prodavnica;
 import model.Proizvod;
 
 import java.io.IOException;
 
-public class ModeratorItemController {
+public class ModeratorItemsController {
 
     @FXML
     private ListView<Proizvod> itemsList;
@@ -24,14 +23,14 @@ public class ModeratorItemController {
 
     private Aplikacija model;
 
-    public ModeratorItemController(){
+    public ModeratorItemsController(){
         this.model = Aplikacija.getInstance();
     }
 
     public void populate(){
         ObservableList<Proizvod> observableList = FXCollections.observableList(model.proizvodi);
         itemsList.setItems(observableList);
-        itemsList.setCellFactory(e -> new ItemCellController());
+        itemsList.setCellFactory(e -> new ProizvodCellController());
     }
 
     public Stage getStage() {
@@ -63,7 +62,7 @@ public class ModeratorItemController {
     }
 
     @FXML
-    public void addItem(ActionEvent e) throws IOException {
+    public void addProizvod(ActionEvent e) throws IOException {
         /*FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/add_prodavnica_view.fxml"));
         Parent root = loader.load();
 

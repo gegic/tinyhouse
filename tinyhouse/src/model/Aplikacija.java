@@ -47,6 +47,7 @@ public class Aplikacija {
             korisnici.add(new Korisnik("admin", "admin", TipKorisnika.admin));
             korisnici.add(new Korisnik("m", "m", TipKorisnika.moderator));
             prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45, 18));
+            proizvodi.add(new Proizvod(1, "Kasewagen", "Kolica za sir. Najbolja na svijetu"));
         }
     }
 
