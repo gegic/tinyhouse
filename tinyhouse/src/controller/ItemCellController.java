@@ -49,7 +49,7 @@ public class ItemCellController extends ListCell<Proizvod> {
         super.updateItem(p, empty);
 
         if(empty || p == null) {
-
+            //
             setText(null);
             setGraphic(null);
 
