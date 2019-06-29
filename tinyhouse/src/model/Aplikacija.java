@@ -78,6 +78,37 @@ public class Aplikacija {
         return false;
     }
 
+    public Prodavnica pronadji_prodavnicu(int id) {
+        for(Prodavnica p : prodavnice){
+            if (p.getIdProdavnice() == id){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public String izmeniProdavnicu(int id, String adresa, float g_sirina, float g_duzina){
+        if(adresa.length() < 4 || adresa.length() > 25) {
+            return "Adresa mora biti između 4 i 25 karaktera duga";
+        }
+        if(g_sirina > 90 || g_sirina < -90){
+            return "Geografska širina mora biti između -90 i 90";
+        }
+        if(g_duzina > 180 || g_duzina < -180){
+            return "Geografska dužina mora biti između -180 i 180";
+        }
+
+        for(Prodavnica p : prodavnice){
+            if (id == p.getIdProdavnice()){
+                p.setAdresa(adresa);
+                p.setGeoSirina(g_sirina);
+                p.setGeoDuzina(g_duzina);
+                return "";
+            }
+        }
+        return "Ne postoji prodavnica sa ovim ID-jem! OVO NE SMIJE DA SE DESI NIKAD";
+    }
+
     public String dodajProdavnicu(int id, String adresa, float g_sirina, float g_duzina){
         if(adresa.length() < 4 || adresa.length() > 25) {
             return "Adresa mora biti između 4 i 25 karaktera duga";

@@ -55,8 +55,21 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
 
     @FXML
     public void izmena(ActionEvent e){
-        //TODO: izmena da se uradi
-    }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/modify_prodavnica_view.fxml"));
+            Parent root = loader.load();
+
+            ModifyProdavnicaController c = loader.getController();
+            Stage stage = (Stage)((Scene)((Button)e.getSource()).getScene()).getWindow();
+            c.setStage(stage);
+            c.setId_prodavnice_text(id_prodavnice.getText());
+            c.setInfo();
+            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+            stage.setScene(scene);
+        } catch(Exception ex){
+            System.out.println("Nije moguće učitati scenu.");
+            System.out.println(ex.getMessage());
+        }    }
 
     @Override
     protected void updateItem(Prodavnica p, boolean empty) {
