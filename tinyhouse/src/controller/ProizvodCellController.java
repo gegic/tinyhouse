@@ -98,6 +98,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
         if(btUvecaj.getText().equals("Uvećaj količinu")) {
             btUvecaj.setText("✓");
             tfKolicina.setVisible(true);
+            tfKolicina.requestFocus();
         } else{
             String textKolicina = tfKolicina.getText();
             try{
