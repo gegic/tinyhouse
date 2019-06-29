@@ -26,6 +26,7 @@ public class Proizvod {
         naziv = "";
         opis = "";
         kolicinaZaOnline = -1;
+        slike = new Image[3];
     }
 
     public Proizvod(int id, String naziv, String opis) {
@@ -33,6 +34,7 @@ public class Proizvod {
         this.naziv = naziv;
         this.opis = opis;
         this.kolicinaZaOnline = 0;
+        slike = new Image[3];
     }
 
     /**
@@ -296,7 +298,9 @@ public class Proizvod {
     }
 
     public void setSlike(Image[] slike) {
-        this.slike = slike;
+        this.slike[0] = slike[0];
+        this.slike[1] = slike[1];
+        this.slike[2] = slike[2];
     }
 
     public int getKolicinaZaOnline() {
@@ -305,5 +309,10 @@ public class Proizvod {
 
     public void setKolicinaZaOnline(int kolicinaZaOnline) {
         this.kolicinaZaOnline = kolicinaZaOnline;
+    }
+
+    public void setSlika(Image slika, int index){
+        if(index < 3 && index >= 0)
+            this.slike[index] = slika;
     }
 }

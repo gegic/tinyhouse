@@ -94,3 +94,22 @@
     -fx-font-weight: bold;
     -fx-font-size: 1.5em;
 }
+
+#sidepanel{
+    -fx-background-radius: 20;
+    -fx-background-color: #e6e6e6;
+}
+
+#sidepanel:hover{
+    -fx-background-color: #bebebe;
+}
+
+#clickable_pane:hover{
+    -fx-border-color: #6e6e6e;
+    -fx-border-width: 1px;
+    -fx-cursor: hand;
+}
+
+#clickable_pane:disabled .label{
+    -fx-text-fill: #534143;
+}

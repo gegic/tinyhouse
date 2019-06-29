@@ -6,6 +6,8 @@
  ***********************************************************************/
 package model;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +49,11 @@ public class Aplikacija {
             korisnici.add(new Korisnik("admin", "admin", TipKorisnika.admin));
             korisnici.add(new Korisnik("m", "m", TipKorisnika.moderator));
             prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45, 18));
-            proizvodi.add(new Proizvod(1, "Kasewagen", "Kolica za sir. Najbolja na svijetu"));
+
+            Image i = new Image(getClass().getResourceAsStream("/styles/images/kasewagen.jpg"));
+            Proizvod p = new Proizvod(1, "Kasewagen", "Kolica za sir. Najbolja na svijetu");
+            p.setSlika(i, 0);
+            proizvodi.add(p);
         }
     }
 
@@ -57,6 +63,34 @@ public class Aplikacija {
      */
     public void trazenje(String sp, ArrayList<Proizvod> pronadjeni) {
         // TODO: implement
+    }
+
+    public boolean brisanjeProizvoda(int id){
+        for(Proizvod p : proizvodi){
+            if(p.getId() == id){
+                proizvodi.remove(p);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike){
+        if(naziv.length() < 3 || naziv.length() > 15){
+            return "Naziv proizvoda mora imati između 3 i 15 karaktera";
+        }
+        if(opis.length() < 3 || opis.length() > 255){
+            return "Opis proizvoda mora imati između 3 i 255 karaktera";
+        }
+        for(Proizvod p : proizvodi){
+            if(p.getId() == id){
+                return "Već postoji proizvod sa ovim ID-jem";
+            }
+        }
+        Proizvod p = new Proizvod(id, naziv, opis);
+        p.setSlike(slike);
+        proizvodi.add(p);
+        return "";
     }
 
     public boolean brisanjeModeratora(String k_ime){

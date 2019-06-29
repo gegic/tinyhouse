@@ -63,11 +63,11 @@ public class ModeratorItemsController {
 
     @FXML
     public void addProizvod(ActionEvent e) throws IOException {
-        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/add_prodavnica_view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/add_proizvod_view.fxml"));
         Parent root = loader.load();
 
-        AddProdavnicaController c = loader.getController();
+        AddProizvodController c = loader.getController();
         c.setStage(stage);
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));*/
+        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
     }
 }

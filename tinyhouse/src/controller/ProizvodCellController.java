@@ -36,11 +36,28 @@ public class ProizvodCellController extends ListCell<Proizvod> {
     @FXML
     private Label lb_naziv;
 
+    @FXML
+    private ImageView icon;
+
     private FXMLLoader mLLoader;
 
     @FXML
     public void brisanje(ActionEvent e){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/delete_proizvod_view.fxml"));
+            Parent root = loader.load();
 
+            DeleteProizvodController c = loader.getController();
+            Stage stage = (Stage)((Scene)((Button)e.getSource()).getScene()).getWindow();
+            c.setStage(stage);
+            c.setLbIdProizvoda(lb_id_proizvoda.getText());
+            c.setLbNaziv(lb_naziv.getText());
+            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+            stage.setScene(scene);
+        } catch(Exception ex){
+            System.out.println("Nije moguće učitati scenu.");
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML
@@ -76,6 +93,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
             lb_id_proizvoda.setText(String.valueOf(p.getId()));
             lb_naziv.setText(p.getNaziv());
             lb_kolicina.setText(String.valueOf(p.getKolicinaZaOnline()));
+            icon.setImage(p.getSlike()[0]);
             setText(null);
             setGraphic(box);
         }
