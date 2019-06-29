@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Proizvod {
+    private int id;
     private String naziv;
     private String opis;
     private Image[] slike;
