@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Aplikacija;
 import model.Korisnik;
+import model.TipKorisnika;
 
 import java.io.IOException;
 
@@ -46,7 +47,10 @@ public class LoginController {
 
     void prijava(){
         Korisnik k = model.prijava(k_ime.getText(), lozinka.getText());
-        if (k != null){
+        if (k == null){
+            k_ime.setStyle("-fx-border-color: red");
+            lozinka.setStyle("-fx-border-color: red");
+        } else if(k.getTip() == TipKorisnika.admin){
             model.setUlogovani(k);
             try {
                 scenaAdminGlavna();
@@ -54,11 +58,27 @@ public class LoginController {
                 System.out.println("Couldn't load next scene");
                 System.out.println(ex.getMessage());
             }
-        } else {
-            k_ime.setStyle("-fx-border-color: red");
-            lozinka.setStyle("-fx-border-color: red");
+        } else if (k.getTip() == TipKorisnika.moderator){
+            model.setUlogovani(k);
+            try {
+                scenaModeratorGlavna();
+            }catch (Exception ex) {
+                System.out.println("Couldn't load next scene");
+                System.out.println(ex.getMessage());
+            }
         }
     }
+
+    public void scenaModeratorGlavna() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_main_view.fxml"));
+        Parent root = loader.load();
+
+        ModeratorMainController c = loader.getController();
+        c.setStage(stage);
+
+        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    }
+
     public void scenaAdminGlavna() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_main_view.fxml"));
         Parent root = loader.load();

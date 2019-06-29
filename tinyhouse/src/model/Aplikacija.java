@@ -45,6 +45,7 @@ public class Aplikacija {
 
         if (this.korisnici.isEmpty()) {
             korisnici.add(new Korisnik("admin", "admin", TipKorisnika.admin));
+            korisnici.add(new Korisnik("m", "m", TipKorisnika.moderator));
         }
     }
 
