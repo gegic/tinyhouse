@@ -46,6 +46,7 @@ public class Aplikacija {
         if (this.korisnici.isEmpty()) {
             korisnici.add(new Korisnik("admin", "admin", TipKorisnika.admin));
             korisnici.add(new Korisnik("m", "m", TipKorisnika.moderator));
+            prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45, 18));
         }
     }
 
@@ -65,6 +66,26 @@ public class Aplikacija {
             }
         }
         return false;
+    }
+
+    public String dodajProdavnicu(int id, String adresa, float g_sirina, float g_duzina){
+        if(adresa.length() < 4 || adresa.length() > 25) {
+            return "Adresa mora biti između 4 i 25 karaktera duga";
+        }
+        if(g_sirina > 90 || g_sirina < -90){
+            return "Geografska širina mora biti između -90 i 90";
+        }
+        if(g_duzina > 180 || g_duzina < -180){
+            return "Geografska dužina mora biti između -180 i 180";
+        }
+
+        for(Prodavnica p : prodavnice){
+            if (id == p.getIdProdavnice()){
+                return "Već postoji prodavnica sa ovim ID-jem";
+            }
+        }
+        prodavnice.add(new Prodavnica(id, adresa, g_sirina, g_duzina));
+        return "";
     }
 
     public String dodajModeratora(String k_ime, String password){

@@ -10,11 +10,32 @@ import java.util.List;
 
 public class Prodavnica {
     private int idProdavnice;
-    private int geoSirina;
-    private int geoDuzina;
+    private float geoSirina;
+    private float geoDuzina;
     private String adresa;
 
     public List<ProizvodUProdavnici> proizvodi;
+
+    public Prodavnica() {
+        this.idProdavnice = -1;
+        this.adresa = "";
+        this.geoSirina = -1;
+        this.geoDuzina = -1;
+    }
+
+    public Prodavnica(int idProdavnice, String adresa) {
+        this.idProdavnice = idProdavnice;
+        this.adresa = adresa;
+        geoDuzina = 0;
+        geoSirina = 0;
+    }
+
+    public Prodavnica(int idProdavnice, String adresa, float geoSirina, float geoDuzina) {
+        this.idProdavnice = idProdavnice;
+        this.geoSirina = geoSirina;
+        this.geoDuzina = geoDuzina;
+        this.adresa = adresa;
+    }
 
     /**
      * @param p
@@ -104,4 +125,35 @@ public class Prodavnica {
         }
     }
 
+    public int getIdProdavnice() {
+        return idProdavnice;
+    }
+
+    public void setIdProdavnice(int idProdavnice) {
+        this.idProdavnice = idProdavnice;
+    }
+
+    public float getGeoSirina() {
+        return geoSirina;
+    }
+
+    public void setGeoSirina(float geoSirina) {
+        this.geoSirina = geoSirina;
+    }
+
+    public float getGeoDuzina() {
+        return geoDuzina;
+    }
+
+    public void setGeoDuzina(float geoDuzina) {
+        this.geoDuzina = geoDuzina;
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
+    }
 }

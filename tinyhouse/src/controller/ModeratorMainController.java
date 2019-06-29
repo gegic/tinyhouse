@@ -41,8 +41,15 @@ public class ModeratorMainController {
     }
 
     @FXML
-    public void pregledajProdavnice(ActionEvent e){
-        // TODO: pregledanje prodavnica
+    public void pregledajProdavnice(ActionEvent e) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_stores_view.fxml"));
+        Parent root = loader.load();
+
+        ModeratorStoresController c = loader.getController();
+        c.setStage(stage);
+        c.populate();
+        Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+        stage.setScene(moderator_view);
     }
 
     @FXML
