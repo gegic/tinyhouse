@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyProizvodController">
    <children>
       <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" onAction="#povratak" stylesheets="@../styles/style.css" text="nazad" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0" />
@@ -35,6 +39,26 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextArea>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <TextField fx:id="tfCijena" maxWidth="600.0" onKeyPressed="#enter_izmena" prefHeight="40.0" promptText="cijena" stylesheets="@../styles/style.css" HBox.hgrow="ALWAYS">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
+                        <Label stylesheets="@../styles/style.css" text="RSD">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
                   <Label fx:id="warning" />
                   <Region VBox.vgrow="SOMETIMES" />
                   <Button fx:id="btDodavanje" disable="true" mnemonicParsing="false" onAction="#izmena" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="izmena proizvoda">

@@ -28,7 +28,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="prijava" mnemonicParsing="false" onAction="#prijavljen" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="prijava">
+            <Button mnemonicParsing="false" onAction="#prijavljen" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="prijava">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
