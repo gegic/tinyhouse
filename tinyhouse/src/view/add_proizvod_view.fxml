@@ -77,20 +77,20 @@
                   </Label>
                   <Pane id="clickable_pane" fx:id="pane1" layoutX="37.0" layoutY="44.0" onMouseClicked="#selectImage1" prefHeight="100.0" prefWidth="100.0" stylesheets="@../styles/style.css" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="35.0">
                      <children>
-                        <Label fx:id="lbDodaj1" layoutX="14.0" layoutY="40.0" text="dodaj sliku" />
                         <ImageView fx:id="iv1" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lbDodaj1" layoutX="14.0" layoutY="40.0" text="dodaj sliku" />
                      </children>
                   </Pane>
                   <Pane id="clickable_pane" fx:id="pane2" disable="true" layoutX="37.0" layoutY="144.0" onMouseClicked="#selectImage2" prefHeight="100.0" prefWidth="100.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="140.0">
                      <children>
-                        <Label fx:id="lbDodaj2" layoutX="14.0" layoutY="40.0" text="dodaj sliku" />
                         <ImageView fx:id="iv2" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lbDodaj2" layoutX="14.0" layoutY="40.0" text="dodaj sliku" />
                      </children>
                   </Pane>
                   <Pane id="clickable_pane" fx:id="pane3" disable="true" layoutX="37.0" layoutY="244.0" onMouseClicked="#selectImage3" prefHeight="100.0" prefWidth="100.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="245.0">
                      <children>
-                        <Label fx:id="lbDodaj3" layoutX="14.0" layoutY="40.0" text="dodaj sliku" />
                         <ImageView fx:id="iv3" fitHeight="90.0" fitWidth="90.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lbDodaj3" layoutX="14.0" layoutY="40.0" text="dodaj sliku" />
                      </children>
                   </Pane>
                   <Label id="tile_text" layoutX="23.0" layoutY="480.0" prefHeight="56.0" prefWidth="129.0" text="Potrebno je dodati bar jednu sliku" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="23.0" />

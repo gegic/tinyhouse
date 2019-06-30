@@ -117,14 +117,18 @@ public class ModifyProizvodController extends Controller {
             btDodavanje.setDisable(false);
         }
         if(images[1] != null){
-            iv2.setImage(images[2]);
             iv2.setImage(images[1]);
             pane3.setDisable(false);
-            lbDodaj2.setVisible(false);
+            lbDodaj2.setStyle("-fx-background-color: white");
+            lbDodaj2.setText("ukloni sliku");
+
         }
         if(images[2] != null){
             iv3.setImage(images[2]);
-            lbDodaj3.setVisible(false);
+            lbDodaj3.setStyle("-fx-background-color: white");
+            lbDodaj3.setText("ukloni sliku");
+            lbDodaj2.setText("slika 2");
+            lbDodaj2.setVisible(false);
         }
 
     }
@@ -144,22 +148,43 @@ public class ModifyProizvodController extends Controller {
 
     @FXML
     public void selectImage2(MouseEvent e){
-        File selectedFile = izbor_slike();
-        if(selectedFile != null){
-            images[1] = new Image(selectedFile.toURI().toString());
-            iv2.setImage(images[1]);
-            pane3.setDisable(false);
-            lbDodaj2.setVisible(false);
+        if(lbDodaj2.getText().equals("ukloni sliku")){
+            images[1] = null;
+            iv2.setImage(null);
+            pane3.setDisable(true);
+            lbDodaj2.setStyle("-fx-background-color: transparent");
+            lbDodaj2.setText("dodaj sliku");
+        } else{
+            File selectedFile = izbor_slike();
+            if(selectedFile != null){
+                images[1] = new Image(selectedFile.toURI().toString());
+                iv2.setImage(images[1]);
+                pane3.setDisable(false);
+                lbDodaj2.setStyle("-fx-background-color: white");
+                lbDodaj2.setText("ukloni sliku");
+            }
         }
     }
 
     @FXML
     public void selectImage3(MouseEvent e){
-        File selectedFile = izbor_slike();
-        if(selectedFile != null){
-            images[2] = new Image(selectedFile.toURI().toString());
-            iv3.setImage(images[2]);
-            lbDodaj3.setVisible(false);
+        if(lbDodaj3.getText().equals("ukloni sliku")){
+            images[2] = null;
+            iv3.setImage(null);
+            lbDodaj3.setStyle("-fx-background-color: transparent");
+            lbDodaj3.setText("dodaj sliku");
+            lbDodaj2.setText("ukloni sliku");
+            lbDodaj2.setVisible(true);
+        } else {
+            File selectedFile = izbor_slike();
+            if (selectedFile != null) {
+                images[2] = new Image(selectedFile.toURI().toString());
+                iv3.setImage(images[2]);
+                lbDodaj3.setStyle("-fx-background-color: white");
+                lbDodaj3.setText("ukloni sliku");
+                lbDodaj2.setText("slika 2");
+                lbDodaj2.setVisible(false);
+            }
         }
     }
 
