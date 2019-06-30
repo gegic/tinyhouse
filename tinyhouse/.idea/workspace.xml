@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Zavrsena registracija">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Proizvod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Proizvod.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,16 +60,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/registration_view.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/ModifyProizvodController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1398">
@@ -78,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/RegistrationController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="169">
@@ -90,11 +80,52 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/Kateogrija.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="39" column="57" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#160#161#0" expanded="true" />
+                <element signature="e#188#189#0" expanded="true" />
+                <element signature="e#230#231#0" expanded="true" />
+                <element signature="e#264#265#0" expanded="true" />
+                <element signature="e#384#385#0" expanded="true" />
+                <element signature="e#420#421#0" expanded="true" />
+                <element signature="e#406#407#0" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+                <element signature="e#610#611#0" expanded="true" />
+                <element signature="e#660#661#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Proizvod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="557">
+              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1107#1108#0" expanded="true" />
+                <element signature="e#1140#1141#0" expanded="true" />
+                <element signature="e#1196#1197#0" expanded="true" />
+                <element signature="e#1240#1241#0" expanded="true" />
+                <element signature="e#7889#7890#0" expanded="true" />
+                <element signature="e#7917#7918#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="84" column="71" lean-forward="true" selection-start-line="83" selection-start-column="8" selection-end-line="84" selection-end-column="71" />
+              <caret line="84" column="71" selection-start-line="83" selection-start-column="8" selection-end-line="84" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -103,7 +134,7 @@
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="12" column="95" lean-forward="true" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="95" />
+              <caret line="12" column="95" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="95" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,8 +157,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Aplikacija.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
-              <caret line="579" column="22" selection-start-line="579" selection-start-column="17" selection-end-line="579" selection-end-column="22" />
+            <state relative-caret-position="1237">
+              <caret line="547" column="21" lean-forward="true" selection-start-line="545" selection-start-column="8" selection-end-line="547" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,15 +198,6 @@
                 <element signature="e#623#624#0" expanded="true" />
                 <element signature="e#651#652#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/AddProdavnicaController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="59" column="55" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -254,7 +276,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/ItemCellController.java" />
         <option value="$PROJECT_DIR$/src/controller/ModeratorItemController.java" />
         <option value="$PROJECT_DIR$/src/view/proizvod_cell_view.fxml" />
         <option value="$PROJECT_DIR$/src/view/add_proizvod_viewNIJEGOTOV.fxml" />
@@ -287,7 +308,6 @@
         <option value="$PROJECT_DIR$/src/model/Cenovnik.java" />
         <option value="$PROJECT_DIR$/src/view/proizvod_tile_view.fxml" />
         <option value="$PROJECT_DIR$/src/model/StavkaCenovnika.java" />
-        <option value="$PROJECT_DIR$/src/model/Proizvod.java" />
         <option value="$PROJECT_DIR$/src/controller/ProizvodTileController.java" />
         <option value="$PROJECT_DIR$/src/styles/style.css" />
         <option value="$PROJECT_DIR$/src/controller/GeneralMainController.java" />
@@ -305,6 +325,8 @@
         <option value="$PROJECT_DIR$/src/model/Kupac.java" />
         <option value="$PROJECT_DIR$/src/model/Korisnik.java" />
         <option value="$PROJECT_DIR$/src/controller/RegistrationController.java" />
+        <option value="$PROJECT_DIR$/src/model/Proizvod.java" />
+        <option value="$PROJECT_DIR$/src/model/Kateogrija.java" />
       </list>
     </option>
   </component>
@@ -315,7 +337,7 @@
     </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1615" />
@@ -343,12 +365,6 @@
               <item name="tinyhouse" type="b2602c69:ProjectViewProjectNode" />
               <item name="tinyhouse" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tinyhouse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tinyhouse" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tinyhouse" type="b2602c69:ProjectViewProjectNode" />
@@ -533,7 +549,7 @@
       <workItem from="1561822140505" duration="14264000" />
       <workItem from="1561839354536" duration="452000" />
       <workItem from="1561841658195" duration="28082000" />
-      <workItem from="1561920707549" duration="6038000" />
+      <workItem from="1561920707549" duration="6471000" />
     </task>
     <task id="LOCAL-00001" summary="Poruka o neispravnom logovanju">
       <created>1561817997111</created>
@@ -560,10 +576,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94432000" />
+    <option name="totallyTimeSpent" value="94865000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22995462" />
@@ -637,14 +653,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/view/delete_prodavnica_view.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="181" selection-start-line="8" selection-start-column="181" selection-end-line="8" selection-end-column="181" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/moderator_main_view.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -861,19 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Proizvod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="338" column="5" lean-forward="true" selection-start-line="338" selection-start-column="5" selection-end-line="338" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#7889#7890#0" expanded="true" />
-            <element signature="e#7917#7918#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -1023,7 +1018,7 @@
     <entry file="file://$PROJECT_DIR$/src/controller/AddProdavnicaController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-102">
-          <caret line="59" column="55" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="55" />
+          <caret line="59" column="55" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -1066,16 +1061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Aplikacija.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="579" column="22" selection-start-line="579" selection-start-column="17" selection-end-line="579" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/AddModeratorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
@@ -1089,14 +1074,14 @@
     <entry file="file://$PROJECT_DIR$/src/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="84" column="71" lean-forward="true" selection-start-line="83" selection-start-column="8" selection-end-line="84" selection-end-column="71" />
+          <caret line="84" column="71" selection-start-line="83" selection-start-column="8" selection-end-line="84" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="12" column="95" lean-forward="true" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="95" />
+          <caret line="12" column="95" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="95" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1109,6 +1094,53 @@
           <caret line="71" column="35" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Aplikacija.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1237">
+          <caret line="547" column="21" lean-forward="true" selection-start-line="545" selection-start-column="8" selection-end-line="547" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Proizvod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1240#1241#0" expanded="true" />
+            <element signature="e#7889#7890#0" expanded="true" />
+            <element signature="e#7917#7918#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Kateogrija.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="39" column="57" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#160#161#0" expanded="true" />
+            <element signature="e#188#189#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#264#265#0" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
           </folding>
         </state>
       </provider>
