@@ -37,6 +37,7 @@ public class ModifyProizvodController extends Controller {
     @FXML private ImageView iv3;
     @FXML private Button btDodavanje;
     @FXML private Label warning;
+    @FXML private TextField tfCijena;
     private Image images[];
 
     private Stage stage;
@@ -62,11 +63,14 @@ public class ModifyProizvodController extends Controller {
         String message;
         try {
             int id = Integer.valueOf(tfIdProizvoda.getText());
-            if(!(message = model.izmeniProizvod(id, tfNaziv.getText(), taOpis.getText(), images)).equals("")){
+            float cijena = Float.valueOf(tfCijena.getText());
+            if(!(message = model.izmeniProizvod(id, tfNaziv.getText(), taOpis.getText(), images, cijena)).equals("")){
                 warning.setTextFill(Color.RED);
                 warning.setText(message);
+                tfIdProizvoda.setStyle("-fx-border-color: red");
                 tfNaziv.setStyle("-fx-border-color: red");
                 taOpis.setStyle("-fx-border-color: red");
+                tfCijena.setStyle("-fx-border-color: red");
             }
             else{
                 povratak();
@@ -74,7 +78,9 @@ public class ModifyProizvodController extends Controller {
         } catch (NumberFormatException e){
             warning.setTextFill(Color.RED);
             warning.setText("Sva polja moraju biti logično popunjena");
+            tfIdProizvoda.setStyle("-fx-border-color: red");
             tfNaziv.setStyle("-fx-border-color: red");
+            tfCijena.setStyle("-fx-border-color: red");
             taOpis.setStyle("-fx-border-color: red");
         }
     }
@@ -102,6 +108,7 @@ public class ModifyProizvodController extends Controller {
         Proizvod p = model.pronadjiProizvod(Integer.valueOf(tfIdProizvoda.getText()));
         tfNaziv.setText(p.getNaziv());
         taOpis.setText(p.getOpis());
+        tfCijena.setText(String.valueOf(p.getTrenutnaCijena().getJedinicnaCena()));
         images = p.getSlike();
         if(images[0] != null){
             iv1.setImage(images[0]);

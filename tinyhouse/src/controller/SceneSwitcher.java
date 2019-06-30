@@ -38,6 +38,7 @@ public class SceneSwitcher {
             stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
         } catch(Exception ex){
             System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
     public static void odjava(){

@@ -34,7 +34,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextArea fx:id="taOpis" maxHeight="1.7976931348623157E308" maxWidth="600.0" prefHeight="200.0" prefWidth="200.0" promptText="opis proizvoda">
+                  <TextArea fx:id="taOpis" maxHeight="1.7976931348623157E308" maxWidth="600.0" onKeyPressed="#move" prefHeight="200.0" prefWidth="200.0" promptText="opis proizvoda">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>

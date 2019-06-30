@@ -19,6 +19,7 @@ import model.Aplikacija;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Key;
 
 public class AddProizvodController extends Controller {
 
@@ -125,6 +126,15 @@ public class AddProizvodController extends Controller {
             tfNaziv.setStyle("-fx-border-color: red");
             tfCijena.setStyle("-fx-border-color: red");
             taOpis.setStyle("-fx-border-color: red");
+        }
+    }
+
+    @FXML
+    public void move(KeyEvent e){
+        if (e.getCode() == KeyCode.TAB && e.isShiftDown()){
+            tfNaziv.requestFocus();
+        } else if(e.getCode() == KeyCode.TAB){
+            tfCijena.requestFocus();
         }
     }
 

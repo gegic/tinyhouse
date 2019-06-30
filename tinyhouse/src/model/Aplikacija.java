@@ -73,7 +73,13 @@ public class Aplikacija {
         return p.getKolicinaZaOnline();
     }
 
-    public String izmeniProizvod(int id, String naziv, String opis, Image[] slike){
+    public String izmeniProizvod(int id, String naziv, String opis, Image[] slike, float cijena){
+        if(slike[0] == null){
+            return "Mora se postaviti bar jedna slika";
+        }
+        if(cijena <= 0){
+            return "Cijena mora da prelazi 0 dinara";
+        }
         if(naziv.length() < 3 || naziv.length() > 15){
             return "Naziv proizvoda mora imati između 3 i 15 karaktera";
         }
@@ -85,6 +91,7 @@ public class Aplikacija {
                 p.setNaziv(naziv);
                 p.setOpis(opis);
                 p.setSlike(slike);
+                p.setTrenutnaCijena(cijena, new Date());
                 return "";
             }
         }
@@ -108,6 +115,9 @@ public class Aplikacija {
     }
 
     public String dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike, float cijena){
+        if(slike[0] == null){
+            return "Mora se postaviti bar jedna slika";
+        }
         if(id > 10000 || id < 1){
             return "ID mora biti između 1 i 10000";
         }
