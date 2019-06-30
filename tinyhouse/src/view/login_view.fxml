@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="125.0" layoutY="78.0" maxWidth="500.0" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="78.0">
@@ -33,12 +28,26 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="prijava" mnemonicParsing="false" onMouseClicked="#prijavljen" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="prijava">
+            <Button fx:id="prijava" mnemonicParsing="false" onAction="#prijavljen" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="prijava">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Label text="Nemaš nalog?">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#registracija" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="registruj se">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
+      <Button layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#povratak" stylesheets="@../styles/style.css" text="nazad" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
    </children>
 </AnchorPane>

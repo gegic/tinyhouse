@@ -2,9 +2,6 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -19,13 +16,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Aplikacija;
-import model.Prodavnica;
 import model.Proizvod;
 
 import java.io.File;
 import java.io.IOException;
 
-public class ModifyProizvodController {
+public class ModifyProizvodController extends Controller {
 
     @FXML private TextField tfIdProizvoda;
     @FXML private TextField tfNaziv;
@@ -89,18 +85,8 @@ public class ModifyProizvodController {
     }
 
     public void povratak() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_items_view.fxml"));
-            Parent root = loader.load();
-
-            ModeratorItemsController c = loader.getController();
-            c.setStage(stage);
-            c.populate();
-            Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(moderator_view);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-        }
+        ModeratorItemsController c = new ModeratorItemsController();
+        SceneSwitcher.switchScene(c, "../view/moderator_items_view.fxml", true);
     }
 
     public Stage getStage() {
@@ -111,11 +97,8 @@ public class ModifyProizvodController {
         this.stage = stage;
     }
 
-    public void setTfIdProizvoda(String IdProizvoda) {
-        this.tfIdProizvoda.setText(IdProizvoda);
-    }
-
-    public void setInfo(){
+    public void setInfo(String idProizvoda){
+        this.tfIdProizvoda.setText(idProizvoda);
         Proizvod p = model.pronadjiProizvod(Integer.valueOf(tfIdProizvoda.getText()));
         tfNaziv.setText(p.getNaziv());
         taOpis.setText(p.getOpis());

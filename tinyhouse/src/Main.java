@@ -1,4 +1,5 @@
-import controller.LoginController;
+import controller.GeneralMainController;
+import controller.SceneSwitcher;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,10 +9,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/login_view.fxml"));
+        SceneSwitcher.setStage(primaryStage);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/general_main_view.fxml"));
 
         Parent root = loader.load();
-        LoginController c = (LoginController)loader.getController();
+        GeneralMainController c = loader.getController();
         c.setStage(primaryStage);
         primaryStage.setTitle("tinyhouse");
         primaryStage.setMinHeight(600);

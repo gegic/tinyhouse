@@ -3,15 +3,12 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import model.Korisnik;
 import model.TipKorisnika;
 
@@ -35,20 +32,8 @@ public class KorisnikCellController extends ListCell<Korisnik> {
 
     @FXML
     public void brisanje(ActionEvent e){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/delete_moderator_view.fxml"));
-            Parent root = loader.load();
-
-            DeleteModeratorController c = loader.getController();
-            Stage stage = (Stage)((Scene)((Button)e.getSource()).getScene()).getWindow();
-            c.setStage(stage);
-            c.setKorisnicko_ime(korisnicko_ime.getText());
-            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(scene);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-            System.out.println(ex.getMessage());
-        }
+        DeleteModeratorController c = new DeleteModeratorController();
+        SceneSwitcher.switchScene(c, "../view/delete_moderator_view.fxml", korisnicko_ime.getText());
     }
 
     @Override

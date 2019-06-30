@@ -2,19 +2,16 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.Aplikacija;
+import model.Proizvod;
 
 import java.io.IOException;
 
-public class DeleteProizvodController {
+public class DeleteProizvodController extends Controller {
 
     @FXML
     private Label lbIdProizvoda;
@@ -52,18 +49,8 @@ public class DeleteProizvodController {
     }
 
     public void povratak() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_items_view.fxml"));
-            Parent root = loader.load();
-
-            ModeratorItemsController c = loader.getController();
-            c.setStage(stage);
-            c.populate();
-            Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(moderator_view);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-        }
+        ModeratorItemsController c = new ModeratorItemsController();
+        SceneSwitcher.switchScene(c, "../view/moderator_items_view.fxml", true);
     }
     public Stage getStage() {
         return stage;
@@ -73,13 +60,11 @@ public class DeleteProizvodController {
         this.stage = stage;
     }
 
-
-    public void setLbIdProizvoda(String IdProizvoda) {
-        this.lbIdProizvoda.setText(IdProizvoda);
-    }
-
-    public void setLbNaziv(String naziv) {
-        this.lbNaziv.setText(naziv);
+    public void setInfo(String idProizvoda) {
+        int id = Integer.valueOf(idProizvoda);
+        this.lbIdProizvoda.setText(idProizvoda);
+        Proizvod p = model.pronadjiProizvod(id);
+        this.lbNaziv.setText(p.getNaziv());
     }
 }
 

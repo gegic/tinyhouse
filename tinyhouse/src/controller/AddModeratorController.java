@@ -2,9 +2,6 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -16,7 +13,7 @@ import model.Aplikacija;
 
 import java.io.IOException;
 
-public class AddModeratorController {
+public class AddModeratorController extends Controller {
 
     @FXML
     private Label warning;
@@ -65,18 +62,8 @@ public class AddModeratorController {
     }
 
     public void povratak() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_users_view.fxml"));
-            Parent root = loader.load();
-
-            AdminUsersController c = loader.getController();
-            c.setStage(stage);
-            c.populate();
-            Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(moderator_view);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-        }
+        AdminUsersController c = new AdminUsersController();
+        SceneSwitcher.switchScene(c, "../view/admin_users_view.fxml", true);
     }
     public Stage getStage() {
         return stage;

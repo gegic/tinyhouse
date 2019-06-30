@@ -4,18 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.Aplikacija;
-import model.Korisnik;
 import model.Prodavnica;
 
-import java.io.IOException;
-
-public class ModeratorStoresController {
+public class ModeratorStoresController extends Controller {
 
     @FXML
     private ListView<Prodavnica> prodList;
@@ -43,32 +37,19 @@ public class ModeratorStoresController {
     }
 
     @FXML
-    public void odjava(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/login_view.fxml"));
-        Parent root = loader.load();
-        model.setUlogovani(null);
-        LoginController c = loader.getController();
-        c.setStage(stage);
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    public void odjava(ActionEvent e) {
+        SceneSwitcher.odjava();
     }
 
     @FXML
-    public void povratak(ActionEvent e) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_main_view.fxml"));
-        Parent root = loader.load();
-
-        ModeratorMainController c = loader.getController();
-        c.setStage(stage);
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    public void povratak(ActionEvent e) {
+        ModeratorMainController c = new ModeratorMainController();
+        SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml");
     }
 
     @FXML
-    public void addProdavnica(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/add_prodavnica_view.fxml"));
-        Parent root = loader.load();
-
-        AddProdavnicaController c = loader.getController();
-        c.setStage(stage);
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    public void addProdavnica(ActionEvent e) {
+        AddProdavnicaController c = new AddProdavnicaController();
+        SceneSwitcher.switchScene(c, "../view/add_prodavnica_view.fxml");
     }
 }

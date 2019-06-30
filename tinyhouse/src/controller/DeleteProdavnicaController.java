@@ -2,19 +2,17 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.Aplikacija;
+import model.Prodavnica;
 
 import java.io.IOException;
 
-public class DeleteProdavnicaController {
+public class DeleteProdavnicaController extends Controller {
 
     @FXML
     private Label id_prodavnice_label;
@@ -59,18 +57,8 @@ public class DeleteProdavnicaController {
     }
 
     public void povratak() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_stores_view.fxml"));
-            Parent root = loader.load();
-
-            ModeratorStoresController c = loader.getController();
-            c.setStage(stage);
-            c.populate();
-            Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(moderator_view);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-        }
+        ModeratorStoresController c = new ModeratorStoresController();
+        SceneSwitcher.switchScene(c, "../view/moderator_stores_view.fxml", true);
     }
     public Stage getStage() {
         return stage;
@@ -84,18 +72,12 @@ public class DeleteProdavnicaController {
         return id_prodavnice;
     }
 
-    public void setId_prodavnice(int id_prodavnice) {
-        this.id_prodavnice = id_prodavnice;
+    public void setInfo(String id_prodavnice) {
+        this.id_prodavnice = Integer.valueOf(id_prodavnice);
         id_prodavnice_label.setText(String.valueOf(id_prodavnice));
-    }
+        Prodavnica p = model.pronadji_prodavnicu(this.id_prodavnice);
+        adresa_label.setText(p.getAdresa());
 
-    public String getAdresa() {
-        return adresa;
-    }
-
-    public void setAdresa(String adresa) {
-        this.adresa = adresa;
-        adresa_label.setText(adresa);
     }
 }
 

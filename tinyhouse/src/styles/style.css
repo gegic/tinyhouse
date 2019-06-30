@@ -41,7 +41,51 @@
     -fx-border-color: red;
     -fx-opacity: 0.6;
 }
+.menu-bar .menu{
+    -fx-background-radius: 15;
+}
+.menu-bar .menu:hover{
+    -fx-cursor: hand;
+    -fx-background-color: lightgray;
+}
 
+.menu-bar .menu-item{
+    -fx-background-radius: 15;
+    -fx-cursor: hand;
+}
+
+.menu-bar .menu:showing{
+    -fx-background-color: lightgray;
+    -fx-text-fill: white;
+}
+
+#okvir{
+    -fx-border-width: 0px;
+    -fx-border-color: transparent;
+}
+
+#okvir_active{
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+}
+
+.menu-bar .menu-item:focused{
+    -fx-background-color: lightgray;
+    -fx-text-fill: white;
+
+}
+.context-menu {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 15;
+    -fx-cursor: hand;
+    -fx-effect: null;
+
+}
+.menu-bar .label {
+    -fx-text-fill: black;
+    -fx-opacity: 0.6;
+    -fx-font-size: 16px;
+}
 #tile_text{
     -fx-text-fill: black;
     -fx-opacity: 1;
@@ -112,4 +156,9 @@
 
 #clickable_pane:disabled .label{
     -fx-text-fill: #534143;
+}
+
+.button .label{
+    -fx-text-fill: white;
+    -fx-opacity: 1;
 }

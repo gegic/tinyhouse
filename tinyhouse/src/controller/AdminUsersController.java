@@ -4,17 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.Aplikacija;
 import model.Korisnik;
 
-import java.io.IOException;
-
-public class AdminUsersController {
+public class AdminUsersController extends Controller {
 
     @FXML
     private ListView<Korisnik> modList;
@@ -42,32 +37,19 @@ public class AdminUsersController {
     }
 
     @FXML
-    public void odjava(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/login_view.fxml"));
-        Parent root = loader.load();
-        model.setUlogovani(null);
-        LoginController c = loader.getController();
-        c.setStage(stage);
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    public void odjava(ActionEvent e) {
+        SceneSwitcher.odjava();
     }
 
     @FXML
-    public void povratak(ActionEvent e) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_main_view.fxml"));
-        Parent root = loader.load();
-
-        AdminMainController c = loader.getController();
-        c.setStage(stage);
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    public void povratak(ActionEvent e) {
+        AdminMainController c = new AdminMainController();
+        SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml");
     }
 
     @FXML
-    public void addModerator(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/add_moderator_view.fxml"));
-        Parent root = loader.load();
-
-        AddModeratorController c = loader.getController();
-        c.setStage(stage);
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    public void addModerator(ActionEvent e) {
+        AddModeratorController c = new AddModeratorController();
+        SceneSwitcher.switchScene(c, "../view/add_moderator_view.fxml");
     }
 }

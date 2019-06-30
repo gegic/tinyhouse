@@ -2,22 +2,16 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Aplikacija;
 
 import java.io.IOException;
 
-public class DeleteModeratorController {
+public class DeleteModeratorController extends Controller {
 
     @FXML
     private Label label;
@@ -56,18 +50,8 @@ public class DeleteModeratorController {
     }
 
     public void povratak() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_users_view.fxml"));
-            Parent root = loader.load();
-
-            AdminUsersController c = loader.getController();
-            c.setStage(stage);
-            c.populate();
-            Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(moderator_view);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-        }
+        AdminUsersController c = new AdminUsersController();
+        SceneSwitcher.switchScene(c, "../view/admin_users_view.fxml", true);
     }
     public Stage getStage() {
         return stage;
@@ -81,7 +65,7 @@ public class DeleteModeratorController {
         return korisnicko_ime;
     }
 
-    public void setKorisnicko_ime(String korisnicko_ime) {
+    public void setInfo(String korisnicko_ime) {
         this.korisnicko_ime = korisnicko_ime;
         label.setText(korisnicko_ime);
         if(korisnicko_ime.equals(model.getUlogovani().getUsername())){

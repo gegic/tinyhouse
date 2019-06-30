@@ -2,9 +2,6 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -16,7 +13,7 @@ import model.Prodavnica;
 
 import java.io.IOException;
 
-public class ModifyProdavnicaController {
+public class ModifyProdavnicaController extends Controller {
 
     @FXML
     private Label warning;
@@ -85,18 +82,8 @@ public class ModifyProdavnicaController {
     }
 
     public void povratak() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_stores_view.fxml"));
-            Parent root = loader.load();
-
-            ModeratorStoresController c = loader.getController();
-            c.setStage(stage);
-            c.populate();
-            Scene moderator_view = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(moderator_view);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-        }
+        ModeratorStoresController c = new ModeratorStoresController();
+        SceneSwitcher.switchScene(c, "../view/moderator_stores_view.fxml", true);
     }
     public Stage getStage() {
         return stage;
@@ -110,12 +97,9 @@ public class ModifyProdavnicaController {
         return Integer.valueOf(id_prodavnice_text.getText());
     }
 
-    public void setId_prodavnice_text(String id_prodavnice_text) {
+    public void setInfo(String id_prodavnice_text){
         this.id_prodavnice_text.setText(id_prodavnice_text);
-    }
-
-    public void setInfo(){
-        Prodavnica p = model.pronadji_prodavnicu(Integer.valueOf(id_prodavnice_text.getText()));
+        Prodavnica p = model.pronadji_prodavnicu(Integer.valueOf(id_prodavnice_text));
         adresa_text.setText(p.getAdresa());
         g_sirina_text.setText(String.valueOf(p.getGeoSirina()));
         g_duzina_text.setText(String.valueOf(p.getGeoDuzina()));

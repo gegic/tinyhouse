@@ -3,19 +3,16 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import model.*;
+import model.Aplikacija;
+import model.Proizvod;
 
 import java.io.IOException;
 
@@ -49,40 +46,14 @@ public class ProizvodCellController extends ListCell<Proizvod> {
 
     @FXML
     public void brisanje(ActionEvent e){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/delete_proizvod_view.fxml"));
-            Parent root = loader.load();
-
-            DeleteProizvodController c = loader.getController();
-            Stage stage = (Stage)((Scene)((Button)e.getSource()).getScene()).getWindow();
-            c.setStage(stage);
-            c.setLbIdProizvoda(lb_id_proizvoda.getText());
-            c.setLbNaziv(lb_naziv.getText());
-            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(scene);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-            System.out.println(ex.getMessage());
-        }
+        DeleteProizvodController c = new DeleteProizvodController();
+        SceneSwitcher.switchScene(c, "../view/delete_proizvod_view.fxml", lb_id_proizvoda.getText());
     }
 
     @FXML
     public void izmena(ActionEvent e) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/modify_proizvod_view.fxml"));
-            Parent root = loader.load();
-
-            ModifyProizvodController c = loader.getController();
-            Stage stage = (Stage)((Scene)((Button)e.getSource()).getScene()).getWindow();
-            c.setStage(stage);
-            c.setTfIdProizvoda(lb_id_proizvoda.getText());
-            c.setInfo();
-            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
-            stage.setScene(scene);
-        } catch(Exception ex){
-            System.out.println("Nije moguće učitati scenu.");
-            System.out.println(ex.getMessage());
-        }
+        ModifyProizvodController c = new ModifyProizvodController();
+        SceneSwitcher.switchScene(c, "../view/modify_proizvod_view.fxml", lb_id_proizvoda.getText());
     }
 
     @FXML

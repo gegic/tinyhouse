@@ -1,17 +1,13 @@
 package controller;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Aplikacija;
 import model.Korisnik;
@@ -19,7 +15,7 @@ import model.TipKorisnika;
 
 import java.io.IOException;
 
-public class LoginController {
+public class LoginController extends Controller {
     @FXML
     private TextField k_ime;
 
@@ -39,7 +35,7 @@ public class LoginController {
     }
 
     @FXML
-    public void prijavljen(MouseEvent e){
+    public void prijavljen(ActionEvent e){
         prijava();
     }
 
@@ -59,41 +55,33 @@ public class LoginController {
         } else if(k.getTip() == TipKorisnika.admin){
             lbGreska.setText("");
             model.setUlogovani(k);
-            try {
-                scenaAdminGlavna();
-            }catch (Exception ex) {
-                System.out.println("Couldn't load next scene");
-                System.out.println(ex.getMessage());
-            }
+            scenaAdminGlavna();
         } else if (k.getTip() == TipKorisnika.moderator){
+            lbGreska.setText("");
             model.setUlogovani(k);
-            try {
-                scenaModeratorGlavna();
-            }catch (Exception ex) {
-                System.out.println("Couldn't load next scene");
-                System.out.println(ex.getMessage());
-            }
+            scenaModeratorGlavna();
         }
     }
 
-    public void scenaModeratorGlavna() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/moderator_main_view.fxml"));
-        Parent root = loader.load();
-
-        ModeratorMainController c = loader.getController();
-        c.setStage(stage);
-
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    public void scenaModeratorGlavna(){
+        ModeratorMainController c = new ModeratorMainController();
+        SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml");
     }
 
-    public void scenaAdminGlavna() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/admin_main_view.fxml"));
-        Parent root = loader.load();
+    public void scenaAdminGlavna() {
+        AdminMainController c = new AdminMainController();
+        SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml");
+    }
 
-        AdminMainController c = loader.getController();
-        c.setStage(stage);
+    @FXML
+    private void registracija(){
 
-        stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+    }
+
+    @FXML
+    private void povratak() throws IOException {
+        GeneralMainController c = new GeneralMainController();
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
     }
 
 
