@@ -78,7 +78,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
                     btUvecaj.setText("Uvećaj količinu");
                     tfKolicina.setVisible(false);
                     int ukupno = model.uvecajKolicinuProizvoda(Integer.valueOf(lb_id_proizvoda.getText()), kolicina);
-                    if(ukupno > 999){
+                    if(ukupno >=1000){
                         lb_kolicina.setText("...");
                     } else {
                         lb_kolicina.setText(String.valueOf(ukupno)); // jer necemo da se bakcemo sa listenerima :D
@@ -104,9 +104,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
     @Override
     protected void updateItem(Proizvod p, boolean empty) {
         super.updateItem(p, empty);
-
         if(empty || p == null) {
-            //
             setText(null);
             setGraphic(null);
 
@@ -125,7 +123,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
             lb_id_proizvoda.setText(String.valueOf(p.getId()));
             lb_naziv.setText(p.getNaziv());
             int kolicina = p.getKolicinaZaOnline();
-            if(kolicina > 999){
+            if(kolicina >= 1000){
                 lb_kolicina.setText("...");
             }else {
                 lb_kolicina.setText(String.valueOf(kolicina));
