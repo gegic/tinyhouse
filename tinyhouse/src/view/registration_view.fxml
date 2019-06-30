@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
    <children>
       <Button layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#povratak" stylesheets="@../styles/style.css" text="nazad" />
-      <VBox alignment="TOP_CENTER" layoutX="135.0" layoutY="88.0" maxWidth="500.0">
+      <VBox alignment="TOP_CENTER" layoutX="191.0" layoutY="79.0" maxWidth="538.0" prefHeight="459.0" prefWidth="374.0">
          <children>
             <Label alignment="TOP_CENTER" stylesheets="@../styles/style.css" text="REGISTRACIJA" textAlignment="CENTER">
                <font>
@@ -19,13 +19,13 @@
             </Label>
             <HBox prefHeight="56.0" prefWidth="350.0">
                <children>
-                  <TextField fx:id="tfIme" maxWidth="600.0" onKeyPressed="#enter_dodavanje" prefHeight="40.0" prefWidth="159.0" promptText="ime" stylesheets="@../styles/style.css">
+                  <TextField fx:id="tfIme" maxWidth="600.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="ime" stylesheets="@../styles/style.css">
                      <opaqueInsets>
                         <Insets right="5.0" />
                      </opaqueInsets>
                   </TextField>
                   <Region prefHeight="56.0" prefWidth="47.0" />
-                  <TextField fx:id="tfPrezime" maxWidth="600.0" onKeyPressed="#enter_dodavanje" prefHeight="40.0" prefWidth="159.0" promptText="prezime" stylesheets="@../styles/style.css">
+                  <TextField fx:id="tfPrezime" maxWidth="600.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="prezime" stylesheets="@../styles/style.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -35,27 +35,27 @@
                   <Insets top="25.0" />
                </VBox.margin>
             </HBox>
-            <TextField fx:id="thMail" maxWidth="600.0" onKeyPressed="#enter_dodavanje" prefHeight="40.0" prefWidth="159.0" promptText="e-mail adresa" stylesheets="@../styles/style.css">
+            <TextField fx:id="tfMail" maxWidth="600.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="e-mail adresa" stylesheets="@../styles/style.css">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="thMail1" maxWidth="600.0" onKeyPressed="#enter_dodavanje" prefHeight="40.0" prefWidth="159.0" promptText="adresa" stylesheets="@../styles/style.css">
+            <TextField fx:id="tfAdresa" maxWidth="600.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="adresa" stylesheets="@../styles/style.css">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="k_ime" maxWidth="600.0" onKeyPressed="#enter_dodavanje" prefHeight="40.0" prefWidth="159.0" promptText="korisničko ime" stylesheets="@../styles/style.css">
+            <TextField fx:id="tfKIme" maxWidth="600.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="korisničko ime" stylesheets="@../styles/style.css">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <PasswordField fx:id="lozinka" maxWidth="600.0" onKeyPressed="#enter_dodavanje" prefHeight="40.0" promptText="lozinka" stylesheets="@../styles/style.css">
+            <PasswordField fx:id="tfLozinka" maxWidth="600.0" onKeyPressed="#enter_registracija" prefHeight="40.0" promptText="lozinka" stylesheets="@../styles/style.css">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </PasswordField>
-            <Label fx:id="warning" />
+            <Label fx:id="lbGreska" />
             <Button mnemonicParsing="false" onAction="#registrujSe" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="REGISTRUJ SE">
                <VBox.margin>
                   <Insets top="20.0" />

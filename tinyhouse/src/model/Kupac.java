@@ -14,6 +14,46 @@ public class Kupac {
     private String adresa;
     private String eMail;
 
+    public Kupac(String ime, String prezime, String adresa, String eMail, Korisnik korisnik) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.adresa = adresa;
+        this.eMail = eMail;
+        this.korisnik = korisnik;
+    }
+
+    public void setIme(String ime) {
+        this.ime = ime;
+    }
+
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getIme() {
+        return ime;
+    }
+
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
     public Prodavnica prodavnica;
     public List<Proizvod> listaZelja;
     public Korisnik korisnik;

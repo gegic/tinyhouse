@@ -75,7 +75,8 @@ public class LoginController extends Controller {
 
     @FXML
     private void registracija(){
-
+        RegistrationController c = new RegistrationController();
+        SceneSwitcher.switchScene(c, "../view/registration_view.fxml");
     }
 
     @FXML

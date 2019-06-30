@@ -10,6 +10,8 @@ public class Korisnik {
     private String password;
     private TipKorisnika tip;
 
+
+
     public Korisnik() {
         username = "";
         password = "";
