@@ -36,6 +36,8 @@ public class AddProizvodController extends Controller {
     @FXML private ImageView iv3;
     @FXML private Button btDodavanje;
     @FXML private Label warning;
+    @FXML private TextField tfCijena;
+
     private Image images[];
 
     private Stage stage;
@@ -104,12 +106,14 @@ public class AddProizvodController extends Controller {
         String message;
         try {
             int id = Integer.valueOf(tfIdProizvoda.getText());
-            if(!(message = model.dodavanjeProizvoda(id, tfNaziv.getText(), taOpis.getText(), images)).equals("")){
+            float cijena = Float.valueOf(tfCijena.getText());
+            if(!(message = model.dodavanjeProizvoda(id, tfNaziv.getText(), taOpis.getText(), images, cijena)).equals("")){
                 warning.setTextFill(Color.RED);
                 warning.setText(message);
                 tfIdProizvoda.setStyle("-fx-border-color: red");
                 tfNaziv.setStyle("-fx-border-color: red");
                 taOpis.setStyle("-fx-border-color: red");
+                tfCijena.setStyle("-fx-border-color: red");
             }
             else{
                 povratak();
@@ -119,6 +123,7 @@ public class AddProizvodController extends Controller {
             warning.setText("Sva polja moraju biti logično popunjena");
             tfIdProizvoda.setStyle("-fx-border-color: red");
             tfNaziv.setStyle("-fx-border-color: red");
+            tfCijena.setStyle("-fx-border-color: red");
             taOpis.setStyle("-fx-border-color: red");
         }
     }

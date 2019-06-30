@@ -15,6 +15,22 @@ public class StavkaCenovnika {
     public Proizvod proizvod;
     public Cenovnik cenovnik;
 
+    public StavkaCenovnika(float jedinicnaCena, Date pocetakVazenja) {
+        this.jedinicnaCena = jedinicnaCena;
+        this.pocetakVazenja = pocetakVazenja;
+        this.krajVazenja = null;
+        this.cenovnik = null;
+        this.proizvod = null;
+    }
+
+
+    public StavkaCenovnika(float jedinicnaCena, Date pocetakVazenja, Date krajVazenja, Proizvod proizvod, Cenovnik cenovnik) {
+        this.jedinicnaCena = jedinicnaCena;
+        this.pocetakVazenja = pocetakVazenja;
+        this.krajVazenja = krajVazenja;
+        this.proizvod = proizvod;
+        this.cenovnik = cenovnik;
+    }
 
     /**
      * @pdGenerated default parent getter
@@ -66,4 +82,27 @@ public class StavkaCenovnika {
         }
     }
 
+    public float getJedinicnaCena() {
+        return jedinicnaCena;
+    }
+
+    public void setJedinicnaCena(float jedinicnaCena) {
+        this.jedinicnaCena = jedinicnaCena;
+    }
+
+    public Date getPocetakVazenja() {
+        return pocetakVazenja;
+    }
+
+    public void setPocetakVazenja(Date pocetakVazenja) {
+        this.pocetakVazenja = pocetakVazenja;
+    }
+
+    public Date getKrajVazenja() {
+        return krajVazenja;
+    }
+
+    public void setKrajVazenja(Date krajVazenja) {
+        this.krajVazenja = krajVazenja;
+    }
 }

@@ -8,6 +8,7 @@ package model;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Proizvod {
@@ -20,6 +21,8 @@ public class Proizvod {
     public List<Proizvod> slicanProizvod;
     public List<ProizvodUProdavnici> prodavnice;
     public List<StavkaCenovnika> cijene;
+
+    public StavkaCenovnika trenutnaCijena;
 
     public Proizvod(){
         id = -1;
@@ -316,5 +319,22 @@ public class Proizvod {
     public void setSlika(Image slika, int index){
         if(index < 3 && index >= 0)
             this.slike[index] = slika;
+    }
+
+    public StavkaCenovnika getTrenutnaCijena() {
+        return trenutnaCijena;
+    }
+
+    public void setTrenutnaCijena(StavkaCenovnika trenutnaCijena) {
+        this.trenutnaCijena = trenutnaCijena;
+    }
+
+    public void setTrenutnaCijena(float cijena, Date datumP){
+        if(this.trenutnaCijena != null){
+            this.trenutnaCijena.setKrajVazenja(datumP);
+        }
+        this.trenutnaCijena = new StavkaCenovnika(cijena, datumP);
+        this.trenutnaCijena.setProizvod(this);
+        Aplikacija.getInstance().cenovnik.addStavke(this.trenutnaCijena);
     }
 }

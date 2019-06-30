@@ -59,6 +59,23 @@
     -fx-text-fill: white;
 }
 
+.scroll-pane {
+    -fx-background-color: white;
+}
+
+.scroll-pane .viewport{
+    -fx-background-color: white;
+}
+
+#prazno{
+    -fx-font-size: 20px;
+}
+
+#itemtile_text{
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
 #okvir{
     -fx-border-width: 0px;
     -fx-border-color: transparent;

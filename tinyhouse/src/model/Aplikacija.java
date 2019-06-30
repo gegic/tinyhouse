@@ -9,6 +9,7 @@ package model;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Aplikacija {
@@ -53,6 +54,7 @@ public class Aplikacija {
             Image i = new Image(getClass().getResourceAsStream("/styles/images/kasewagen.jpg"));
             Proizvod p = new Proizvod(1, "Kasewagen", "Kolica za sir. Najbolja na svijetu");
             p.setSlika(i, 0);
+            p.setTrenutnaCijena(75000, new Date());
             proizvodi.add(p);
         }
     }
@@ -105,9 +107,12 @@ public class Aplikacija {
         return false;
     }
 
-    public String dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike){
+    public String dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike, float cijena){
         if(id > 10000 || id < 1){
             return "ID mora biti između 1 i 10000";
+        }
+        if(cijena <= 0){
+            return "Cijena mora da prelazi 0 dinara";
         }
         if(naziv.length() < 3 || naziv.length() > 15){
             return "Naziv proizvoda mora imati između 3 i 15 karaktera";
@@ -121,6 +126,7 @@ public class Aplikacija {
             }
         }
         Proizvod p = new Proizvod(id, naziv, opis);
+        p.setTrenutnaCijena(cijena, new Date());
         p.setSlike(slike);
         proizvodi.add(p);
         return "";

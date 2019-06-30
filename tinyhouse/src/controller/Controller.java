@@ -2,6 +2,8 @@ package controller;
 
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public abstract class Controller {
     Stage stage;
 
@@ -13,4 +15,5 @@ public abstract class Controller {
     public void populate(){};
 
     public void setInfo(String id){};
+
 }

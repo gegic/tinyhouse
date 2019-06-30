@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GeneralMainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultsController">
    <bottom>
       <HBox alignment="CENTER_LEFT" style="-fx-background-color: #e3e3e3;" BorderPane.alignment="CENTER">
          <children>
@@ -106,30 +106,29 @@
             </Button>
          </children>
          <padding>
-            <Insets top="10.0" />
+            <Insets bottom="10.0" top="10.0" />
          </padding>
       </HBox>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="348.0" layoutY="14.0" prefHeight="25.0" prefWidth="105.0" stylesheets="@../styles/style.css" text="PRETRAŽENO" AnchorPane.leftAnchor="348.0" AnchorPane.rightAnchor="347.0" AnchorPane.topAnchor="14.0">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <TilePane layoutX="51.0" layoutY="58.0" prefHeight="408.0" prefWidth="701.0">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TilePane>
-         </children>
-      </AnchorPane>
+      <ScrollPane hbarPolicy="NEVER" stylesheets="@../styles/style.css" BorderPane.alignment="CENTER">
+         <content>
+            <TilePane fx:id="tilePane" hgap="30.0" prefHeight="482.0" prefWidth="708.0" style="-fx-background-color: white;" tileAlignment="TOP_LEFT" vgap="30.0">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding></TilePane>
+         </content>
+      </ScrollPane>
    </center>
+   <left>
+      <VBox style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Button onAction="#povratak" mnemonicParsing="false" stylesheets="@../styles/style.css" text="Nazad">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
 </BorderPane>

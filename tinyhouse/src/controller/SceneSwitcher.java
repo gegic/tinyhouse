@@ -40,7 +40,6 @@ public class SceneSwitcher {
             System.out.println(ex.getMessage());
         }
     }
-
     public static void odjava(){
         Aplikacija.getInstance().setUlogovani(null);
         GeneralMainController c = new GeneralMainController();
