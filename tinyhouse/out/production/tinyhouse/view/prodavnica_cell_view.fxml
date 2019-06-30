@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="box" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="izbrisi" layoutX="616.0" layoutY="27.0" mnemonicParsing="false" onAction="#brisanje" stylesheets="@../styles/style.css" text="Izbriši" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="id_prodavnice" layoutX="151.0" layoutY="34.0" style="-fx-text-fill: black;" text="IDProdavnice" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="34.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="icon" fitHeight="100.0" fitWidth="88.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0">
+         <image>
+            <Image url="@../styles/images/storeicon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="adresa" layoutX="314.0" layoutY="34.0" style="-fx-text-fill: black;" text="Adresa" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="314.0" AnchorPane.topAnchor="34.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button id="upper_button" fx:id="izmeni" layoutX="541.0" layoutY="28.0" mnemonicParsing="false" onAction="#izmena" stylesheets="@../styles/style.css" text="Izmeni" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
