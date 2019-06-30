@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public abstract class Controller {
-    Stage stage;
+    protected Stage stage;
 
     public Stage getStage() {return stage;}
     public void setStage(Stage s){
