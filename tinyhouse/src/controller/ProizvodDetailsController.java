@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.TilePane;
+import javafx.scene.text.Text;
 import model.Aplikacija;
 import model.Proizvod;
 
@@ -26,6 +27,10 @@ public class ProizvodDetailsController extends Controller {
 
     @FXML private Button btPretraga;
     @FXML private TextField tfPretraga;
+    @FXML private Label lbNaziv;
+    @FXML private Text textOpis;
+    @FXML private Label lbCena;
+    @FXML private ImageView ivPhoto;
 
     private Aplikacija model;
 
@@ -100,5 +105,14 @@ public class ProizvodDetailsController extends Controller {
             if(p.getNaziv().toLowerCase().contains(term.toLowerCase())) proizvodi.add(p);
         }
         return proizvodi;
+    }
+
+    public void setInfo(String id){
+        Proizvod p = model.pronadjiProizvod(Integer.valueOf(id));
+        lbNaziv.setText(p.getNaziv());
+        lbCena.setText(String.valueOf(p.getTrenutnaCijena().getJedinicnaCena()) + " RSD");
+        textOpis.setText(p.getOpis());
+        ivPhoto.setImage(p.getSlike()[0]);
+
     }
 }

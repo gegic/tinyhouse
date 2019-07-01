@@ -143,7 +143,7 @@
                               <Font name="System Bold" size="19.0" />
                            </font>
                         </Label>
-                        <Text layoutX="498.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." textAlignment="JUSTIFY" wrappingWidth="200.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="100.0" />
+                        <Text fx:id="textOpis" layoutX="498.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." textAlignment="JUSTIFY" wrappingWidth="200.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="100.0" />
                         <HBox spacing="10.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#dodajUKorpu" stylesheets="@../styles/style.css">
