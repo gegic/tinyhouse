@@ -1,6 +1,9 @@
 package controller;
 
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +17,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.Aplikacija;
 import model.Proizvod;
@@ -128,11 +133,37 @@ public class ProizvodDetailsController extends Controller {
     }
 
     public void setInfo(String id){
-        SimpleDoubleProperty fontSize = new SimpleDoubleProperty(30);
-        fontSize.bind(stage.widthProperty().divide(30));
+        stage.widthProperty().addListener(
+                (ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) -> {
+                    int size = (int)newWidth.doubleValue() / 40;
+                    int opisSize = (int) size * 3 / 4;
+                    int opisWidth = (int) newWidth.doubleValue() / 4;
+                    if(size < 28) {
+                        lbNaziv.setStyle("-fx-font-size: " + size + ";"
+                                        +"-fx-font-weight: bold");
+                        lbCena.setStyle("-fx-font-size: " + size + ";"
+                                        +"-fx-font-weight: bold");
+                    }
+                    if(opisSize < 24) textOpis.setStyle("-fx-font-size: " + opisSize);
+                    if(opisWidth < 400) textOpis.prefWidth(opisWidth);
+                });
+
+        stage.maximizedProperty().addListener((ObservableValue<? extends Boolean> ov, Boolean t, Boolean t1) -> {
+            int size = (int)stage.getWidth() / 40;
+            int opisSize = (int) size * 3 / 4;
+            int opisWidth = (int) stage.getWidth() / 4;
+            if(size < 28) size = 28;
+            lbNaziv.setStyle("-fx-font-size: " + size + ";"
+                    +"-fx-font-weight: bold");
+            lbCena.setStyle("-fx-font-size: " + size + ";"
+                    +"-fx-font-weight: bold");
+            if(opisSize < 24) opisSize = 24;
+            textOpis.setStyle("-fx-font-size: " + opisSize);
+            if(opisWidth < 400) opisWidth = 400;
+            textOpis.prefWidth(opisWidth);
+        });
         Proizvod p = model.pronadjiProizvod(Integer.valueOf(id));
         lbNaziv.setText(p.getNaziv());
-        lbNaziv.setStyle("-fx-font-size: " + fontSize.toString());
         lbCena.setText(String.valueOf(p.getTrenutnaCijena().getJedinicnaCena()) + " RSD");
         textOpis.setText(p.getOpis());
         Image[] images = p.getSlike();
@@ -146,5 +177,6 @@ public class ProizvodDetailsController extends Controller {
             iv3.setImage(p.getSlike()[2]);
             hbox3.setDisable(false);
         }
+
     }
 }

@@ -163,20 +163,20 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" layoutX="451.0" layoutY="91.0" maxHeight="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="22.0">
+            <VBox alignment="CENTER" layoutX="451.0" layoutY="91.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="22.0">
                <children>
                   <Label fx:id="lbNaziv" layoutX="407.0" layoutY="65.0" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" VBox.vgrow="ALWAYS">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                   <Label fx:id="lbCena" layoutX="430.0" layoutY="295.0" stylesheets="@../styles/style.css" text="12.000,00 RSD" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="290.0">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Text fx:id="textOpis" layoutX="498.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." textAlignment="JUSTIFY" wrappingWidth="200.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="100.0" />
-                  <HBox spacing="10.0">
+                  <Text fx:id="textOpis" layoutX="498.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." textAlignment="CENTER" wrappingWidth="200.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="100.0" />
+                  <HBox alignment="CENTER" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#dodajUKorpu" stylesheets="@../styles/style.css">
                            <font>
