@@ -1,21 +1,19 @@
 package controller;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.Aplikacija;
 import model.Proizvod;
@@ -31,11 +29,17 @@ public class ProizvodDetailsController extends Controller {
     @FXML private Text textOpis;
     @FXML private Label lbCena;
     @FXML private ImageView ivPhoto;
-
+    @FXML private ImageView iv1;
+    @FXML private ImageView iv2;
+    @FXML private ImageView iv3;
+    @FXML private HBox hbox1;
+    @FXML private HBox hbox2;
+    @FXML private HBox hbox3;
     private Aplikacija model;
 
     public ProizvodDetailsController(){
         model = Aplikacija.getInstance();
+
     }
 
     @FXML
@@ -60,6 +64,7 @@ public class ProizvodDetailsController extends Controller {
     public void pretraga(ActionEvent e){
         pretraga();
     }
+
 
     public void pretraga(){
         if(btPretraga.getText().equals("Pretraga")){
@@ -107,12 +112,39 @@ public class ProizvodDetailsController extends Controller {
         return proizvodi;
     }
 
+    @FXML
+    public void setImage1(){
+        ivPhoto.setImage(iv1.getImage());
+    }
+
+    @FXML
+    public void  setImage2(){
+        ivPhoto.setImage(iv2.getImage());
+    }
+
+    @FXML
+    public void setImage3(){
+        ivPhoto.setImage(iv3.getImage());
+    }
+
     public void setInfo(String id){
+        SimpleDoubleProperty fontSize = new SimpleDoubleProperty(30);
+        fontSize.bind(stage.widthProperty().divide(30));
         Proizvod p = model.pronadjiProizvod(Integer.valueOf(id));
         lbNaziv.setText(p.getNaziv());
+        lbNaziv.setStyle("-fx-font-size: " + fontSize.toString());
         lbCena.setText(String.valueOf(p.getTrenutnaCijena().getJedinicnaCena()) + " RSD");
         textOpis.setText(p.getOpis());
-        ivPhoto.setImage(p.getSlike()[0]);
-
+        Image[] images = p.getSlike();
+        ivPhoto.setImage(images[0]);
+        iv2.setImage(images[0]);
+        if(images[1] != null) {
+            iv1.setImage(p.getSlike()[1]);
+            hbox1.setDisable(false);
+        }
+        if(images[2] != null) {
+            iv3.setImage(p.getSlike()[2]);
+            hbox3.setDisable(false);
+        }
     }
 }
