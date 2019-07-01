@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultsController">
+   <bottom>
+      <HBox alignment="CENTER_LEFT" style="-fx-background-color: #e3e3e3;" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="upper_button" mnemonicParsing="false" stylesheets="@../../../../../th/tinyhouse/src/styles/style.css" text="Prodavnice">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="30.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="© Copyright 2019 Tim 21">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#povratak" stylesheets="@../../../../../th/tinyhouse/src/styles/style.css" text="Nazad">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <HBox alignment="CENTER_LEFT">
+         <children>
+            <Label id="title" style="-fx-letter-spacing: 14px;" stylesheets="@../../../../../th/tinyhouse/src/styles/style.css" text="tinyhouse">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <MenuBar style="-fx-background-color: transparent;" stylesheets="@../../../../../th/tinyhouse/src/styles/style.css">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Kuhinja">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Električni uređaji" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Putovanja">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Koferi" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Dvorište">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Kosilice" />
+                     </items>
+                  </Menu>
+               </menus>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </MenuBar>
+            <TextField fx:id="tfPretraga" minWidth="0.0" onKeyPressed="#enter_pretraga" prefWidth="0.0" stylesheets="@../../../../../th/tinyhouse/src/styles/style.css" HBox.hgrow="NEVER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btPretraga" mnemonicParsing="false" onAction="#pretraga" stylesheets="@../../../../../th/tinyhouse/src/styles/style.css" text="Pretraga">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../th/tinyhouse/src/styles/images/searchicon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button id="upper_button" mnemonicParsing="false" onAction="#prijava" stylesheets="@../../../../../th/tinyhouse/src/styles/style.css" text="Prijava">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#korpa" stylesheets="@../../../../../th/tinyhouse/src/styles/style.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" spacing="7.0">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../th/tinyhouse/src/styles/images/carticon.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Korpa" />
+                     </children>
+                  </HBox>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="265.0" fitWidth="265.0" layoutX="66.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="65.0">
+               <image>
+                  <Image url="@../../../../../th/tinyhouse/src/styles/images/sporet.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="457.0" layoutY="106.0" text="Naziv proizvoda" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="100.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
