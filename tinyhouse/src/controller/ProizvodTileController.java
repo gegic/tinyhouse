@@ -53,7 +53,8 @@ public class ProizvodTileController{
 
     @FXML
     public void detaljnije() {
-
+        ProizvodDetailsController c = new ProizvodDetailsController();
+        SceneSwitcher.switchScene(c, "../view/proizvod_details_view.fxml");
     };
 
     @FXML
