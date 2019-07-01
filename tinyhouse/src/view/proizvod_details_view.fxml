@@ -126,7 +126,7 @@
    <center>
       <AnchorPane style="-fx-border-color: lightgray; -fx-border-width: 1px 0px 0px 1px;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" layoutX="73.0" layoutY="22.0" maxWidth="320.0" prefWidth="320.0" spacing="20.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="18.0">
+            <VBox alignment="CENTER" layoutX="73.0" layoutY="22.0" minWidth="320.0" prefWidth="320.0" spacing="20.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="18.0">
                <children>
                   <ImageView fx:id="ivPhoto" fitHeight="320.0" fitWidth="320.0" layoutX="56.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="54.0">
                      <image>

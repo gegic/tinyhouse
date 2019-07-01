@@ -148,10 +148,16 @@ public class ProizvodDetailsController extends Controller {
                     if(opisWidth < 400) textOpis.prefWidth(opisWidth);
                 });
 
+        stage.heightProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight) -> {
+            int size = (int)newHeight.doubleValue() / 2;
+            if(size < 700) ivPhoto.setFitHeight(size);
+        });
+
         stage.maximizedProperty().addListener((ObservableValue<? extends Boolean> ov, Boolean t, Boolean t1) -> {
             int size = (int)stage.getWidth() / 40;
             int opisSize = (int) size * 3 / 4;
             int opisWidth = (int) stage.getWidth() / 4;
+            int imgSize = (int)stage.getHeight() / 2;
             if(size < 28) size = 28;
             lbNaziv.setStyle("-fx-font-size: " + size + ";"
                     +"-fx-font-weight: bold");
@@ -161,6 +167,8 @@ public class ProizvodDetailsController extends Controller {
             textOpis.setStyle("-fx-font-size: " + opisSize);
             if(opisWidth < 400) opisWidth = 400;
             textOpis.prefWidth(opisWidth);
+            if(imgSize < 700) imgSize = 700;
+            ivPhoto.setFitHeight(size);
         });
         Proizvod p = model.pronadjiProizvod(Integer.valueOf(id));
         lbNaziv.setText(p.getNaziv());
