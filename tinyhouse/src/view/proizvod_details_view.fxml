@@ -124,13 +124,54 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="265.0" fitWidth="265.0" layoutX="79.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="65.0" />
-            <Label layoutX="407.0" layoutY="65.0" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0">
+            <ImageView fx:id="ivPhoto" fitHeight="265.0" fitWidth="265.0" layoutX="79.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="65.0">
+               <image>
+                  <Image url="@../styles/images/sporet.jpg" />
+               </image></ImageView>
+            <Label fx:id="lbNaziv" layoutX="407.0" layoutY="65.0" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
             <Text layoutX="498.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." wrappingWidth="200.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="100.0" />
+            <Label fx:id="lbCena" layoutX="430.0" layoutY="295.0" stylesheets="@../styles/style.css" text="12.000,00 RSD" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="290.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Button layoutX="433.0" layoutY="330.0" mnemonicParsing="false" onAction="#dodajUKorpu" stylesheets="@../styles/style.css" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="330.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" spacing="7.0">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../styles/images/carticon.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Dodaj u korpu" />
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button layoutX="608.0" layoutY="332.0" mnemonicParsing="false" onAction="#dodajUKorpu" prefHeight="38.0" stylesheets="@../styles/style.css" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="330.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" spacing="7.0">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../styles/images/wish-list-icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </center>
