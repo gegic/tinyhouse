@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Kateogrija {
     private String naziv;
-    private Kateogrija nadKategorija;
-    private List<Kateogrija> podKategorije;
+    private Kateogrija natkategorija;
+    private List<Kateogrija> potkategorije;
 
     public String getNaziv() {
         return naziv;
@@ -16,27 +16,27 @@ public class Kateogrija {
         this.naziv = naziv;
     }
 
-    public Kateogrija getNadKategorija() {
-        return nadKategorija;
+    public Kateogrija getNatkategorija() {
+        return natkategorija;
     }
 
-    public void setNadKategorija(Kateogrija nadKategorija) {
-        this.nadKategorija = nadKategorija;
+    public void setNatkategorija(Kateogrija natkategorija) {
+        this.natkategorija = natkategorija;
     }
 
-    public List<Kateogrija> getPodKategorije() {
-        if (this.podKategorije == null)
-            this.podKategorije = new ArrayList<Kateogrija>();
-        return this.podKategorije;
+    public List<Kateogrija> getPotkategorije() {
+        if (this.potkategorije == null)
+            this.potkategorije = new ArrayList<Kateogrija>();
+        return this.potkategorije;
     }
 
-    public void setPodKategorije(List<Kateogrija> podKategorije) {
-        this.podKategorije = podKategorije;
+    public void setPotkategorije(List<Kateogrija> potkategorije) {
+        this.potkategorije = potkategorije;
     }
 
-    public Kateogrija(String naziv, Kateogrija nadKategorija) {
+    public Kateogrija(String naziv, Kateogrija natkategorija) {
         this.naziv = naziv;
-        this.nadKategorija = nadKategorija;
-        this.podKategorije = new ArrayList<Kateogrija>();
+        this.natkategorija = natkategorija;
+        this.potkategorije = new ArrayList<Kateogrija>();
     }
 }
