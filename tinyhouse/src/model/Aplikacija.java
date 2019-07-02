@@ -52,19 +52,13 @@ public class Aplikacija {
             prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45, 18));
 
             Image i = new Image(getClass().getResourceAsStream("/styles/images/kasewagen.jpg"));
+            Image i2 = new Image(getClass().getResourceAsStream("/styles/images/sporet.jpg"));
             Proizvod p = new Proizvod(1, "Kasewagen", "Kolica za sir. Najbolja na svijetu");
             p.setSlika(i, 0);
+            p.setSlika(i2, 1);
             p.setTrenutnaCijena(75000, new Date());
             proizvodi.add(p);
         }
-    }
-
-    /**
-     * @param sp
-     * @param pronadjeni
-     */
-    public void trazenje(String sp, ArrayList<Proizvod> pronadjeni) {
-        // TODO: implement
     }
 
     public int uvecajKolicinuProizvoda(int id, int koliko){

@@ -126,95 +126,99 @@
    <center>
       <AnchorPane style="-fx-border-color: lightgray; -fx-border-width: 1px 0px 0px 1px;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" layoutX="73.0" layoutY="22.0" minWidth="320.0" prefWidth="320.0" spacing="20.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="18.0">
+            <HBox alignment="CENTER" layoutX="48.0" layoutY="20.0" spacing="80.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="19.0">
                <children>
-                  <ImageView fx:id="ivPhoto" fitHeight="320.0" fitWidth="320.0" layoutX="56.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="54.0">
-                     <image>
-                        <Image url="@../styles/images/sporet.jpg" />
-                     </image>
-                  </ImageView>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@../styles/style.css">
+                  <VBox alignment="CENTER" layoutX="73.0" layoutY="22.0" maxHeight="-Infinity" minHeight="435.0" minWidth="320.0" prefWidth="320.0" spacing="20.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="315.0" AnchorPane.topAnchor="18.0">
                      <children>
-                        <HBox id="photopane" fx:id="hbox1" alignment="CENTER" disable="true" maxHeight="105.0" maxWidth="105.0" minHeight="105.0" minWidth="105.0" onMouseClicked="#setImage1">
+                        <ImageView fx:id="ivPhoto" fitHeight="320.0" fitWidth="320.0" layoutX="56.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="54.0">
+                           <image>
+                              <Image url="@../styles/images/sporet.jpg" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@../styles/style.css">
                            <children>
-                              <ImageView fx:id="iv1" disable="true" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" />
+                              <HBox id="photopane" fx:id="hbox1" alignment="CENTER" disable="true" maxHeight="105.0" maxWidth="105.0" minHeight="105.0" minWidth="105.0" onMouseClicked="#setImage1">
+                                 <children>
+                                    <ImageView fx:id="iv1" disable="true" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" />
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
+                              <HBox id="photopane" fx:id="hbox2" alignment="CENTER" maxHeight="105.0" maxWidth="105.0" minHeight="105.0" minWidth="105.0" onMouseClicked="#setImage2" prefWidth="105.0">
+                                 <children>
+                                    <ImageView fx:id="iv2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
+                              <HBox id="photopane" fx:id="hbox3" alignment="CENTER" disable="true" maxHeight="105.0" maxWidth="105.0" minHeight="105.0" minWidth="105.0" onMouseClicked="#setImage3">
+                                 <children>
+                                    <ImageView fx:id="iv3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
                            </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </HBox>
-                        <HBox id="photopane" fx:id="hbox2" alignment="CENTER" maxHeight="105.0" maxWidth="105.0" minHeight="105.0" minWidth="105.0" onMouseClicked="#setImage2" prefWidth="105.0">
-                           <children>
-                              <ImageView fx:id="iv2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </HBox>
-                        <HBox id="photopane" fx:id="hbox3" alignment="CENTER" disable="true" maxHeight="105.0" maxWidth="105.0" minHeight="105.0" minWidth="105.0" onMouseClicked="#setImage3">
-                           <children>
-                              <ImageView fx:id="iv3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </HBox>
                      </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="451.0" layoutY="91.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="22.0">
-               <children>
-                  <Label fx:id="lbNaziv" layoutX="407.0" layoutY="65.0" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" VBox.vgrow="ALWAYS">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbCena" layoutX="430.0" layoutY="295.0" stylesheets="@../styles/style.css" text="12.000,00 RSD" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="290.0">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Text fx:id="textOpis" layoutX="498.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." textAlignment="CENTER" wrappingWidth="200.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="100.0" />
-                  <HBox alignment="CENTER" spacing="10.0">
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="451.0" layoutY="91.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="22.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#dodajUKorpu" stylesheets="@../styles/style.css">
+                        <Label fx:id="lbNaziv" layoutX="407.0" layoutY="65.0" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" VBox.vgrow="ALWAYS">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
-                           <graphic>
-                              <HBox alignment="CENTER_LEFT" spacing="7.0">
-                                 <children>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../styles/images/carticon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Dodaj u korpu" />
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#dodajUKorpu" prefHeight="38.0" stylesheets="@../styles/style.css">
+                        </Label>
+                        <Label fx:id="lbCena" layoutX="430.0" layoutY="295.0" stylesheets="@../styles/style.css" text="12.000,00 RSD" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="290.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
-                           <graphic>
-                              <HBox alignment="CENTER_LEFT" spacing="7.0">
-                                 <children>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../styles/images/wish-list-icon.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </Button>
+                        </Label>
+                        <Text fx:id="textOpis" layoutX="498.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." textAlignment="CENTER" wrappingWidth="200.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="100.0" />
+                        <HBox alignment="CENTER" spacing="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#dodajUKorpu" stylesheets="@../styles/style.css">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <HBox alignment="CENTER_LEFT" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../styles/images/carticon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label text="Dodaj u korpu" />
+                                       </children>
+                                    </HBox>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#dodajUKorpu" prefHeight="38.0" stylesheets="@../styles/style.css">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <HBox alignment="CENTER_LEFT" spacing="7.0">
+                                       <children>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../styles/images/wish-list-icon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
          </children>
       </AnchorPane>
    </center>
