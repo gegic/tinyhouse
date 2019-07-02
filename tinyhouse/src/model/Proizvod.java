@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Proizvod {
     private int id;
@@ -354,5 +355,19 @@ public class Proizvod {
         this.trenutnaCijena = new StavkaCenovnika(cijena, datumP);
         this.trenutnaCijena.setProizvod(this);
         Aplikacija.getInstance().cenovnik.addStavke(this.trenutnaCijena);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Proizvod proizvod = (Proizvod) o;
+        return id == proizvod.id &&
+                Objects.equals(naziv, proizvod.naziv);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

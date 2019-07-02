@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,19 +28,27 @@ public class KorpaCellController extends ListCell<StavkaNarudzbine> {
     @FXML private AnchorPane box;
 
     private FXMLLoader mLLoader;
+    private StavkaNarudzbine stavka;
 
+    private KorpaController parent;
     public KorpaCellController(){
 
     }
 
+    public KorpaCellController(KorpaController c){
+        parent = c;
+    }
+
     @FXML
     public void minus(ActionEvent e){
-
+        int newValue = Integer.valueOf(tfKolicina.getText()) - 1;
+        tfKolicina.setText(String.valueOf(newValue));
     }
 
     @FXML
     public void plus(ActionEvent e){
-
+        int newValue = Integer.valueOf(tfKolicina.getText())+ 1;
+        tfKolicina.setText(String.valueOf(newValue));
     }
     @FXML
     public void checkKolicina(ActionEvent e){
@@ -64,9 +73,30 @@ public class KorpaCellController extends ListCell<StavkaNarudzbine> {
                 }
 
             }
-
+            stavka = s;
             lbNaziv.setText(s.getProizvod().getNaziv());
+            lbNaziv.maxWidthProperty().bind(SceneSwitcher.getStage().widthProperty().divide(7));
             lbCijena.setText(String.valueOf(s.getProizvod().getTrenutnaCijena().getJedinicnaCena()));
+            tfKolicina.textProperty().addListener(
+                    (ObservableValue<? extends String> observable, String oldValue, String newValue) ->
+                    {
+                        if (!newValue.matches("\\d*")) newValue = newValue.replaceAll("[^\\d]", "");
+                        if(!newValue.equals("")) {
+                            if (Integer.valueOf(newValue) <= 1) btMinus.setDisable(true);
+                            else btMinus.setDisable(false);
+                            if (Integer.valueOf(newValue) >= stavka.getProizvod().getKolicinaZaOnline()) {
+                                newValue = String.valueOf(stavka.getProizvod().getKolicinaZaOnline());
+                                btPlus.setDisable(true);
+                            } else {
+                                btPlus.setDisable(false);
+                            }
+                            float oldVal = stavka.getUkupno();
+                            stavka.setNarucenaKolicina(Integer.valueOf(newValue));
+                            lbCijena.setText(String.valueOf(stavka.getUkupno()));
+                            parent.resetUkupno(oldVal, stavka.getUkupno());
+                        }
+                        tfKolicina.setText(newValue);
+                    });
             icon.setImage(s.getProizvod().getSlike()[0]);
             setText(null);
             setGraphic(box);

@@ -48,4 +48,8 @@ public class SceneSwitcher {
     }
 
     public static void setStage(Stage s){stage = s;}
+
+    public static Stage getStage() {
+        return stage;
+    }
 }

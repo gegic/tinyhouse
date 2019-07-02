@@ -41,6 +41,8 @@ public class ProizvodDetailsController extends Controller {
     @FXML private HBox hbox1;
     @FXML private HBox hbox2;
     @FXML private HBox hbox3;
+    @FXML private Button btDodaj;
+
     private Aplikacija model;
     private Proizvod proizvod;
     public ProizvodDetailsController(){
@@ -52,6 +54,7 @@ public class ProizvodDetailsController extends Controller {
     public void dodajUKorpu(ActionEvent e){
         StavkaNarudzbine s = new StavkaNarudzbine(1, proizvod.getTrenutnaCijena().getJedinicnaCena(), proizvod);
         model.addToKorpa(s);
+        btDodaj.setDisable(true);
     }
 
     @FXML
@@ -109,7 +112,7 @@ public class ProizvodDetailsController extends Controller {
     @FXML
     public void korpa(ActionEvent e){
         KorpaController c = new KorpaController();
-        SceneSwitcher.switchScene(c, "../view/korpa_view.fxml", true);
+        SceneSwitcher.switchScene(c, "../view/korpa_view.fxml", true, "nema nista");
     }
 
     private ArrayList<Proizvod> search(String term){
@@ -175,6 +178,12 @@ public class ProizvodDetailsController extends Controller {
             setImageSize(stage.getWidth());
         });
         proizvod = model.pronadjiProizvod(Integer.valueOf(id));
+        if(proizvod.getKolicinaZaOnline() == 0){
+            btDodaj.setDisable(true);
+        }
+        if(model.getTrenutnaKorpa().contains(proizvod)){
+            btDodaj.setDisable(true);
+        }
         lbNaziv.setText(proizvod.getNaziv());
         lbCena.setText(String.valueOf(proizvod.getTrenutnaCijena().getJedinicnaCena()) + " RSD");
         textOpis.setText(proizvod.getOpis());

@@ -108,11 +108,19 @@
     -fx-effect: null;
 
 }
+
+.list-cell:focused{
+    -fx-background-color: transparent;
+}
+
 .menu-bar .label {
     -fx-text-fill: black;
     -fx-opacity: 0.6;
     -fx-font-size: 16px;
 }
+
+
+
 #tile_text{
     -fx-text-fill: black;
     -fx-opacity: 1;
@@ -134,6 +142,22 @@
 
 #upper_button:pressed{
     -fx-background-color: darkgray;
+}
+
+#pmb{
+    -fx-background-color: transparent;
+    -fx-border-color:  black;
+    -fx-text-fill: black;
+}
+
+#pmb:hover{
+    -fx-background-color: darkgray;
+    -fx-text-fill: white;
+}
+
+#pmb:pressed{
+    -fx-background-color: #535353;
+    -fx-text-fill: white;
 }
 
 #tile {

@@ -46,8 +46,10 @@ public class Korpa {
             return;
         if (this.stavkeNarudzbine == null)
             this.stavkeNarudzbine = new ArrayList<StavkaNarudzbine>();
-        if (!this.stavkeNarudzbine.contains(newStavkaNarudzbine))
+        if (!this.stavkeNarudzbine.contains(newStavkaNarudzbine)) {
+            this.ukupnaCijena += newStavkaNarudzbine.getUkupno();
             this.stavkeNarudzbine.add(newStavkaNarudzbine);
+        }
     }
 
     /** @pdGenerated default remove
@@ -56,14 +58,34 @@ public class Korpa {
         if (oldStavkaNarudzbine == null)
             return;
         if (this.stavkeNarudzbine != null)
-            if (this.stavkeNarudzbine.contains(oldStavkaNarudzbine))
+            if (this.stavkeNarudzbine.contains(oldStavkaNarudzbine)) {
+                this.ukupnaCijena -= oldStavkaNarudzbine.getUkupno();
                 this.stavkeNarudzbine.remove(oldStavkaNarudzbine);
+            }
     }
 
     /** @pdGenerated default removeAll */
     public void removeAllStavkaNarudzbine() {
-        if (stavkeNarudzbine != null)
+        if (stavkeNarudzbine != null) {
             stavkeNarudzbine.clear();
+            ukupnaCijena = 0;
+        }
     }
 
+    public float getUkupnaCijena() {
+        return ukupnaCijena;
+    }
+
+    public void setUkupnaCijena(float ukupnaCijena) {
+        this.ukupnaCijena = ukupnaCijena;
+    }
+
+    public boolean contains(Proizvod p){
+        for(StavkaNarudzbine n : stavkeNarudzbine){
+            if(n.getProizvod().equals(p)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

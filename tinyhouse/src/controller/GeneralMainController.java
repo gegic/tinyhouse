@@ -38,7 +38,7 @@ public class GeneralMainController extends Controller {
     @FXML
     private void korpa(){
         KorpaController c = new KorpaController();
-        SceneSwitcher.switchScene(c, "../view/korpa_view.fxml", true);
+        SceneSwitcher.switchScene(c, "../view/korpa_view.fxml", true, "nema nista");
     }
 
     @FXML

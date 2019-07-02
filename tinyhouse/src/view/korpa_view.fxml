@@ -82,27 +82,7 @@
                   <Font size="16.0" />
                </font>
                <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#korpa" stylesheets="@../styles/style.css">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <graphic>
-                  <HBox alignment="CENTER_LEFT" spacing="7.0">
-                     <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../styles/images/carticon.png" />
-                           </image>
-                        </ImageView>
-                        <Label text="Korpa" />
-                     </children>
-                  </HBox>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets left="10.0" right="20.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -112,7 +92,25 @@
       </HBox>
    </top>
    <center>
-      <ListView fx:id="itemsList" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/style.css" BorderPane.alignment="CENTER" />
+      <AnchorPane>
+         <children>
+            <ListView fx:id="itemsList" fixedCellSize="100.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER" />
+            <VBox fx:id="vbNoResults" alignment="TOP_CENTER" layoutX="215.0" layoutY="42.0" visible="false" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="40.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../styles/images/infoicon.png" />
+                     </image>
+                  </ImageView>
+                  <Label style="-fx-text-fill: black;" stylesheets="@../styles/style.css" text="KORPA JE PRAZNA">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </center>
    <right>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
@@ -135,7 +133,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Separator>
-                  <Label alignment="CENTER" stylesheets="@../styles/style.css" text="12.000,00 RSD" VBox.vgrow="ALWAYS">
+                  <Label fx:id="lbUkupno" alignment="CENTER" stylesheets="@../styles/style.css" text="12.000,00 RSD" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="20.0" />
                      </font>

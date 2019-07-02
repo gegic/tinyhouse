@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,10 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Aplikacija;
 import model.Korpa;
@@ -19,6 +22,7 @@ import model.Proizvod;
 import model.StavkaNarudzbine;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class KorpaController extends Controller {
 
@@ -26,6 +30,8 @@ public class KorpaController extends Controller {
 
     @FXML private Button btPretraga;
     @FXML private TextField tfPretraga;
+    @FXML private Label lbUkupno;
+    @FXML private VBox vbNoResults;
     private Stage stage;
 
     private Aplikacija model;
@@ -35,9 +41,14 @@ public class KorpaController extends Controller {
     }
 
     public void populate(){
-        ObservableList<StavkaNarudzbine> observableList = FXCollections.observableList(model.getTrenutnaKorpa().getStavkeNarudzbine());
-        itemsList.setItems(observableList);
-        itemsList.setCellFactory(e -> new KorpaCellController());
+        List<StavkaNarudzbine> s = model.getTrenutnaKorpa().getStavkeNarudzbine();
+        if(s.isEmpty()){
+            vbNoResults.setVisible(true);
+        } else {
+            ObservableList<StavkaNarudzbine> observableList = FXCollections.observableList(s);
+            itemsList.setItems(observableList);
+            itemsList.setCellFactory(e -> new KorpaCellController(this));
+        }
     }
 
     @FXML
@@ -91,11 +102,6 @@ public class KorpaController extends Controller {
         SceneSwitcher.switchScene(c, "../view/login_view.fxml");
     }
 
-    @FXML
-    public void korpa(ActionEvent e){
-
-    }
-
     private ArrayList<Proizvod> search(String term){
         ArrayList<Proizvod> proizvodi = new ArrayList<>();
         for(Proizvod p : model.proizvodi){
@@ -104,11 +110,21 @@ public class KorpaController extends Controller {
         return proizvodi;
     }
 
+    public void setInfo(String id){
+        lbUkupno.setText(model.getTrenutnaKorpa().getUkupnaCijena() + " RSD");
+    }
+
     public Stage getStage() {
         return stage;
     }
 
+
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void resetUkupno(float oldUkupno, float newUkupno){
+        float val = Float.valueOf(lbUkupno.getText().replaceAll("RSD", ""));
+        lbUkupno.setText(String.valueOf(val - oldUkupno + newUkupno) + " RSD");
     }
 }

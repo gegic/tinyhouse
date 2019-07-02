@@ -85,6 +85,7 @@ public class StavkaNarudzbine {
 
     public void setNarucenaKolicina(int narucenaKolicina) {
         this.narucenaKolicina = narucenaKolicina;
+        this.ukupno = narucenaKolicina * this.jedinicnaCena;
     }
 
     public float getJedinicnaCena() {
@@ -93,13 +94,12 @@ public class StavkaNarudzbine {
 
     public void setJedinicnaCena(float jedinicnaCena) {
         this.jedinicnaCena = jedinicnaCena;
+        this.ukupno = this.jedinicnaCena * this.narucenaKolicina;
     }
 
     public float getUkupno() {
         return ukupno;
     }
 
-    public void setUkupno(float ukupno) {
-        this.ukupno = ukupno;
-    }
+
 }
