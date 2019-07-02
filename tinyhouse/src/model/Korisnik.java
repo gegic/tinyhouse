@@ -9,7 +9,7 @@ public class Korisnik {
     private String username;
     private String password;
     private TipKorisnika tip;
-
+    private Kupac informacije;
 
 
     public Korisnik() {
@@ -63,5 +63,11 @@ public class Korisnik {
         this.tip = tip;
     }
 
+    public Kupac getInformacije() {
+        return informacije;
+    }
 
+    public void setInformacije(Kupac informacije) {
+        this.informacije = informacije;
+    }
 }

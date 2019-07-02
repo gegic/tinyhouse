@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="box" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="icon" fitHeight="100.0" fitWidth="88.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0">
+         <image>
+            <Image url="@../styles/images/itemicon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbNaziv" layoutX="117.0" layoutY="30.0" style="-fx-text-fill: black;" text="Naziv" AnchorPane.leftAnchor="117.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="305.0" layoutY="25.0" AnchorPane.leftAnchor="305.0" AnchorPane.rightAnchor="305.0">
+         <children>
+            <Button fx:id="btMinus" disable="true" maxHeight="40.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#minus" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px 0px 1px 1px;" text="-" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+            <TextField fx:id="tfKolicina" alignment="CENTER" onAction="#checkKolicina" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-border-color: black;" text="1" />
+            <Button fx:id="btPlus" maxHeight="40.0" maxWidth="40.0" mnemonicParsing="false" onAction="#plus" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1px 1px 1px 0px;" text="+" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label fx:id="lbCijena" layoutX="516.0" layoutY="30.0" style="-fx-text-fill: black;" text="Cijena" AnchorPane.rightAnchor="177.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button layoutX="653.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@../styles/style.css" text="Ukloni" AnchorPane.rightAnchor="25.0" />
+   </children>
+</AnchorPane>

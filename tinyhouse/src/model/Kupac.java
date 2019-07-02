@@ -13,6 +13,13 @@ public class Kupac {
     private String prezime;
     private String adresa;
     private String eMail;
+    private Korpa korpa;
+
+    public Prodavnica prodavnica;
+    public List<Proizvod> listaZelja;
+    public Korisnik korisnik;
+    public List<Narudzbina> narudzbine;
+
 
     public Kupac(String ime, String prezime, String adresa, String eMail, Korisnik korisnik) {
         this.ime = ime;
@@ -20,45 +27,21 @@ public class Kupac {
         this.adresa = adresa;
         this.eMail = eMail;
         this.korisnik = korisnik;
+        this.korisnik.setInformacije(this);
     }
 
-    public void setIme(String ime) {
+    public Kupac(String ime, String prezime, String adresa, String eMail, Korpa korpa,
+                 Prodavnica prodavnica, List<Proizvod> listaZelja, Korisnik korisnik, List<Narudzbina> narudzbine) {
         this.ime = ime;
-    }
-
-    public void setPrezime(String prezime) {
         this.prezime = prezime;
-    }
-
-    public void setAdresa(String adresa) {
         this.adresa = adresa;
-    }
-
-    public void seteMail(String eMail) {
         this.eMail = eMail;
+        this.korpa = korpa;
+        this.prodavnica = prodavnica;
+        this.listaZelja = listaZelja;
+        this.korisnik = korisnik;
+        this.narudzbine = narudzbine;
     }
-
-    public String getIme() {
-        return ime;
-    }
-
-    public String getPrezime() {
-        return prezime;
-    }
-
-    public String getAdresa() {
-        return adresa;
-    }
-
-    public String geteMail() {
-        return eMail;
-    }
-
-    public Prodavnica prodavnica;
-    public List<Proizvod> listaZelja;
-    public Korisnik korisnik;
-    public List<Narudzbina> narudzbine;
-    public List<StavkaNarudzbine> korpa;
 
     /**
      * @param id
@@ -258,65 +241,43 @@ public class Kupac {
         }
     }
 
-    /**
-     * @pdGenerated default getter
-     */
-    public List<StavkaNarudzbine> getKorpa() {
-        if (korpa == null)
-            korpa = new ArrayList<StavkaNarudzbine>();
+    public void setIme(String ime) {
+        this.ime = ime;
+    }
+
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getIme() {
+        return ime;
+    }
+
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public Korpa getKorpa() {
         return korpa;
     }
 
-    /**
-     * @pdGenerated default iterator getter
-     */
-    public java.util.Iterator getIteratorKorpa() {
-        if (korpa == null)
-            korpa = new ArrayList<StavkaNarudzbine>();
-        return korpa.iterator();
+    public void setKorpa(Korpa korpa) {
+        this.korpa = korpa;
     }
-
-    /**
-     * @param newKorpa
-     * @pdGenerated default setter
-     */
-    public void setKorpa(List<StavkaNarudzbine> newKorpa) {
-        removeAllKorpa();
-        for (java.util.Iterator iter = newKorpa.iterator(); iter.hasNext(); )
-            addKorpa((StavkaNarudzbine) iter.next());
-    }
-
-    /**
-     * @param newStavkaNarudzbine
-     * @pdGenerated default add
-     */
-    public void addKorpa(StavkaNarudzbine newStavkaNarudzbine) {
-        if (newStavkaNarudzbine == null)
-            return;
-        if (this.korpa == null)
-            this.korpa = new ArrayList<StavkaNarudzbine>();
-        if (!this.korpa.contains(newStavkaNarudzbine))
-            this.korpa.add(newStavkaNarudzbine);
-    }
-
-    /**
-     * @param oldStavkaNarudzbine
-     * @pdGenerated default remove
-     */
-    public void removeKorpa(StavkaNarudzbine oldStavkaNarudzbine) {
-        if (oldStavkaNarudzbine == null)
-            return;
-        if (this.korpa != null)
-            if (this.korpa.contains(oldStavkaNarudzbine))
-                this.korpa.remove(oldStavkaNarudzbine);
-    }
-
-    /**
-     * @pdGenerated default removeAll
-     */
-    public void removeAllKorpa() {
-        if (korpa != null)
-            korpa.clear();
-    }
-
 }

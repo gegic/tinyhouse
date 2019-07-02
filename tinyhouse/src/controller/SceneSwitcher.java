@@ -42,7 +42,7 @@ public class SceneSwitcher {
         }
     }
     public static void odjava(){
-        Aplikacija.getInstance().setUlogovani(null);
+        Aplikacija.getInstance().odjava();
         GeneralMainController c = new GeneralMainController();
         SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
     }

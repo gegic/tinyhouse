@@ -22,6 +22,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.Aplikacija;
 import model.Proizvod;
+import model.StavkaNarudzbine;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class ProizvodDetailsController extends Controller {
     @FXML private HBox hbox2;
     @FXML private HBox hbox3;
     private Aplikacija model;
-
+    private Proizvod proizvod;
     public ProizvodDetailsController(){
         model = Aplikacija.getInstance();
 
@@ -49,7 +50,8 @@ public class ProizvodDetailsController extends Controller {
 
     @FXML
     public void dodajUKorpu(ActionEvent e){
-
+        StavkaNarudzbine s = new StavkaNarudzbine(1, proizvod.getTrenutnaCijena().getJedinicnaCena(), proizvod);
+        model.addToKorpa(s);
     }
 
     @FXML
@@ -106,7 +108,8 @@ public class ProizvodDetailsController extends Controller {
 
     @FXML
     public void korpa(ActionEvent e){
-
+        KorpaController c = new KorpaController();
+        SceneSwitcher.switchScene(c, "../view/korpa_view.fxml", true);
     }
 
     private ArrayList<Proizvod> search(String term){
@@ -171,19 +174,19 @@ public class ProizvodDetailsController extends Controller {
             setTextSizes(stage.getWidth());
             setImageSize(stage.getWidth());
         });
-        Proizvod p = model.pronadjiProizvod(Integer.valueOf(id));
-        lbNaziv.setText(p.getNaziv());
-        lbCena.setText(String.valueOf(p.getTrenutnaCijena().getJedinicnaCena()) + " RSD");
-        textOpis.setText(p.getOpis());
-        Image[] images = p.getSlike();
+        proizvod = model.pronadjiProizvod(Integer.valueOf(id));
+        lbNaziv.setText(proizvod.getNaziv());
+        lbCena.setText(String.valueOf(proizvod.getTrenutnaCijena().getJedinicnaCena()) + " RSD");
+        textOpis.setText(proizvod.getOpis());
+        Image[] images = proizvod.getSlike();
         ivPhoto.setImage(images[0]);
         iv2.setImage(images[0]);
         if(images[1] != null) {
-            iv1.setImage(p.getSlike()[1]);
+            iv1.setImage(proizvod.getSlike()[1]);
             hbox1.setDisable(false);
         }
         if(images[2] != null) {
-            iv3.setImage(p.getSlike()[2]);
+            iv3.setImage(proizvod.getSlike()[2]);
             hbox3.setDisable(false);
         }
 

@@ -1,24 +1,28 @@
 package controller;
 
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.Aplikacija;
+import model.Korpa;
 import model.Proizvod;
+import model.StavkaNarudzbine;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
-public class GeneralMainController extends Controller {
+public class KorpaController extends Controller {
+
+    @FXML private ListView<StavkaNarudzbine> itemsList;
 
     @FXML private Button btPretraga;
     @FXML private TextField tfPretraga;
@@ -26,19 +30,20 @@ public class GeneralMainController extends Controller {
 
     private Aplikacija model;
 
-    public GeneralMainController() {
-        model = Aplikacija.getInstance();
+    public KorpaController(){
+        this.model = Aplikacija.getInstance();
     }
-    @FXML
-    private void prijava(){
-        LoginController c = new LoginController();
-        SceneSwitcher.switchScene(c, "../view/login_view.fxml");
+
+    public void populate(){
+        ObservableList<StavkaNarudzbine> observableList = FXCollections.observableList(model.getTrenutnaKorpa().getStavkeNarudzbine());
+        itemsList.setItems(observableList);
+        itemsList.setCellFactory(e -> new KorpaCellController());
     }
 
     @FXML
-    private void korpa(){
-        KorpaController c = new KorpaController();
-        SceneSwitcher.switchScene(c, "../view/korpa_view.fxml", true);
+    public void povratak(ActionEvent e){
+        GeneralMainController c = new GeneralMainController();
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
     }
 
     @FXML
@@ -49,24 +54,23 @@ public class GeneralMainController extends Controller {
     }
 
     @FXML
-    private void pretraga(ActionEvent e){
+    public void pretraga(ActionEvent e){
         pretraga();
     }
 
-    private void pretraga(){
+    public void pretraga(){
         if(btPretraga.getText().equals("Pretraga")){
             tfPretraga.setPrefWidth(120);
             btPretraga.setText("");
             btPretraga.setStyle("-fx-background-radius:30");
             tfPretraga.requestFocus();
-        } else{
+        } else {
             tfPretraga.setPrefWidth(0);
             btPretraga.setText("Pretraga");
             btPretraga.setStyle("-fx-background-radius:15");
             ArrayList<Proizvod> ps = search(tfPretraga.getText());
             tfPretraga.setText("");
             ResultsController c = new ResultsController();
-
             try {
                 FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource("../view/results_view.fxml"));
                 Parent root = loader.load();
@@ -77,8 +81,19 @@ public class GeneralMainController extends Controller {
                 stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
             } catch(Exception ex){
                 System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         }
+    }
+    @FXML
+    public void prijava(ActionEvent e){
+        LoginController c = new LoginController();
+        SceneSwitcher.switchScene(c, "../view/login_view.fxml");
+    }
+
+    @FXML
+    public void korpa(ActionEvent e){
+
     }
 
     private ArrayList<Proizvod> search(String term){
@@ -96,5 +111,4 @@ public class GeneralMainController extends Controller {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
 }

@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Aplikacija {
     private String nazivAplikacije;
-
+    private Korpa trenutnaKorpa;
     public static Aplikacija instance;
 
     public List<Narudzbina> narudzbina;
@@ -33,6 +33,7 @@ public class Aplikacija {
         prodavnice = new ArrayList<>();
         korisnici = new ArrayList<>();
         kupci = new ArrayList<>();
+        trenutnaKorpa = new Korpa();
     }
 
     public static Aplikacija getInstance() {
@@ -237,9 +238,11 @@ public class Aplikacija {
      * @param adresa
      * @param email
      */
-    public boolean registracija(String username, String password, String ime, String prezime, String adresa, String email) {
-        // TODO: implement
-        return false;
+    public void registracija(String username, String password, String ime, String prezime, String adresa, String email) {
+        Korisnik k = new Korisnik(username, password, TipKorisnika.obican);
+        Kupac ku = new Kupac(ime, prezime, adresa, email, k);
+        addKorisnici(k);
+        addKupci(ku);
     }
 
     /**
@@ -248,14 +251,17 @@ public class Aplikacija {
      */
     public Korisnik prijava(String username, String password) {
         for (Korisnik k : korisnici) {
-            if (k.provera_informacija(username.toLowerCase(), password))
+            if (k.provera_informacija(username.toLowerCase(), password)){
+                k.getInformacije().setKorpa(trenutnaKorpa);
                 return k;
+            }
         }
         return null;
     }
 
     public void odjava() {
-        // TODO: implement
+        trenutnaKorpa = new Korpa();
+        ulogovani = null;
     }
 
 
@@ -594,4 +600,13 @@ public class Aplikacija {
             kupci.clear();
     }
 
+    public Korpa getTrenutnaKorpa() {
+        return trenutnaKorpa;
+    }
+
+    public void setTrenutnaKorpa(Korpa trenutnaKorpa) {
+        this.trenutnaKorpa = trenutnaKorpa;
+    }
+
+    public void addToKorpa(StavkaNarudzbine s){trenutnaKorpa.addStavkaNarudzbine(s);}
 }

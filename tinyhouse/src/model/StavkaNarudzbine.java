@@ -13,6 +13,31 @@ public class StavkaNarudzbine {
     public Proizvod proizvod;
     public Narudzbina narudzbina;
 
+    public  StavkaNarudzbine(){
+        this.narucenaKolicina = 0;
+        this.jedinicnaCena = 0;
+        this.ukupno = 0;
+    }
+
+    public StavkaNarudzbine(int narucenaKolicina, float jedinicnaCena, Proizvod proizvod) {
+        this.narucenaKolicina = narucenaKolicina;
+        this.jedinicnaCena = jedinicnaCena;
+        this.proizvod = proizvod;
+        this.ukupno = this.jedinicnaCena * this.narucenaKolicina;
+    }
+
+    public StavkaNarudzbine(int narucenaKolicina, float jedinicnaCena, float ukupno, Proizvod proizvod) {
+        this.narucenaKolicina = narucenaKolicina;
+        this.jedinicnaCena = jedinicnaCena;
+        this.ukupno = ukupno;
+        this.proizvod = proizvod;
+    }
+
+    public StavkaNarudzbine(int narucenaKolicina, float jedinicnaCena, float ukupno) {
+        this.narucenaKolicina = narucenaKolicina;
+        this.jedinicnaCena = jedinicnaCena;
+        this.ukupno = ukupno;
+    }
 
     /**
      * @pdGenerated default parent getter
@@ -54,4 +79,27 @@ public class StavkaNarudzbine {
         }
     }
 
+    public int getNarucenaKolicina() {
+        return narucenaKolicina;
+    }
+
+    public void setNarucenaKolicina(int narucenaKolicina) {
+        this.narucenaKolicina = narucenaKolicina;
+    }
+
+    public float getJedinicnaCena() {
+        return jedinicnaCena;
+    }
+
+    public void setJedinicnaCena(float jedinicnaCena) {
+        this.jedinicnaCena = jedinicnaCena;
+    }
+
+    public float getUkupno() {
+        return ukupno;
+    }
+
+    public void setUkupno(float ukupno) {
+        this.ukupno = ukupno;
+    }
 }

@@ -118,7 +118,8 @@ public class ResultsController extends Controller {
 
     @FXML
     public void korpa(ActionEvent e){
-
+        KorpaController c = new KorpaController();
+        SceneSwitcher.switchScene(c, "../view/korpa_view.fxml", true);
     }
 
     private ArrayList<Proizvod> search(String term){

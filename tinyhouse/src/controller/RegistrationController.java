@@ -68,9 +68,8 @@ public class RegistrationController extends Controller {
 
     public void registracija(){
         if(provera()) {
-            Korisnik k = new Korisnik(tfKIme.getText().trim(), tfLozinka.getText(), TipKorisnika.obican);
-            model.korisnici.add(k);
-            model.addKupci(new Kupac(tfIme.getText().trim(), tfPrezime.getText().trim(), tfAdresa.getText().trim(), tfMail.getText().trim(), k));
+            model.registracija(tfKIme.getText().trim(), tfLozinka.getText().trim(), tfIme.getText().trim(),
+                    tfPrezime.getText().trim(), tfAdresa.getText().trim(), tfMail.getText().trim());
             GeneralMainController c = new GeneralMainController();
             SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
         }
