@@ -9,8 +9,7 @@ public class Korisnik {
     private String username;
     private String password;
     private TipKorisnika tip;
-    private Kupac informacije;
-
+    private Kupac kupac;
 
     public Korisnik() {
         username = "";
@@ -23,6 +22,13 @@ public class Korisnik {
         this.password = password;
         this.tip = tip;
     }
+
+    public Korisnik(String username, String password, TipKorisnika tip, Korpa k) {
+        this.username = username;
+        this.password = password;
+        this.tip = tip;
+    }
+
 
     public boolean provera_informacija(String u, String p) {
         if (u.equals(username) && p.equals(password))
@@ -63,11 +69,11 @@ public class Korisnik {
         this.tip = tip;
     }
 
-    public Kupac getInformacije() {
-        return informacije;
+    public Kupac getKupac() {
+        return kupac;
     }
 
-    public void setInformacije(Kupac informacije) {
-        this.informacije = informacije;
+    public void setKupac(Kupac kupac) {
+        this.kupac = kupac;
     }
 }

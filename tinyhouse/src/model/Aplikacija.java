@@ -269,7 +269,7 @@ public class Aplikacija {
     public Korisnik prijava(String username, String password) {
         for (Korisnik k : korisnici) {
             if (k.provera_informacija(username.toLowerCase(), password)){
-                if(k.getTip() == TipKorisnika.obican) trenutnaKorpa = k.getInformacije().getKorpa();
+                if(k.getTip() == TipKorisnika.obican) trenutnaKorpa = k.getKupac().getKorpa();
                 return k;
             }
         }

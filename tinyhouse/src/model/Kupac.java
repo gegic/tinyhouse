@@ -27,7 +27,7 @@ public class Kupac {
         this.adresa = adresa;
         this.eMail = eMail;
         this.korisnik = korisnik;
-        this.korisnik.setInformacije(this);
+        this.korisnik.setKupac(this);
         korpa = new Korpa();
     }
 

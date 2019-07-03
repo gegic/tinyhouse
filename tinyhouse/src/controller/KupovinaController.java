@@ -71,16 +71,36 @@ public class KupovinaController extends Controller {
 
     };
 
+    private void checkBoxListener(Boolean newVal){
+        if(newVal){
+            tfAdresaIsporuke.setPrefHeight(0);
+            tfAdresaIsporuke.setVisible(false);
+        } else{
+            tfAdresaIsporuke.setPrefHeight(40);
+            tfAdresaIsporuke.setVisible(true);
+        }
+    }
+
+    private void setIfUlogovan(){
+        Korisnik ulogovani = model.getUlogovani();
+        if(ulogovani != null){
+            tfIme.setText(ulogovani.getKupac().getIme());
+            tfIme.setDisable(true);
+            tfPrezime.setText(ulogovani.getKupac().getPrezime());
+            tfPrezime.setDisable(true);
+            tfMail.setText(ulogovani.getKupac().geteMail());
+            tfMail.setDisable(true);
+            tfAdresaKupca.setText(ulogovani.getKupac().getAdresa());
+            tfAdresaKupca.setDisable(true);
+        }
+    }
+
     public void setInfo(String id){
         lbCena.setText(String.valueOf(model.getTrenutnaKorpa().getUkupnaCijena()));
-        cb.selectedProperty().addListener((ObservableValue<? extends Boolean> observableValue, Boolean oldVal, Boolean newVal) -> {
-            if(newVal){
-                tfAdresaIsporuke.setPrefHeight(0);
-                tfAdresaIsporuke.setVisible(false);
-            } else{
-                tfAdresaIsporuke.setPrefHeight(40);
-                tfAdresaIsporuke.setVisible(true);
-            }
-        });
+        cb.selectedProperty().addListener(
+            (ObservableValue<? extends Boolean> observableValue, Boolean oldVal, Boolean newVal) ->
+                    checkBoxListener(newVal));
+
+        setIfUlogovan();
     }
 }
