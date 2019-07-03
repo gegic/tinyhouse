@@ -32,6 +32,7 @@ public class KorpaController extends Controller {
     @FXML private TextField tfPretraga;
     @FXML private Label lbUkupno;
     @FXML private VBox vbNoResults;
+    @FXML private Button btKupi;
     private Stage stage;
 
     private Aplikacija model;
@@ -44,6 +45,7 @@ public class KorpaController extends Controller {
         List<StavkaNarudzbine> s = model.getTrenutnaKorpa().getStavkeNarudzbine();
         if(s.isEmpty()){
             vbNoResults.setVisible(true);
+            btKupi.setDisable(true);
         } else {
             ObservableList<StavkaNarudzbine> observableList = FXCollections.observableList(s);
             itemsList.setItems(observableList);
@@ -118,7 +120,6 @@ public class KorpaController extends Controller {
         return stage;
     }
 
-
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -126,5 +127,11 @@ public class KorpaController extends Controller {
     public void resetUkupno(float oldUkupno, float newUkupno){
         model.resetUkupno(oldUkupno, newUkupno);
         lbUkupno.setText(model.getTrenutnaKorpa().getUkupnaCijena() + " RSD");
+    }
+
+    @FXML
+    public void kupi(ActionEvent e){
+        KupovinaController c = new KupovinaController();
+        SceneSwitcher.switchScene(c, "../view/kupovina_view.fxml", "nebitno");
     }
 }

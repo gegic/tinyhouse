@@ -145,7 +145,7 @@
                   </Separator>
                </children>
             </VBox>
-            <Button mnemonicParsing="false" prefWidth="150.0" style="-fx-font-weight: bold;" stylesheets="@../styles/style.css" text="KUPI">
+            <Button fx:id="btKupi" onAction="#kupi" mnemonicParsing="false" prefWidth="150.0" style="-fx-font-weight: bold;" stylesheets="@../styles/style.css" text="KUPI">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

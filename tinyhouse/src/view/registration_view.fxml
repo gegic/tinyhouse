@@ -6,26 +6,25 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
    <children>
       <Button layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#povratak" stylesheets="@../styles/style.css" text="nazad" />
-      <VBox alignment="TOP_CENTER" layoutX="191.0" layoutY="79.0" maxWidth="538.0" prefHeight="459.0" prefWidth="374.0">
+      <VBox alignment="TOP_CENTER" layoutX="191.0" layoutY="60.0" maxWidth="538.0" prefHeight="459.0" prefWidth="374.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="60.0">
          <children>
             <Label alignment="TOP_CENTER" stylesheets="@../styles/style.css" text="REGISTRACIJA" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="43.0" />
                </font>
             </Label>
-            <HBox prefHeight="56.0" prefWidth="350.0">
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="350.0" VBox.vgrow="NEVER">
                <children>
-                  <TextField fx:id="tfIme" maxWidth="600.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="ime" stylesheets="@../styles/style.css">
+                  <TextField fx:id="tfIme" maxWidth="275.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="ime" stylesheets="@../styles/style.css" HBox.hgrow="ALWAYS">
                      <opaqueInsets>
                         <Insets right="5.0" />
                      </opaqueInsets>
                   </TextField>
-                  <Region prefHeight="56.0" prefWidth="47.0" />
-                  <TextField fx:id="tfPrezime" maxWidth="600.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="prezime" stylesheets="@../styles/style.css">
+                  <Region prefHeight="56.0" prefWidth="50.0" />
+                  <TextField fx:id="tfPrezime" maxWidth="275.0" onKeyPressed="#enter_registracija" prefHeight="40.0" prefWidth="159.0" promptText="prezime" stylesheets="@../styles/style.css" HBox.hgrow="ALWAYS">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

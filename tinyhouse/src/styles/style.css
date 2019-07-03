@@ -41,6 +41,22 @@
     -fx-border-color: red;
     -fx-opacity: 0.6;
 }
+
+.check-box:hover{
+    -fx-cursor: hand;
+    -fx-underline: true;
+}
+
+.check-box .box{
+    -fx-background-color: transparent;
+    -fx-border-color: lightgray;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}
+.check-box:hover .box{
+    -fx-background-color: lightgray;
+    -fx-border-color: darkgray;
+}
 .menu-bar .menu{
     -fx-background-radius: 15;
 }
