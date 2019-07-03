@@ -124,7 +124,7 @@ public class KorpaController extends Controller {
     }
 
     public void resetUkupno(float oldUkupno, float newUkupno){
-        float val = Float.valueOf(lbUkupno.getText().replaceAll("RSD", ""));
-        lbUkupno.setText(String.valueOf(val - oldUkupno + newUkupno) + " RSD");
+        model.resetUkupno(oldUkupno, newUkupno);
+        lbUkupno.setText(model.getTrenutnaKorpa().getUkupnaCijena() + " RSD");
     }
 }

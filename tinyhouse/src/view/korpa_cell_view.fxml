@@ -39,6 +39,6 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button layoutX="647.0" layoutY="31.0" mnemonicParsing="false" stylesheets="@../styles/style.css" text="Ukloni" AnchorPane.rightAnchor="30.0" />
+      <Button layoutX="487.0" layoutY="28.0" mnemonicParsing="false" onAction="#ukloniIzKorpe" style="-fx-font-size: 21px;" stylesheets="@../styles/style.css" text="Ukloni" AnchorPane.rightAnchor="25.0" />
    </children>
 </AnchorPane>

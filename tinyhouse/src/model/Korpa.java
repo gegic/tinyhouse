@@ -88,4 +88,13 @@ public class Korpa {
         }
         return false;
     }
+
+    public StavkaNarudzbine pronadji(String id){
+        for(StavkaNarudzbine s : stavkeNarudzbine){
+            if(s.getProizvod().getId() == Integer.valueOf(id)){
+                return s;
+            }
+        }
+        return null;
+    }
 }

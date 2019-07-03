@@ -104,4 +104,10 @@ public class KorpaCellController extends ListCell<StavkaNarudzbine> {
 
     }
 
+    @FXML
+    public void ukloniIzKorpe(ActionEvent e){
+        RemoveKorpaController c = new RemoveKorpaController();
+        SceneSwitcher.switchScene(
+                c, "../view/remove_korpa_view.fxml", String.valueOf(stavka.getProizvod().getId()));
+    }
 }

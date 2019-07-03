@@ -165,7 +165,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" layoutX="451.0" layoutY="91.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="22.0">
+                  <VBox fx:id="vbox" alignment="CENTER" layoutX="451.0" layoutY="91.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="22.0">
                      <children>
                         <Label fx:id="lbNaziv" layoutX="407.0" layoutY="65.0" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" VBox.vgrow="ALWAYS">
                            <font>
@@ -185,19 +185,19 @@
                                     <Font size="16.0" />
                                  </font>
                                  <graphic>
-                                    <HBox alignment="CENTER_LEFT" spacing="7.0">
+                                    <HBox fx:id="hboxButton" alignment="CENTER_LEFT" spacing="7.0">
                                        <children>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="ivCart" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../styles/images/carticon.png" />
+                                                <Image  url="@../styles/images/carticon.png" />
                                              </image>
                                           </ImageView>
-                                          <Label text="Dodaj u korpu" />
+                                          <Label fx:id="lbDodaj" text="Dodaj u korpu" />
                                        </children>
                                     </HBox>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#dodajUKorpu" prefHeight="38.0" stylesheets="@../styles/style.css">
+                              <Button mnemonicParsing="false" disable="true" prefHeight="38.0" stylesheets="@../styles/style.css">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

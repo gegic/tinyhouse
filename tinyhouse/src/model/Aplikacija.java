@@ -44,6 +44,14 @@ public class Aplikacija {
         return instance;
     }
 
+    public void ukloniIzKorpe(StavkaNarudzbine s){
+        trenutnaKorpa.removeStavkaNarudzbine(s);
+    }
+
+    public void resetUkupno(float oldValue, float newValue){
+        trenutnaKorpa.setUkupnaCijena(trenutnaKorpa.getUkupnaCijena() - oldValue + newValue);
+    }
+
     public void ucitaj() {
         // TODO: load
 
@@ -58,6 +66,7 @@ public class Aplikacija {
             p.setSlika(i, 0);
             p.setSlika(i2, 1);
             p.setTrenutnaCijena(75000, new Date());
+            p.setKolicinaZaOnline(4);
             proizvodi.add(p);
         }
     }
@@ -66,6 +75,10 @@ public class Aplikacija {
         Proizvod p = pronadjiProizvod(id);
         p.uvecajKolicinu(koliko);
         return p.getKolicinaZaOnline();
+    }
+
+    public StavkaNarudzbine pronadjiIzKorpe(String id){
+        return trenutnaKorpa.pronadji(id);
     }
 
     public String izmeniProizvod(int id, String naziv, String opis, Image[] slike, float cijena){

@@ -18,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.Aplikacija;
@@ -42,6 +43,10 @@ public class ProizvodDetailsController extends Controller {
     @FXML private HBox hbox2;
     @FXML private HBox hbox3;
     @FXML private Button btDodaj;
+    @FXML private Label lbDodaj;
+    @FXML private ImageView ivCart;
+    @FXML private HBox hboxButton;
+    @FXML private VBox vbox;
 
     private Aplikacija model;
     private Proizvod proizvod;
@@ -54,7 +59,7 @@ public class ProizvodDetailsController extends Controller {
     public void dodajUKorpu(ActionEvent e){
         StavkaNarudzbine s = new StavkaNarudzbine(1, proizvod.getTrenutnaCijena().getJedinicnaCena(), proizvod);
         model.addToKorpa(s);
-        btDodaj.setDisable(true);
+        updateButton("Već je u korpi");
     }
 
     @FXML
@@ -179,10 +184,10 @@ public class ProizvodDetailsController extends Controller {
         });
         proizvod = model.pronadjiProizvod(Integer.valueOf(id));
         if(proizvod.getKolicinaZaOnline() == 0){
-            btDodaj.setDisable(true);
+            updateButton("Nema na stanju");
         }
         if(model.getTrenutnaKorpa().contains(proizvod)){
-            btDodaj.setDisable(true);
+            updateButton("Već je u korpi");
         }
         lbNaziv.setText(proizvod.getNaziv());
         lbCena.setText(String.valueOf(proizvod.getTrenutnaCijena().getJedinicnaCena()) + " RSD");
@@ -199,5 +204,13 @@ public class ProizvodDetailsController extends Controller {
             hbox3.setDisable(false);
         }
 
+    }
+
+    private void updateButton(String text){
+        ivCart.setImage(null);
+        ivCart.setFitWidth(0);
+        hboxButton.setSpacing(0);
+        lbDodaj.setText(text);
+        btDodaj.setDisable(true);
     }
 }
