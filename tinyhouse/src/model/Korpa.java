@@ -97,4 +97,11 @@ public class Korpa {
         }
         return null;
     }
+
+    public void obavljenaKupovina(){
+        for(StavkaNarudzbine s : stavkeNarudzbine){
+            s.getProizvod().decreaseKolicinaZaOnline(s.getNarucenaKolicina());
+        }
+        removeAllStavkaNarudzbine();
+    }
 }

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModeratorMainController">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModeratorMainController">
    <top>
       <HBox>
          <children>
@@ -48,17 +51,18 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox id="tile" alignment="CENTER" maxHeight="600.0" maxWidth="800.0" prefHeight="200.0" prefWidth="205.0" stylesheets="@../styles/style.css">
+            <VBox id="tile" alignment="CENTER" prefHeight="200.0" prefWidth="205.0" stylesheets="@../styles/style.css" GridPane.rowSpan="2">
                <children>
                   <ImageView id="tile_icon" fitHeight="63.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../styles/images/storeicon.png" />
                      </image>
                   </ImageView>
-                  <Label id="tile_text" prefHeight="70.0" prefWidth="195.0" text="Dodavanje, brisanje i modifikacija prodavnica" textAlignment="CENTER" wrapText="true">
+                  <Label id="tile_text" alignment="CENTER" prefHeight="70.0" prefWidth="195.0" text="Dodavanje, brisanje i modifikacija prodavnica" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -69,19 +73,37 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin>
             </VBox>
-            <VBox id="tile" alignment="CENTER" maxHeight="600.0" maxWidth="800.0" prefHeight="200.0" prefWidth="205.0" stylesheets="@../styles/style.css" GridPane.columnIndex="1">
+            <VBox id="tile" alignment="CENTER" prefHeight="200.0" prefWidth="205.0" stylesheets="@../styles/style.css" GridPane.columnIndex="1">
                <children>
                   <ImageView id="tile_icon" fitHeight="63.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../styles/images/itemicon.png" />
                      </image>
                   </ImageView>
-                  <Label id="tile_text" prefHeight="70.0" prefWidth="195.0" text="Dodavanje, brisanje i modifikacija proizvoda" textAlignment="CENTER" wrapText="true">
+                  <Label id="tile_text" alignment="CENTER" prefHeight="70.0" prefWidth="195.0" text="Dodavanje, brisanje i modifikacija proizvoda" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Button id="tile_button" mnemonicParsing="false" onAction="#pregledajProizvode" text="Pregledaj" />
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox id="tile" alignment="CENTER" prefHeight="200.0" prefWidth="205.0" stylesheets="@../styles/style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView id="tile_icon" fitHeight="63.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../styles/images/ordericon.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="tile_text" prefHeight="70.0" prefWidth="195.0" style="-fx-alignment: center;" text="Pregled narudžbina" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button id="tile_button" mnemonicParsing="false" onAction="#pregledajNarudzbine" text="Pregledaj" />
                </children>
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

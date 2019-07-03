@@ -41,4 +41,10 @@ public class ModeratorMainController extends Controller {
         ModeratorItemsController c = new ModeratorItemsController();
         SceneSwitcher.switchScene(c, "../view/moderator_items_view.fxml", true);
     }
+
+    @FXML
+    public void pregledajNarudzbine(ActionEvent e){
+        ModeratorOrdersController c = new ModeratorOrdersController();
+        SceneSwitcher.switchScene(c, "../view/moderator_orders_view.fxml", true);
+    }
 }

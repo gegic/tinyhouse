@@ -13,11 +13,72 @@ public class Narudzbina {
     private int broj;
     private Date datum;
     private String adresaIsporuke;
-    private StanjeNarudzbine stanje;
-
+    private float cijena;
     public List<StavkaNarudzbine> stavke;
     public StanjeNarudzbine trenutno_stanje;
     public Kupac kupac;
+
+    public Narudzbina(){
+        this.broj = -1;
+        this.datum = new Date();
+        this.adresaIsporuke = "";
+        this.stavke = new ArrayList<>();
+        cijena = 0;
+        this.kupac = null;
+    }
+
+    public Narudzbina(int broj, String adresaIsporuke, List<StavkaNarudzbine> stavke, Kupac kupac){
+        this.broj = broj;
+        this.datum = new Date();
+        this.adresaIsporuke = adresaIsporuke;
+        this.stavke = stavke;
+        this.kupac = kupac;
+        cijena = 0;
+        this.kupac.addNarudzbine(this);
+        this.trenutno_stanje = new Obrada();
+    }
+
+    public Narudzbina(int broj, Date datum, String adresaIsporuke, List<StavkaNarudzbine> stavke, Kupac kupac) {
+        this.broj = broj;
+        this.datum = datum;
+        this.adresaIsporuke = adresaIsporuke;
+        this.stavke = stavke;
+        this.kupac = kupac;
+        this.kupac.addNarudzbine(this);
+        this.trenutno_stanje = new Obrada();
+        cijena = 0;
+
+    }
+
+    public Narudzbina(int broj, String adresaIsporuke, float cijena, List<StavkaNarudzbine> stavke, Kupac kupac) {
+        this.broj = broj;
+        this.adresaIsporuke = adresaIsporuke;
+        this.cijena = cijena;
+        this.stavke = stavke;
+        this.kupac = kupac;
+        this.kupac.addNarudzbine(this);
+        this.trenutno_stanje = new Obrada();
+    }
+
+    public Narudzbina(int broj, Date datum, String adresaIsporuke, List<StavkaNarudzbine> stavke, StanjeNarudzbine trenutno_stanje, Kupac kupac) {
+        this.broj = broj;
+        this.datum = datum;
+        this.adresaIsporuke = adresaIsporuke;
+        this.stavke = stavke;
+        this.trenutno_stanje = trenutno_stanje;
+        this.kupac = kupac;
+        this.kupac.addNarudzbine(this);
+    }
+
+    public Narudzbina(int broj, Date datum, String adresaIsporuke, float cijena, List<StavkaNarudzbine> stavke, StanjeNarudzbine trenutno_stanje, Kupac kupac) {
+        this.broj = broj;
+        this.datum = datum;
+        this.adresaIsporuke = adresaIsporuke;
+        this.cijena = cijena;
+        this.stavke = stavke;
+        this.trenutno_stanje = trenutno_stanje;
+        this.kupac = kupac;
+    }
 
     public void primljenZahtev() {
         // TODO: implement
@@ -169,4 +230,39 @@ public class Narudzbina {
         }
     }
 
+    public int getBroj() {
+        return broj;
+    }
+
+    public void setBroj(int broj) {
+        this.broj = broj;
+    }
+
+    public Date getDatum() {
+        return datum;
+    }
+
+    public void setDatum(Date datum) {
+        this.datum = datum;
+    }
+
+    public String getAdresaIsporuke() {
+        return adresaIsporuke;
+    }
+
+    public void setAdresaIsporuke(String adresaIsporuke) {
+        this.adresaIsporuke = adresaIsporuke;
+    }
+
+    public void setStavkeCijena(ArrayList<StavkaNarudzbine> stavke, int cijena){
+
+    }
+
+    public float getCijena() {
+        return cijena;
+    }
+
+    public void setCijena(float cijena) {
+        this.cijena = cijena;
+    }
 }

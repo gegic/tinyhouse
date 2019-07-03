@@ -20,6 +20,21 @@ public class Kupac {
     public Korisnik korisnik;
     public List<Narudzbina> narudzbine;
 
+    public Kupac(String ime, String prezime, String adresa, String eMail) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.adresa = adresa;
+        this.eMail = eMail;
+        this.korpa = new Korpa();
+    }
+
+    public Kupac(String ime, String prezime, String adresa, String eMail, Korpa korpa) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.adresa = adresa;
+        this.eMail = eMail;
+        this.korpa = korpa;
+    }
 
     public Kupac(String ime, String prezime, String adresa, String eMail, Korisnik korisnik) {
         this.ime = ime;

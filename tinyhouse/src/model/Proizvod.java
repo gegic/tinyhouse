@@ -370,4 +370,8 @@ public class Proizvod {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public void decreaseKolicinaZaOnline(int k){
+        kolicinaZaOnline -= k;
+    }
 }

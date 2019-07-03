@@ -68,8 +68,36 @@ public class KupovinaController extends Controller {
     }
 
     public void kupi(){
+        String adresa;
+        if(cb.isSelected()){
+            adresa = tfAdresaKupca.getText();
+        } else{
+            adresa = tfAdresaIsporuke.getText();
+        }
+        if(!provera()){
+            return;
+        }
+        if(model.getUlogovani() != null){
+            model.kupovina(adresa, model.getUlogovani().getKupac());
+        } else{
+            model.kupovina(adresa, new Kupac(tfIme.getText(), tfPrezime.getText(), tfAdresaKupca.getText(), tfMail.getText()));
+        }
+        GeneralMainController c = new GeneralMainController();
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
+    }
 
-    };
+    private boolean provera(){
+        if(tfIme.getText().trim().equalsIgnoreCase("") || tfPrezime.getText().trim().equalsIgnoreCase("") ||
+                tfMail.getText().trim().equalsIgnoreCase("")
+                || tfAdresaKupca.getText().trim().equalsIgnoreCase("")
+                || (tfAdresaIsporuke.getText().trim().equalsIgnoreCase("") && !cb.isSelected())) {
+            lbGreska.setTextFill(Color.RED);
+            ;
+            lbGreska.setText("Svako polje mora biti popunjeno.");
+            return false;
+        }
+        return true;
+    }
 
     private void checkBoxListener(Boolean newVal){
         if(newVal){

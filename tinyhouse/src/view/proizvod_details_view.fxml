@@ -95,12 +95,12 @@
                         <Text fx:id="textOpis" layoutX="498.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." textAlignment="CENTER" wrappingWidth="200.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="100.0" />
                         <HBox alignment="CENTER" spacing="10.0">
                            <children>
-                              <Button fx:id="btDodaj" mnemonicParsing="false" onAction="#dodajUKorpu" stylesheets="@../styles/style.css">
+                              <Button fx:id="btDodaj" alignment="CENTER" minWidth="159.0" mnemonicParsing="false" onAction="#dodajUKorpu" stylesheets="@../styles/style.css" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                                  <graphic>
-                                    <HBox fx:id="hboxButton" alignment="CENTER_LEFT" spacing="7.0">
+                                    <HBox fx:id="hboxButton" alignment="CENTER" spacing="7.0">
                                        <children>
                                           <ImageView fx:id="ivCart" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>

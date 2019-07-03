@@ -17,7 +17,7 @@ public class Aplikacija {
     private Korpa trenutnaKorpa;
     public static Aplikacija instance;
 
-    public List<Narudzbina> narudzbina;
+    public List<Narudzbina> narudzbine;
     public Cenovnik cenovnik;
     public List<Proizvod> proizvodi;
     public Korisnik ulogovani;
@@ -26,7 +26,7 @@ public class Aplikacija {
     public List<Kupac> kupci;
 
     public Aplikacija() {
-        narudzbina = new ArrayList<>();
+        narudzbine = new ArrayList<>();
         cenovnik = new Cenovnik();
         proizvodi = new ArrayList<>();
         ulogovani = null;
@@ -262,6 +262,12 @@ public class Aplikacija {
         addKupci(ku);
     }
 
+    public void kupovina(String adresa, Kupac k){
+        Narudzbina n = new Narudzbina(narudzbine.size(), adresa, trenutnaKorpa.getUkupnaCijena(), trenutnaKorpa.getStavkeNarudzbine(), k);
+        trenutnaKorpa.obavljenaKupovina();
+        narudzbine.add(n);
+    }
+
     /**
      * @param username
      * @param password
@@ -285,26 +291,26 @@ public class Aplikacija {
     /**
      * @pdGenerated default getter
      */
-    public List<Narudzbina> getNarudzbina() {
-        if (narudzbina == null)
-            narudzbina = new ArrayList<Narudzbina>();
-        return narudzbina;
+    public List<Narudzbina> getNarudzbine() {
+        if (narudzbine == null)
+            narudzbine = new ArrayList<Narudzbina>();
+        return narudzbine;
     }
 
     /**
      * @pdGenerated default iterator getter
      */
     public java.util.Iterator getIteratorNarudzbina() {
-        if (narudzbina == null)
-            narudzbina = new ArrayList<Narudzbina>();
-        return narudzbina.iterator();
+        if (narudzbine == null)
+            narudzbine = new ArrayList<Narudzbina>();
+        return narudzbine.iterator();
     }
 
     /**
      * @param newNarudzbina
      * @pdGenerated default setter
      */
-    public void setNarudzbina(List<Narudzbina> newNarudzbina) {
+    public void setNarudzbine(List<Narudzbina> newNarudzbina) {
         removeAllNarudzbina();
         for (java.util.Iterator iter = newNarudzbina.iterator(); iter.hasNext(); )
             addNarudzbina((Narudzbina) iter.next());
@@ -317,10 +323,10 @@ public class Aplikacija {
     public void addNarudzbina(Narudzbina newNarudzbina) {
         if (newNarudzbina == null)
             return;
-        if (this.narudzbina == null)
-            this.narudzbina = new ArrayList<Narudzbina>();
-        if (!this.narudzbina.contains(newNarudzbina))
-            this.narudzbina.add(newNarudzbina);
+        if (this.narudzbine == null)
+            this.narudzbine = new ArrayList<Narudzbina>();
+        if (!this.narudzbine.contains(newNarudzbina))
+            this.narudzbine.add(newNarudzbina);
     }
 
     /**
@@ -330,17 +336,17 @@ public class Aplikacija {
     public void removeNarudzbina(Narudzbina oldNarudzbina) {
         if (oldNarudzbina == null)
             return;
-        if (this.narudzbina != null)
-            if (this.narudzbina.contains(oldNarudzbina))
-                this.narudzbina.remove(oldNarudzbina);
+        if (this.narudzbine != null)
+            if (this.narudzbine.contains(oldNarudzbina))
+                this.narudzbine.remove(oldNarudzbina);
     }
 
     /**
      * @pdGenerated default removeAll
      */
     public void removeAllNarudzbina() {
-        if (narudzbina != null)
-            narudzbina.clear();
+        if (narudzbine != null)
+            narudzbine.clear();
     }
 
     /**
