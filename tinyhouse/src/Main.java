@@ -15,9 +15,10 @@ public class Main extends Application {
         Parent root = loader.load();
         GeneralMainController c = loader.getController();
         c.setStage(primaryStage);
+        c.setInfo(null);
         primaryStage.setTitle("tinyhouse");
-        primaryStage.setMinHeight(600);
-        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(768);
+        primaryStage.setMinWidth(1024);
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }

@@ -28,6 +28,7 @@ public class Kupac {
         this.eMail = eMail;
         this.korisnik = korisnik;
         this.korisnik.setInformacije(this);
+        korpa = new Korpa();
     }
 
     public Kupac(String ime, String prezime, String adresa, String eMail, Korpa korpa,

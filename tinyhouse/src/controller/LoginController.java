@@ -60,17 +60,26 @@ public class LoginController extends Controller {
             lbGreska.setText("");
             model.setUlogovani(k);
             scenaModeratorGlavna();
+        } else if(k.getTip() == TipKorisnika.obican){
+            lbGreska.setText("");
+            model.setUlogovani(k);
+            scenaKorisnikGlavna();
         }
     }
 
-    public void scenaModeratorGlavna(){
+    private void scenaModeratorGlavna(){
         ModeratorMainController c = new ModeratorMainController();
         SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml");
     }
 
-    public void scenaAdminGlavna() {
+    private void scenaAdminGlavna() {
         AdminMainController c = new AdminMainController();
         SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml");
+    }
+
+    private void scenaKorisnikGlavna(){
+        GeneralMainController c = new GeneralMainController();
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
     }
 
     @FXML
@@ -82,7 +91,7 @@ public class LoginController extends Controller {
     @FXML
     private void povratak() throws IOException {
         GeneralMainController c = new GeneralMainController();
-        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
     }
 
 

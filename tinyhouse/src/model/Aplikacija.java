@@ -58,6 +58,10 @@ public class Aplikacija {
         if (this.korisnici.isEmpty()) {
             korisnici.add(new Korisnik("admin", "admin", TipKorisnika.admin));
             korisnici.add(new Korisnik("m", "m", TipKorisnika.moderator));
+            Korisnik k = new Korisnik("h", "h", TipKorisnika.obican);
+            Kupac ja = new Kupac("Haris", "Gegic", "Adresa", "Mail", k);
+            kupci.add(ja);
+            korisnici.add(k);
             prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45, 18));
 
             Image i = new Image(getClass().getResourceAsStream("/styles/images/kasewagen.jpg"));
@@ -265,7 +269,7 @@ public class Aplikacija {
     public Korisnik prijava(String username, String password) {
         for (Korisnik k : korisnici) {
             if (k.provera_informacija(username.toLowerCase(), password)){
-                if(k.getTip() == TipKorisnika.obican) k.getInformacije().setKorpa(trenutnaKorpa);
+                if(k.getTip() == TipKorisnika.obican) trenutnaKorpa = k.getInformacije().getKorpa();
                 return k;
             }
         }

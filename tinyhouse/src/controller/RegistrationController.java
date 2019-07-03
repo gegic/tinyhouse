@@ -52,7 +52,7 @@ public class RegistrationController extends Controller {
 
     public void povratak() {
         GeneralMainController c = new GeneralMainController();
-        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
     }
 
     @FXML
@@ -71,7 +71,7 @@ public class RegistrationController extends Controller {
             model.registracija(tfKIme.getText().trim(), tfLozinka.getText().trim(), tfIme.getText().trim(),
                     tfPrezime.getText().trim(), tfAdresa.getText().trim(), tfMail.getText().trim());
             GeneralMainController c = new GeneralMainController();
-            SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
+            SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
         }
     };
 

@@ -55,6 +55,25 @@ public class KorpaCellController extends ListCell<StavkaNarudzbine> {
 
     }
 
+    private void setInfo(String newValue){
+        if (!newValue.matches("\\d*")) newValue = newValue.replaceAll("[^\\d]", "");
+        if(!newValue.equals("")) {
+            if (Integer.valueOf(newValue) <= 1) btMinus.setDisable(true);
+            else btMinus.setDisable(false);
+            if (Integer.valueOf(newValue) >= stavka.getProizvod().getKolicinaZaOnline()) {
+                newValue = String.valueOf(stavka.getProizvod().getKolicinaZaOnline());
+                btPlus.setDisable(true);
+            } else {
+                btPlus.setDisable(false);
+            }
+            float oldVal = stavka.getUkupno();
+            stavka.setNarucenaKolicina(Integer.valueOf(newValue));
+            lbCijena.setText(String.valueOf(stavka.getUkupno()));
+            parent.resetUkupno(oldVal, stavka.getUkupno());
+        }
+        tfKolicina.setText(newValue);
+    }
+
     @Override
     protected void updateItem(StavkaNarudzbine s, boolean empty) {
         super.updateItem(s, empty);
@@ -78,25 +97,8 @@ public class KorpaCellController extends ListCell<StavkaNarudzbine> {
             lbNaziv.maxWidthProperty().bind(SceneSwitcher.getStage().widthProperty().divide(7));
             lbCijena.setText(String.valueOf(s.getProizvod().getTrenutnaCijena().getJedinicnaCena()));
             tfKolicina.textProperty().addListener(
-                    (ObservableValue<? extends String> observable, String oldValue, String newValue) ->
-                    {
-                        if (!newValue.matches("\\d*")) newValue = newValue.replaceAll("[^\\d]", "");
-                        if(!newValue.equals("")) {
-                            if (Integer.valueOf(newValue) <= 1) btMinus.setDisable(true);
-                            else btMinus.setDisable(false);
-                            if (Integer.valueOf(newValue) >= stavka.getProizvod().getKolicinaZaOnline()) {
-                                newValue = String.valueOf(stavka.getProizvod().getKolicinaZaOnline());
-                                btPlus.setDisable(true);
-                            } else {
-                                btPlus.setDisable(false);
-                            }
-                            float oldVal = stavka.getUkupno();
-                            stavka.setNarucenaKolicina(Integer.valueOf(newValue));
-                            lbCijena.setText(String.valueOf(stavka.getUkupno()));
-                            parent.resetUkupno(oldVal, stavka.getUkupno());
-                        }
-                        tfKolicina.setText(newValue);
-                    });
+                (ObservableValue<? extends String> observable, String oldValue, String newValue) -> setInfo(newValue));
+            tfKolicina.setText(String.valueOf(stavka.getNarucenaKolicina()));
             icon.setImage(s.getProizvod().getSlike()[0]);
             setText(null);
             setGraphic(box);

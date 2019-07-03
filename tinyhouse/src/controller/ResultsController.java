@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import model.Aplikacija;
 import model.Proizvod;
@@ -25,9 +26,8 @@ import java.util.ArrayList;
 public class ResultsController extends Controller {
 
     @FXML private TilePane tilePane;
-    @FXML private Button btPretraga;
-    @FXML private TextField tfPretraga;
     @FXML private ScrollPane scrollPane;
+    @FXML private BorderPane borderPane;
 
     private Aplikacija model;
 
@@ -39,6 +39,8 @@ public class ResultsController extends Controller {
     }
 
     public void populate(){
+        TopBarController tbc = new TopBarController();
+        borderPane.setTop(tbc.create());
         for(Proizvod p : results){
             ProizvodTileController c = new ProizvodTileController();
             tilePane.getChildren().add(c.create(p));
@@ -68,66 +70,7 @@ public class ResultsController extends Controller {
     @FXML
     public void povratak(ActionEvent e){
         GeneralMainController c = new GeneralMainController();
-        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
-    }
-
-    @FXML
-    private void enter_pretraga(KeyEvent e){
-        if(e.getCode() == KeyCode.ENTER){
-            pretraga();
-        }
-    }
-
-    @FXML
-    public void pretraga(ActionEvent e){
-        pretraga();
-    }
-
-    public void pretraga(){
-        if(btPretraga.getText().equals("Pretraga")){
-            tfPretraga.setPrefWidth(120);
-            btPretraga.setText("");
-            btPretraga.setStyle("-fx-background-radius:30");
-            tfPretraga.requestFocus();
-        } else {
-            tfPretraga.setPrefWidth(0);
-            btPretraga.setText("Pretraga");
-            btPretraga.setStyle("-fx-background-radius:15");
-            ArrayList<Proizvod> ps = search(tfPretraga.getText());
-            tfPretraga.setText("");
-            ResultsController c = new ResultsController();
-            try {
-                FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource("../view/results_view.fxml"));
-                Parent root = loader.load();
-                c = loader.getController();
-                c.setList(ps);
-                c.setStage(stage);
-                c.populate();
-                stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
-            } catch(Exception ex){
-                System.out.println(ex.getMessage());
-                ex.printStackTrace();
-            }
-        }
-    }
-    @FXML
-    public void prijava(ActionEvent e){
-        LoginController c = new LoginController();
-        SceneSwitcher.switchScene(c, "../view/login_view.fxml");
-    }
-
-    @FXML
-    public void korpa(ActionEvent e){
-        KorpaController c = new KorpaController();
-        SceneSwitcher.switchScene(c, "../view/korpa_view.fxml", true, "nema nista");
-    }
-
-    private ArrayList<Proizvod> search(String term){
-        ArrayList<Proizvod> proizvodi = new ArrayList<>();
-        for(Proizvod p : model.proizvodi){
-            if(p.getNaziv().toLowerCase().contains(term.toLowerCase())) proizvodi.add(p);
-        }
-        return proizvodi;
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
     }
 
     public TilePane getTilePane() {

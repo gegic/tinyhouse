@@ -25,8 +25,8 @@ public class SceneSwitcher {
     public static void switchScene(Controller c, String path, boolean populate, String id){
         try {
             FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(path));
-
             Parent root = loader.load();
+
             c = loader.getController();
             c.setStage(stage);
             if (populate){
@@ -44,7 +44,7 @@ public class SceneSwitcher {
     public static void odjava(){
         Aplikacija.getInstance().odjava();
         GeneralMainController c = new GeneralMainController();
-        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
     }
 
     public static void setStage(Stage s){stage = s;}
