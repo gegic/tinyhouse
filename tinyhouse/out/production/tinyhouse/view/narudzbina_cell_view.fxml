@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="box" maxHeight="100.0" prefHeight="100.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btPromena" layoutX="598.0" layoutY="31.0" mnemonicParsing="false" onAction="#promenaStanja" stylesheets="@../styles/style.css" text="Promeni stanje" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="lbIdNarudzbine" layoutX="119.0" layoutY="34.0" style="-fx-text-fill: black;" text="ID" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="34.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="icon" fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
+         <image>
+            <Image url="@../styles/images/ordericon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbAdresa" layoutX="206.0" layoutY="34.0" style="-fx-text-fill: black;" text="Adresa" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="34.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbCijena" layoutX="347.0" layoutY="34.0" style="-fx-text-fill: black;" text="25000,00 RSD" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="347.0" AnchorPane.topAnchor="34.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

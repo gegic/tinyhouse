@@ -34,4 +34,11 @@ public class AdminMainController extends Controller {
         AdminUsersController c = new AdminUsersController();
         SceneSwitcher.switchScene(c, "../view/admin_users_view.fxml", true);
     }
+
+    @FXML
+    public void profil(ActionEvent e) {
+        RegistrovaniProfilController c = new RegistrovaniProfilController();
+        SceneSwitcher.switchScene(c, "../view/registrovani_profil_view.fxml");
+
+    }
 }

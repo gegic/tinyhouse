@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultsController">
+   <bottom>
+      <HBox alignment="CENTER_LEFT" style="-fx-background-color: #e3e3e3;" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="upper_button" mnemonicParsing="false" stylesheets="@../styles/style.css" text="Prodavnice">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="30.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="© Copyright 2019 Tim 21">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" style="-fx-border-width: 1px 0px 0px 1px; -fx-border-color: lightgray;" stylesheets="@../styles/style.css" BorderPane.alignment="CENTER">
+         <content>
+            <TilePane fx:id="tilePane" hgap="30.0" prefHeight="481.0" prefWidth="707.0" style="-fx-background-color: white;" tileAlignment="TOP_LEFT" vgap="30.0">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding></TilePane>
+         </content>
+      </ScrollPane>
+   </center>
+   <left>
+      <VBox style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#povratak" stylesheets="@../styles/style.css" text="Nazad">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

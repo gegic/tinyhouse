@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyProdavnicaController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="125.0" layoutY="25.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Label alignment="TOP_CENTER" stylesheets="@../styles/style.css" text="IZMENA" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Label>
+            <TextField fx:id="id_prodavnice_text" disable="true" maxWidth="600.0" prefHeight="40.0" promptText="id prodavnice" stylesheets="@../styles/style.css" text="id_prodavnice">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="adresa_text" maxWidth="600.0" onKeyPressed="#enter_izmena" prefHeight="40.0" promptText="adresa" stylesheets="@../styles/style.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="g_sirina_text" maxWidth="600.0" onKeyPressed="#enter_izmena" prefHeight="40.0" promptText="geografska širina" stylesheets="@../styles/style.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="g_duzina_text" maxWidth="600.0" onKeyPressed="#enter_izmena" prefHeight="40.0" promptText="geografska dužina" stylesheets="@../styles/style.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="warning" />
+            <Button fx:id="izmena" mnemonicParsing="false" onAction="#izmena" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="izmena prodavnice">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#povratak" stylesheets="@../styles/style.css" text="nazad" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+   </children>
+</AnchorPane>
