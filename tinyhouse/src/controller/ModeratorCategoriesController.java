@@ -7,25 +7,26 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.Aplikacija;
-import model.Proizvod;
+import model.Kategorija;
+import model.Prodavnica;
 
-public class ModeratorItemsController extends Controller {
+public class ModeratorCategoriesController extends Controller {
 
     @FXML
-    private ListView<Proizvod> itemsList;
+    private ListView<Kategorija> itemList;
 
     private Stage stage;
 
     private Aplikacija model;
 
-    public ModeratorItemsController(){
+    public ModeratorCategoriesController(){
         this.model = Aplikacija.getInstance();
     }
 
     public void populate(){
-        ObservableList<Proizvod> observableList = FXCollections.observableList(model.proizvodi);
-        itemsList.setItems(observableList);
-        itemsList.setCellFactory(e -> new ProizvodCellController());
+        ObservableList<Kategorija> observableList = FXCollections.observableList(model.getKategorije());
+        itemList.setItems(observableList);
+        itemList.setCellFactory(e -> new KategorijaCellController());
     }
 
     public Stage getStage() {
@@ -42,14 +43,14 @@ public class ModeratorItemsController extends Controller {
     }
 
     @FXML
-    public void povratak(ActionEvent e){
+    public void povratak(ActionEvent e) {
         ModeratorMainController c = new ModeratorMainController();
         SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml");
     }
 
     @FXML
-    public void addProizvod(ActionEvent e) {
-        AddProizvodController c = new AddProizvodController();
-        SceneSwitcher.switchScene(c, "../view/add_proizvod_view.fxml", true);
+    public void addKategorija(ActionEvent e) {
+        AddKategorijaController c = new AddKategorijaController();
+        SceneSwitcher.switchScene(c, "../view/add_kategorija_view.fxml", true);
     }
 }

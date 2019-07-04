@@ -17,7 +17,7 @@ public class Proizvod {
     private String naziv;
     private String opis;
     private Image[] slike;
-    private Kateogrija kategorija;
+    private Kategorija kategorija;
     private int kolicinaZaOnline;
 
     public List<Proizvod> slicanProizvod;
@@ -42,7 +42,7 @@ public class Proizvod {
         slike = new Image[3];
     }
 
-    public Proizvod(int id, String naziv, Kateogrija kategorija, String opis) {
+    public Proizvod(int id, String naziv, Kategorija kategorija, String opis) {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
@@ -51,12 +51,14 @@ public class Proizvod {
         slike = new Image[3];
     }
 
-    public Kateogrija getKategorija() {
+    public Kategorija getKategorija() {
         return kategorija;
     }
 
-    public void setKategorija(Kateogrija kategorija) {
-        this.kategorija = kategorija;
+    public void setKategorija(Kategorija kategorija) {
+        if(this.kategorija != null){
+            kategorija.addProizvod(this);
+        }
     }
 
     /**

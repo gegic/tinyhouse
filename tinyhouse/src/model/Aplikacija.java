@@ -17,6 +17,8 @@ public class Aplikacija {
     private Korpa trenutnaKorpa;
     public static Aplikacija instance;
 
+    private List<Kategorija> kategorije;
+
     public List<Narudzbina> narudzbine;
     public Cenovnik cenovnik;
     public List<Proizvod> proizvodi;
@@ -34,6 +36,7 @@ public class Aplikacija {
         korisnici = new ArrayList<>();
         kupci = new ArrayList<>();
         trenutnaKorpa = new Korpa();
+        kategorije = new ArrayList<>();
     }
 
     public static Aplikacija getInstance() {
@@ -62,17 +65,33 @@ public class Aplikacija {
             Kupac ja = new Kupac("Haris", "Gegic", "Adresa", "Mail", k);
             kupci.add(ja);
             korisnici.add(k);
+            Kategorija kuhinja = new Kategorija("Kuhinja");
+            Kategorija kolica = new Kategorija("Kolica", kuhinja);
+            Kategorija d = new Kategorija("Na struju", kolica);
             prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45, 18));
-
+            kategorije.add(kuhinja);
+            kategorije.add(kolica);
+            kategorije.add(d);
             Image i = new Image(getClass().getResourceAsStream("/styles/images/kasewagen.jpg"));
             Image i2 = new Image(getClass().getResourceAsStream("/styles/images/sporet.jpg"));
-            Proizvod p = new Proizvod(1, "Kasewagen", "Kolica za sir. Najbolja na svijetu");
+            Proizvod p = new Proizvod(1, "Kasewagen", kolica, "Kolica za sir. Najbolja na svijetu");
             p.setSlika(i, 0);
             p.setSlika(i2, 1);
             p.setTrenutnaCijena(75000, new Date());
             p.setKolicinaZaOnline(4);
             proizvodi.add(p);
         }
+    }
+
+    public void dodavanjeKategorije(String naziv, Kategorija natkategorija){
+        Kategorija k;
+        if(natkategorija == null){
+            k = new Kategorija(naziv);
+        } else{
+            k = new Kategorija(naziv, natkategorija);
+        }
+
+        kategorije.add(k);
     }
 
     public int uvecajKolicinuProizvoda(int id, int koliko){
@@ -85,29 +104,17 @@ public class Aplikacija {
         return trenutnaKorpa.pronadji(id);
     }
 
-    public String izmeniProizvod(int id, String naziv, String opis, Image[] slike, float cijena){
-        if(slike[0] == null){
-            return "Mora se postaviti bar jedna slika";
-        }
-        if(cijena <= 0){
-            return "Cijena mora da prelazi 0 dinara";
-        }
-        if(naziv.length() < 3 || naziv.length() > 15){
-            return "Naziv proizvoda mora imati između 3 i 15 karaktera";
-        }
-        if(opis.length() < 3 || opis.length() > 255){
-            return "Opis proizvoda mora imati između 3 i 255 karaktera";
-        }
+    public void izmeniProizvod(int id, String naziv, String opis, Image[] slike, float cijena, Kategorija k){
         for(Proizvod p : proizvodi){
             if(p.getId() == id){
                 p.setNaziv(naziv);
                 p.setOpis(opis);
                 p.setSlike(slike);
                 p.setTrenutnaCijena(cijena, new Date());
-                return "";
+                p.setKategorija(k);
+                return;
             }
         }
-        return "Proizvod ne postoji - NE SMIJE DA SE DESI OVO";
     }
     public Proizvod pronadjiProizvod(int id){
         for(Proizvod p : proizvodi){
@@ -126,32 +133,12 @@ public class Aplikacija {
         return false;
     }
 
-    public String dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike, float cijena){
-        if(slike[0] == null){
-            return "Mora se postaviti bar jedna slika";
-        }
-        if(id > 10000 || id < 1){
-            return "ID mora biti između 1 i 10000";
-        }
-        if(cijena <= 0){
-            return "Cijena mora da prelazi 0 dinara";
-        }
-        if(naziv.length() < 3 || naziv.length() > 15){
-            return "Naziv proizvoda mora imati između 3 i 15 karaktera";
-        }
-        if(opis.length() < 3 || opis.length() > 255){
-            return "Opis proizvoda mora imati između 3 i 255 karaktera";
-        }
-        for(Proizvod p : proizvodi){
-            if(p.getId() == id){
-                return "Već postoji proizvod sa ovim ID-jem";
-            }
-        }
-        Proizvod p = new Proizvod(id, naziv, opis);
+    public void dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike, float cijena, Kategorija k){
+
+        Proizvod p = new Proizvod(id, naziv, k, opis);
         p.setTrenutnaCijena(cijena, new Date());
         p.setSlike(slike);
         proizvodi.add(p);
-        return "";
     }
 
     public boolean brisanjeModeratora(String k_ime){
@@ -632,4 +619,21 @@ public class Aplikacija {
     }
 
     public void addToKorpa(StavkaNarudzbine s){trenutnaKorpa.addStavkaNarudzbine(s);}
+
+    public List<Kategorija> getKategorije() {
+        return kategorije;
+    }
+
+    public void setKategorije(List<Kategorija> kategorije) {
+        this.kategorije = kategorije;
+    }
+
+    public void addKategorija(Kategorija k){
+        if (k == null)
+            return;
+        if (this.kategorije == null)
+            this.kategorije = new ArrayList<Kategorija>();
+        if (!this.kategorije.contains(k))
+            this.kategorije.add(k);
+    }
 }

@@ -1,20 +1,30 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import model.Aplikacija;
+import model.Kategorija;
 import model.Proizvod;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 public class TopBarController extends Controller{
     @FXML private Button btPretraga;
@@ -22,7 +32,7 @@ public class TopBarController extends Controller{
     @FXML private Button btPrijava;
     @FXML private Button btOdjava;
     @FXML private HBox box;
-
+    @FXML private HBox menuBar;
     private Aplikacija model;
 
     public TopBarController(){model = Aplikacija.getInstance();}
@@ -94,6 +104,50 @@ public class TopBarController extends Controller{
     private void profil(ActionEvent e){
     }
 
+    private void setSubCategories(SplitMenuButton m, Kategorija k){
+        if(k.getPotkategorije().size() == 0){
+            MenuItem mi = new MenuItem(k.getNaziv());
+            m.getItems().add(mi);
+        } else{
+            CustomMenuItem cmi = new CustomMenuItem();
+            SplitMenuButton smb = new SplitMenuButton();
+            smb.setText(k.getNaziv());
+            m.setId("upper_split_button");
+            m.getStylesheets().add(getClass().getResource("../styles/style.css").toString());
+            for(Kategorija pk : k.getPotkategorije()){
+                setSubCategories(smb, pk);
+            }
+            cmi.setContent(smb);
+            m.getItems().add(cmi);
+        }
+    }
+
+    private void setCategories(){
+        for(Kategorija k : model.getKategorije()){
+            if(k.getNatkategorija() == null){
+                if(k.getPotkategorije().size() == 0){
+                    Button m = new Button(k.getNaziv());
+                    m.setId("upper_button");
+
+                    m.getStylesheets().add(getClass().getResource("../styles/style.css").toString());
+
+                    menuBar.getChildren().add(m);
+                } else{
+                    SplitMenuButton m = new SplitMenuButton();
+                    m.setText(k.getNaziv());
+                    m.setId("upper_split_button");
+                    m.getStylesheets().add(getClass().getResource("../styles/style.css").toString());
+                    menuBar.getChildren().add(m);
+
+                    for(Kategorija pk : k.getPotkategorije()){
+                        setSubCategories(m, pk);
+                    }
+                }
+            }
+        }
+
+    }
+
 
     public HBox create(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/top_bar_view.fxml"));
@@ -109,6 +163,7 @@ public class TopBarController extends Controller{
             btPrijava.setOnAction(e -> profil(e));
             btOdjava.setPrefWidth(93);
         }
+        setCategories();
         return box;
     }
 }

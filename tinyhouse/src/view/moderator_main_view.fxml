@@ -55,7 +55,7 @@
             <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox id="tile" alignment="CENTER" prefHeight="200.0" prefWidth="205.0" stylesheets="@../styles/style.css" GridPane.rowSpan="2">
+            <VBox id="tile" alignment="CENTER" prefHeight="200.0" prefWidth="205.0" stylesheets="@../styles/style.css">
                <children>
                   <ImageView id="tile_icon" fitHeight="63.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -104,6 +104,24 @@
                      </font>
                   </Label>
                   <Button id="tile_button" mnemonicParsing="false" onAction="#pregledajNarudzbine" text="Pregledaj" />
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox id="tile" alignment="CENTER" prefHeight="200.0" prefWidth="205.0" stylesheets="@../styles/style.css" GridPane.rowIndex="1">
+               <children>
+                  <ImageView id="tile_icon" fitHeight="63.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../styles/images/categoryicon.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="tile_text" alignment="CENTER" prefHeight="70.0" prefWidth="195.0" text="Dodavanje i brisanje kategorija" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button id="tile_button" mnemonicParsing="false" onAction="#pregledajKategorije" text="Pregledaj" />
                </children>
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

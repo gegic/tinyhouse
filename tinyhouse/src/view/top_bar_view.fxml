@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fx:id="box" alignment="CENTER_LEFT" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="box" alignment="CENTER_LEFT" prefWidth="768.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label id="title" style="-fx-letter-spacing: 14px;" stylesheets="@../styles/style.css" text="tinyhouse">
          <font>
@@ -17,28 +17,11 @@
             <Insets left="10.0" />
          </HBox.margin>
       </Label>
-      <MenuBar style="-fx-background-color: transparent;" stylesheets="@../styles/style.css">
-         <menus>
-            <Menu mnemonicParsing="false" text="Kuhinja">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Električni uređaji" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Putovanja">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Koferi" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Dvorište">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Kosilice" />
-               </items>
-            </Menu>
-         </menus>
+      <HBox fx:id="menuBar" alignment="CENTER" spacing="20.0">
          <HBox.margin>
-            <Insets left="20.0" />
+            <Insets left="20.0" right="20.0" />
          </HBox.margin>
-      </MenuBar>
+      </HBox>
       <TextField fx:id="tfPretraga" minWidth="0.0" onKeyPressed="#enter_pretraga" prefWidth="0.0" stylesheets="@../styles/style.css" HBox.hgrow="NEVER">
          <font>
             <Font size="16.0" />

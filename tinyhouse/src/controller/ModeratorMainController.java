@@ -47,4 +47,11 @@ public class ModeratorMainController extends Controller {
         ModeratorOrdersController c = new ModeratorOrdersController();
         SceneSwitcher.switchScene(c, "../view/moderator_orders_view.fxml", true);
     }
+
+    @FXML
+    public void pregledajKategorije(ActionEvent e){
+        ModeratorCategoriesController c = new ModeratorCategoriesController();
+        SceneSwitcher.switchScene(c, "../view/moderator_categories_view.fxml", true);
+    }
 }
+

@@ -48,7 +48,6 @@ public class NarudzbinaCellController extends ListCell<Narudzbina> {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
 
             lbIdNarudzbine.setText(String.valueOf(n.getBroj()));

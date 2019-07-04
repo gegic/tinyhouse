@@ -64,7 +64,6 @@
     -fx-cursor: hand;
     -fx-background-color: lightgray;
 }
-
 .menu-bar .menu-item{
     -fx-background-radius: 15;
     -fx-cursor: hand;
@@ -75,6 +74,38 @@
     -fx-text-fill: white;
 }
 
+.combo-box{
+    -fx-background-color: transparent;
+    -fx-border-radius: 15;
+    -fx-border-color: lightgray;
+    -fx-background-radius: 15;
+    -fx-cursor: hand;
+}
+
+.combo-box:hover{
+    -fx-border-color: gray;
+    -fx-background-color: lightgray;
+}
+
+.combo-box .list-cell:hover{
+    -fx-background-color: darkgray;
+}
+
+.combo-box .list-view{
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}
+
+.combo-box .list-cell{
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}
+
+.combo-box .list-cell:selected{
+    -fx-text-fill: red;
+}
+
+
 .scroll-pane {
     -fx-background-color: white;
 }
@@ -82,6 +113,8 @@
 .scroll-pane .viewport{
     -fx-background-color: white;
 }
+
+
 
 .list-view {
     -fx-background-insets: 0;
@@ -158,6 +191,85 @@
 
 #upper_button:pressed{
     -fx-background-color: darkgray;
+}
+
+#upper_split_button{
+    -fx-background-color:  transparent;
+    -fx-cursor: hand;
+    -fx-background-radius: 15;
+
+}
+
+#upper_split_button .menu{
+    -fx-background-radius: 15;
+}
+
+#upper_split_button .custom-menu-item{
+      -fx-background-radius: 15;
+}
+
+#upper_split_button .custom-menu-item:selected{
+    -fx-background-color: gray;
+}
+
+#upper_split_button .custom-menu-item:pressed{
+    -fx-background-color: gray;
+}
+
+#upper_split_button .custom-menu-item:focused{
+    -fx-background-color: gray;
+}
+#upper_split_button .custom-menu-item:expanded{
+    -fx-background-color: gray;
+}
+
+
+#upper_split_button .custom-menu-item .split-menu-button{
+    -fx-background-radius: 15;
+}
+
+#upper_split_button:pressed{
+    -fx-background-color: gray;
+}
+
+#upper_split_button .custom-menu-item:focused{
+    -fx-background-color: lightgray;
+}
+#upper_split_button .custom-menu-item:pressed{
+    -fx-background-color: gray;
+}
+
+#upper_split_button .label{
+    -fx-font-size: 17px;
+
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-background-radius: 15 0 0 15;
+}
+
+#upper_split_button .label:hover{
+    -fx-background-color: darkgray;
+}
+
+#upper_split_button .label:pressed{
+    -fx-background-color: gray;
+}
+
+#upper_split_button .arrow-button {
+    -fx-background-color: transparent ;
+    -fx-background-radius: 0 15 15 0;
+}
+
+#upper_split_button .arrow-button:hover {
+     -fx-background-color: darkgray;
+}
+
+#upper_split_button .arrow-button:pressed {
+    -fx-background-color: gray;
+}
+
+#upper_split_button:hover{
+    -fx-background-color: lightgray;
 }
 
 #pmb{

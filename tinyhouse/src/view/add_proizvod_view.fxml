@@ -59,7 +59,15 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label fx:id="warning" />
+                  <ComboBox fx:id="cbKategorija" prefWidth="150.0" promptText="Kategorija" stylesheets="@../styles/style.css">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <Label fx:id="warning">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
                   <Region VBox.vgrow="SOMETIMES" />
                   <Button fx:id="btDodavanje" disable="true" mnemonicParsing="false" onAction="#dodavanje" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="dodavanje proizvoda">
                      <VBox.margin>
