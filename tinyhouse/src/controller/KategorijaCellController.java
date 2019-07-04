@@ -21,7 +21,8 @@ public class KategorijaCellController extends ListCell<Kategorija> {
 
     @FXML
     public void brisanje(ActionEvent e){
-
+        DeleteKategorijaController c = new DeleteKategorijaController();
+        SceneSwitcher.switchScene(c, "../view/delete_kategorija_view.fxml", lbNaziv.getText());
     }
 
     @Override

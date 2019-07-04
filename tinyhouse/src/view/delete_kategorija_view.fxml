@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" onKeyPressed="#enter_brisi" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeleteKategorijaController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="125.0" layoutY="50.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Label alignment="TOP_CENTER" stylesheets="@../styles/style.css" text="BRISANJE" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Label>
+            <Label text="Da li ste sigurni da želite da obrišete kategoriju:" />
+            <Label fx:id="lbNazivKategorije" text="naziv_kategorije">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="koja se nalazi na putanji:">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="lbPutanja" text="putanja">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <CheckBox fx:id="cb" mnemonicParsing="false" stylesheets="@../styles/style.css" text="Kaskadno brisanje potkategorija i proizvoda" visible="false">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </CheckBox>
+            <Button fx:id="btObrisi" mnemonicParsing="false" onAction="#brisi" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="obriši">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="otkazi_button" mnemonicParsing="false" onAction="#otkazi" prefHeight="40.0" prefWidth="350.0" stylesheets="@../styles/style.css" text="otkaži">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

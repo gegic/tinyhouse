@@ -83,6 +83,25 @@ public class Aplikacija {
         }
     }
 
+    public Kategorija pronadjiKategoriju(String naziv){
+        for(Kategorija k : kategorije){
+            if(k.getNaziv().equals(naziv)){
+                return k;
+            }
+        }
+        return null;
+    }
+
+    public void brisanjeKategorije(Kategorija k){
+        for(Proizvod p : k.getProizvodi()){
+            proizvodi.remove(p);
+        }
+        for(Kategorija pk : k.getPotkategorije()){
+            brisanjeKategorije(pk);
+        }
+        kategorije.remove(k);
+    }
+
     public void dodavanjeKategorije(String naziv, Kategorija natkategorija){
         Kategorija k;
         if(natkategorija == null){
