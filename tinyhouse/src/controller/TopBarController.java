@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -101,19 +102,34 @@ public class TopBarController extends Controller{
         }
         return proizvodi;
     }
-    private void profil(ActionEvent e){
+
+    private void pregledKategorije(Kategorija k){
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource("../view/results_view.fxml"));
+            Parent root = loader.load();
+            ResultsController c = loader.getController();
+            c.setList(k.getProizvodi());
+            c.setStage(stage);
+            c.populate();
+            stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
+        } catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     private void setSubCategories(SplitMenuButton m, Kategorija k){
         if(k.getPotkategorije().size() == 0){
             MenuItem mi = new MenuItem(k.getNaziv());
+            mi.setOnAction((e) -> pregledKategorije(k));
             m.getItems().add(mi);
         } else{
             CustomMenuItem cmi = new CustomMenuItem();
             SplitMenuButton smb = new SplitMenuButton();
+            smb.setPopupSide(Side.RIGHT);
             smb.setText(k.getNaziv());
-            m.setId("upper_split_button");
-            m.getStylesheets().add(getClass().getResource("../styles/style.css").toString());
+            smb.setOnAction((e) -> pregledKategorije(k));
+            smb.setId("upper_split_button");
+            smb.getStylesheets().add(getClass().getResource("../styles/style.css").toString());
             for(Kategorija pk : k.getPotkategorije()){
                 setSubCategories(smb, pk);
             }
@@ -122,19 +138,24 @@ public class TopBarController extends Controller{
         }
     }
 
+    private void profil(ActionEvent e){
+
+    }
+
     private void setCategories(){
         for(Kategorija k : model.getKategorije()){
             if(k.getNatkategorija() == null){
                 if(k.getPotkategorije().size() == 0){
                     Button m = new Button(k.getNaziv());
                     m.setId("upper_button");
-
+                    m.setOnAction((e) -> pregledKategorije(k));
                     m.getStylesheets().add(getClass().getResource("../styles/style.css").toString());
 
                     menuBar.getChildren().add(m);
                 } else{
                     SplitMenuButton m = new SplitMenuButton();
                     m.setText(k.getNaziv());
+                    m.setOnAction((e) -> pregledKategorije(k));
                     m.setId("upper_split_button");
                     m.getStylesheets().add(getClass().getResource("../styles/style.css").toString());
                     menuBar.getChildren().add(m);

@@ -46,7 +46,7 @@ public class Proizvod {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
-        this.kategorija = kategorija;
+        kategorija.addProizvod(this);
         this.kolicinaZaOnline = 0;
         slike = new Image[3];
     }

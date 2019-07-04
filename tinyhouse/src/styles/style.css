@@ -200,45 +200,35 @@
 
 }
 
+#upper_split_button:focused{
+    -fx-background-color:  gray;
+    -fx-text-fill: white;
+}
+
 #upper_split_button .menu{
     -fx-background-radius: 15;
 }
 
-#upper_split_button .custom-menu-item{
-      -fx-background-radius: 15;
-}
-
-#upper_split_button .custom-menu-item:selected{
-    -fx-background-color: gray;
-}
-
-#upper_split_button .custom-menu-item:pressed{
-    -fx-background-color: gray;
-}
-
-#upper_split_button .custom-menu-item:focused{
-    -fx-background-color: gray;
-}
-#upper_split_button .custom-menu-item:expanded{
-    -fx-background-color: gray;
-}
-
-
-#upper_split_button .custom-menu-item .split-menu-button{
+#upper_split_button .menu-item{
     -fx-background-radius: 15;
+}
+
+#upper_split_button .menu-item:focused{
+    -fx-background-color: gray;
+    -fx-text-fill: white;
+}
+
+#upper_split_button .custom-menu-item{
+    -fx-background-radius: 15;
+}
+#upper_split_button .custom-menu-item:focused{
+    -fx-background-color: transparent;
 }
 
 #upper_split_button:pressed{
     -fx-background-color: gray;
+    -fx-text-fill: white;
 }
-
-#upper_split_button .custom-menu-item:focused{
-    -fx-background-color: lightgray;
-}
-#upper_split_button .custom-menu-item:pressed{
-    -fx-background-color: gray;
-}
-
 #upper_split_button .label{
     -fx-font-size: 17px;
 

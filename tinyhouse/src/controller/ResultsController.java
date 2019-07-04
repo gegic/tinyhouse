@@ -21,6 +21,7 @@ import model.Aplikacija;
 import model.Proizvod;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ResultsController extends Controller {
@@ -31,7 +32,7 @@ public class ResultsController extends Controller {
 
     private Aplikacija model;
 
-    private ArrayList<Proizvod> results;
+    private List<Proizvod> results;
 
     public ResultsController(){
         model = Aplikacija.getInstance();
@@ -51,7 +52,7 @@ public class ResultsController extends Controller {
     }
 
     private void setNoResults() {
-        Label prazno = new Label("Nema rezultata koji zadovoljavaju kriterijum pretrage");
+        Label prazno = new Label("Nema rezultata");
         prazno.setId("prazno");
         prazno.setStyle("../styles/style.css");
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -78,7 +79,7 @@ public class ResultsController extends Controller {
     }
 
 
-    public void setList(ArrayList<Proizvod> list) {
+    public void setList(List<Proizvod> list) {
         results = list;
     }
 }
