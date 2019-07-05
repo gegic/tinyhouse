@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Aplikacija;
 import model.Prodavnica;
@@ -12,7 +13,8 @@ public class KorisnikStoresController extends Controller {
 
     @FXML
     private ListView<Prodavnica> prodList;
-
+    @FXML
+    BorderPane borderPane;
     private Stage stage;
 
     private Aplikacija model;
@@ -22,6 +24,8 @@ public class KorisnikStoresController extends Controller {
     }
 
     public void populate() {
+        TopBarController c = new TopBarController();
+        borderPane.setTop(c.create());
         ObservableList<Prodavnica> observableList = FXCollections.observableList(model.prodavnice);
         prodList.setItems(observableList);
         prodList.setCellFactory(e -> new ProdavnicaCellController());
