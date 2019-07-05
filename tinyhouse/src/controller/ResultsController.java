@@ -7,10 +7,7 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -29,6 +26,8 @@ public class ResultsController extends Controller {
     @FXML private TilePane tilePane;
     @FXML private ScrollPane scrollPane;
     @FXML private BorderPane borderPane;
+    @FXML private ComboBox<TipSortiranja> cb;
+
 
     private Aplikacija model;
 
@@ -40,6 +39,9 @@ public class ResultsController extends Controller {
     }
 
     public void populate(){
+        cb.getItems().setAll(
+                TipSortiranja.CIJENA_RASUTCE, TipSortiranja.CIJENA_OPADAJUCE,
+                TipSortiranja.NAZIV_RASTUCE, TipSortiranja.NAZIV_OPADAJUCE);
         TopBarController tbc = new TopBarController();
         borderPane.setTop(tbc.create());
         for(Proizvod p : results){
