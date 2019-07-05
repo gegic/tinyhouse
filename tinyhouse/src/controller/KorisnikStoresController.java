@@ -39,9 +39,8 @@ public class KorisnikStoresController extends Controller {
 
     @FXML
     public void povratak(ActionEvent e) {
-
         GeneralMainController c = new GeneralMainController();
-        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
     }
 
 }

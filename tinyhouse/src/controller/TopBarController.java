@@ -139,7 +139,8 @@ public class TopBarController extends Controller{
     }
 
     private void profil(ActionEvent e){
-
+        RegistrovaniProfilController c = new RegistrovaniProfilController();
+        SceneSwitcher.switchScene(c, "../view/registrovani_profil_view.fxml", "nebitno");
     }
 
     private void setCategories(){

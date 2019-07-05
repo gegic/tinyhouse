@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrovaniProfilController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrovaniProfilController">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -22,103 +22,40 @@
          </children>
       </HBox>
    </bottom>
-   <top>
-      <HBox>
-         <children>
-            <Label id="title" style="-fx-letter-spacing: 14px;" stylesheets="@../styles/style.css" text="tinyhouse">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Label>
-            <Region HBox.hgrow="SOMETIMES" />
-            <Button id="upper_button" disable="true" mnemonicParsing="false" stylesheets="@../styles/style.css" text="Profil">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#odjava" stylesheets="@../styles/style.css" text="Odjavi se">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </HBox>
-   </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="206.0" fitWidth="288.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../styles/images/usericon.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lbPrezimeIIme" layoutX="281.0" layoutY="94.0" text="Prezime i ime" textFill="#ee0b0b">
+            <Label fx:id="lbKorisnickoIme" layoutX="102.0" layoutY="70.0" stylesheets="@../styles/style.css" text="Korisničko ime" textFill="#ee0b0b">
                <font>
-                  <Font name="System Bold Italic" size="32.0" />
+                  <Font name="System Bold" size="32.0" />
                </font>
             </Label>
-            <Label layoutX="150.0" layoutY="350.0" text="E-mail:" textFill="#ee0b0b">
-               <font>
-                  <Font name="System Bold Italic" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="150.0" layoutY="296.0" prefHeight="54.0" prefWidth="125.0" text="Adresa:" textFill="#ee0b0b">
-               <font>
-                  <Font name="System Bold Italic" size="23.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" right="20.0" />
-               </padding>
-            </Label>
-            <Label layoutX="150.0" layoutY="242.0" text="Username:" textFill="#ee0b0b">
-               <font>
-                  <Font name="System Bold Italic" size="23.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" right="20.0" />
-               </padding>
-            </Label>
-            <Label fx:id="lbUsername" layoutX="285.0" layoutY="242.0" text="neka adresa" textFill="#ee0b0b">
-               <font>
-                  <Font name="System Bold Italic" size="23.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" right="20.0" />
-               </padding>
-            </Label>
-            <Label fx:id="lbAdresa" layoutX="285.0" layoutY="296.0" text="neka adresa" textFill="#ee0b0b">
-               <font>
-                  <Font name="System Bold Italic" size="23.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" right="20.0" />
-               </padding>
-            </Label>
-            <Label fx:id="lbeMail" layoutX="285.0" layoutY="350.0" text="neka adresa" textFill="#ee0b0b">
-               <font>
-                  <Font name="System Bold Italic" size="23.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" right="20.0" />
-               </padding>
-            </Label>
-            <ImageView fitHeight="39.0" fitWidth="32.0" layoutX="735.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../styles/images/editProfil.png" />
-               </image>
-            </ImageView>
+            <VBox layoutX="102.0" layoutY="242.0" spacing="20.0">
+               <children>
+                  <Label fx:id="lbImePrezime" stylesheets="@../styles/style.css" text="Ime i prezime" textFill="#ee0b0b">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbAdresa" stylesheets="@../styles/style.css" text="Adresa" textFill="#ee0b0b">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbEmail" stylesheets="@../styles/style.css" text="E-mail" textFill="#ee0b0b">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="549.0" layoutY="236.0" spacing="20.0" stylesheets="@../styles/style.css">
+               <children>
+                  <Button fx:id="btIzmena" mnemonicParsing="false" text="Izmena profila" />
+                  <Button fx:id="btZelje" mnemonicParsing="false" prefWidth="131.0" text="Lista želja" />
+                  <Button fx:id="btNarudzbine" mnemonicParsing="false" prefWidth="131.0" text="Narudžbine" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>
