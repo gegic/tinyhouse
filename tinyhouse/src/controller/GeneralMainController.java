@@ -39,7 +39,7 @@ public class GeneralMainController extends Controller {
         this.stage = stage;
     }
 
-    public void setInfo(String id){
+    public void setInfo(Object o){
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
     }

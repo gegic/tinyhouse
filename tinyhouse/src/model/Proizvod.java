@@ -376,4 +376,7 @@ public class Proizvod {
     public void decreaseKolicinaZaOnline(int k){
         kolicinaZaOnline -= k;
     }
+    public void increaseKolicinaZaOnline(int k){
+        kolicinaZaOnline += k;
+    }
 }

@@ -80,6 +80,9 @@ public class Aplikacija {
             p.setTrenutnaCijena(75000, new Date());
             p.setKolicinaZaOnline(4);
             proizvodi.add(p);
+
+            addToKorpa(new StavkaNarudzbine(p.getKolicinaZaOnline(), p.getTrenutnaCijena().getJedinicnaCena(), p));
+            kupovina(k.getKupac().getAdresa(), k.getKupac());
         }
     }
 

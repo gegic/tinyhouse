@@ -44,16 +44,18 @@ public class ProizvodCellController extends ListCell<Proizvod> {
 
     private FXMLLoader mLLoader;
 
+    private Proizvod p;
+
     @FXML
     public void brisanje(ActionEvent e){
         DeleteProizvodController c = new DeleteProizvodController();
-        SceneSwitcher.switchScene(c, "../view/delete_proizvod_view.fxml", lb_id_proizvoda.getText());
+        SceneSwitcher.switchScene(c, "../view/delete_proizvod_view.fxml", this.p);
     }
 
     @FXML
     public void izmena(ActionEvent e) {
         ModifyProizvodController c = new ModifyProizvodController();
-        SceneSwitcher.switchScene(c, "../view/modify_proizvod_view.fxml", true, lb_id_proizvoda.getText());
+        SceneSwitcher.switchScene(c, "../view/modify_proizvod_view.fxml", true, this.p);
     }
 
     @FXML
@@ -119,7 +121,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
                 }
 
             }
-
+            this.p = p;
             lb_id_proizvoda.setText(String.valueOf(p.getId()));
             lb_naziv.setText(p.getNaziv());
             int kolicina = p.getKolicinaZaOnline();

@@ -14,17 +14,21 @@ public class Odbijena extends StanjeNarudzbine {
         // TODO: implement
     }
 
-    public boolean uspesnoDostavljena() {
+    public void uspesnoDostavljena() {
         // TODO: implement
-        return false;
     }
 
+
     public void entry() {
-        // TODO: implement
+        narudzbina.vracanjeUPromet();
     }
 
     public void kompletiranaNaruzbina() {
         // TODO: implement
     }
 
+    @Override
+    public String toString() {
+        return "Odbijena";
+    }
 }

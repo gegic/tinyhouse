@@ -55,7 +55,8 @@ public class KorpaCellController extends ListCell<StavkaNarudzbine> {
 
     }
 
-    private void setInfo(String newValue){
+    private void setInfo(Object o){
+        String newValue = o.toString();
         if (!newValue.matches("\\d*")) newValue = newValue.replaceAll("[^\\d]", "");
         if(!newValue.equals("")) {
             if (Integer.valueOf(newValue) <= 1) btMinus.setDisable(true);
@@ -110,6 +111,6 @@ public class KorpaCellController extends ListCell<StavkaNarudzbine> {
     public void ukloniIzKorpe(ActionEvent e){
         RemoveKorpaController c = new RemoveKorpaController();
         SceneSwitcher.switchScene(
-                c, "../view/remove_korpa_view.fxml", String.valueOf(stavka.getProizvod().getId()));
+                c, "../view/remove_korpa_view.fxml", stavka);
     }
 }

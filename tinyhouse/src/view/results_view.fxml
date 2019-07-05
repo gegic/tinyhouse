@@ -28,7 +28,7 @@
    <center>
       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" style="-fx-border-width: 1px 0px 0px 1px; -fx-border-color: lightgray;" stylesheets="@../styles/style.css" BorderPane.alignment="CENTER">
          <content>
-            <TilePane fx:id="tilePane" hgap="30.0" prefHeight="539.0" prefWidth="600.0" style="-fx-background-color: white;" tileAlignment="TOP_LEFT" vgap="30.0">
+            <TilePane fx:id="tilePane" hgap="30.0" style="-fx-background-color: white;" tileAlignment="TOP_LEFT" vgap="30.0">
                <padding>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </padding></TilePane>

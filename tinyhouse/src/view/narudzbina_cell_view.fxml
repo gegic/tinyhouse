@@ -6,14 +6,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="box" maxHeight="100.0" prefHeight="100.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="box" maxHeight="100.0" minWidth="768.0" prefHeight="100.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="btPromena" layoutX="598.0" layoutY="31.0" mnemonicParsing="false" onAction="#promenaStanja" stylesheets="@../styles/style.css" text="Promeni stanje" AnchorPane.rightAnchor="20.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Label fx:id="lbIdNarudzbine" layoutX="119.0" layoutY="34.0" style="-fx-text-fill: black;" text="ID" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="34.0">
+      <HBox alignment="CENTER" layoutX="403.0" layoutY="32.0" spacing="10.0" AnchorPane.rightAnchor="112.0">
+         <children>
+            <Button fx:id="btPromena1" layoutX="418.0" layoutY="31.0" maxWidth="120.0" minWidth="120.0" mnemonicParsing="false" onAction="#otkazivanje" prefWidth="120.0" stylesheets="@../styles/style.css" text="Otkazano" AnchorPane.rightAnchor="254.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label fx:id="lbTrenutno" layoutX="532.0" layoutY="37.0" maxHeight="38.0" maxWidth="125.0" minHeight="38.0" minWidth="125.0" prefHeight="38.0" prefWidth="125.0" style="-fx-alignment: center; -fx-border-radius: 15; -fx-border-color: lightgray;" stylesheets="@../styles/style.css" text="Stanje" textAlignment="CENTER" AnchorPane.rightAnchor="116.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btPromena" layoutX="657.0" layoutY="31.0" maxWidth="120.0" minWidth="120.0" mnemonicParsing="false" onAction="#kompletiranje" prefWidth="120.0" stylesheets="@../styles/style.css" text="Kompletiraj" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label fx:id="lbIdNarudzbine" layoutX="98.0" layoutY="34.0" style="-fx-text-fill: black;" text="ID" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="34.0">
          <font>
             <Font size="21.0" />
          </font>
@@ -23,15 +37,16 @@
             <Image url="@../styles/images/ordericon.png" />
          </image>
       </ImageView>
-      <Label fx:id="lbAdresa" layoutX="206.0" layoutY="34.0" style="-fx-text-fill: black;" text="Adresa" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="34.0">
+      <Label fx:id="lbAdresa" layoutX="137.0" layoutY="34.0" style="-fx-text-fill: black;" text="Adresa" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="34.0">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label fx:id="lbCijena" layoutX="347.0" layoutY="34.0" style="-fx-text-fill: black;" text="25000,00 RSD" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="347.0" AnchorPane.topAnchor="34.0">
+      <Label fx:id="lbCijena" layoutX="260.0" layoutY="34.0" style="-fx-text-fill: black;" text="25000,00 RSD" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="34.0">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
+      <Button fx:id="btDetaljno" layoutX="798.0" layoutY="32.0" mnemonicParsing="false" onAction="#detaljno" stylesheets="@../styles/style.css" text="Detaljno" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>

@@ -6,7 +6,7 @@
 package model;
 
 public abstract class StanjeNarudzbine {
-    public Narudzbina narudzbina;
+    protected Narudzbina narudzbina;
 
     public void entry() {
         // TODO: implement
@@ -20,10 +20,10 @@ public abstract class StanjeNarudzbine {
         // TODO: implement
     }
 
-    public boolean uspesnoDostavljena() {
+    public void uspesnoDostavljena() {
         // TODO: implement
-        return false;
     }
+
 
     public void kompletiranaNaruzbina() {
         // TODO: implement
@@ -43,12 +43,11 @@ public abstract class StanjeNarudzbine {
      */
     public void setNarudzbina(Narudzbina newNarudzbina) {
         if (this.narudzbina == null || !this.narudzbina.equals(newNarudzbina)) {
-            if (this.narudzbina != null)
-                this.narudzbina.setTrenutno_stanje(null);
             this.narudzbina = newNarudzbina;
-            if (this.narudzbina != null)
+            if (this.narudzbina != null && this.narudzbina.getTrenutno_stanje() != this)
                 this.narudzbina.setTrenutno_stanje(this);
         }
     }
 
+    public abstract String toString();
 }

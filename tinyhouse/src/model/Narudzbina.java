@@ -25,6 +25,8 @@ public class Narudzbina {
         this.stavke = new ArrayList<>();
         cijena = 0;
         this.kupac = null;
+        setTrenutno_stanje(new Obrada());
+
     }
 
     public Narudzbina(int broj, String adresaIsporuke, List<StavkaNarudzbine> stavke, Kupac kupac){
@@ -35,7 +37,7 @@ public class Narudzbina {
         this.kupac = kupac;
         cijena = 0;
         this.kupac.addNarudzbine(this);
-        this.trenutno_stanje = new Obrada();
+        setTrenutno_stanje(new Obrada());
     }
 
     public Narudzbina(int broj, Date datum, String adresaIsporuke, List<StavkaNarudzbine> stavke, Kupac kupac) {
@@ -45,7 +47,8 @@ public class Narudzbina {
         this.stavke = stavke;
         this.kupac = kupac;
         this.kupac.addNarudzbine(this);
-        this.trenutno_stanje = new Obrada();
+        setTrenutno_stanje(new Obrada());
+
         cijena = 0;
 
     }
@@ -57,7 +60,7 @@ public class Narudzbina {
         this.stavke = stavke;
         this.kupac = kupac;
         this.kupac.addNarudzbine(this);
-        this.trenutno_stanje = new Obrada();
+        setTrenutno_stanje(new Obrada());
     }
 
     public Narudzbina(int broj, Date datum, String adresaIsporuke, List<StavkaNarudzbine> stavke, StanjeNarudzbine trenutno_stanje, Kupac kupac) {
@@ -65,7 +68,7 @@ public class Narudzbina {
         this.datum = datum;
         this.adresaIsporuke = adresaIsporuke;
         this.stavke = stavke;
-        this.trenutno_stanje = trenutno_stanje;
+        setTrenutno_stanje(trenutno_stanje);
         this.kupac = kupac;
         this.kupac.addNarudzbine(this);
     }
@@ -89,27 +92,33 @@ public class Narudzbina {
     }
 
     public void otkazivanjeNarudzbine() {
-        // TODO: implement
+        trenutno_stanje.otkazivanjeNarudzbine();
     }
 
     public void vracanjeNarudzbine() {
-        // TODO: implement
+        trenutno_stanje.vracanjeNarudzbine();
     }
 
-    public boolean uspesnoDostavljena() {
-        // TODO: implement
-        return false;
+    public void uspesnoDostavljena() {
+        trenutno_stanje.uspesnoDostavljena();
     }
+
+    public void vracanjeUPromet(){
+        for(StavkaNarudzbine s : stavke){
+            s.getProizvod().increaseKolicinaZaOnline(s.getNarucenaKolicina());
+        }
+    };
 
     public void kompletiranaNaruzbina() {
-        // TODO: implement
+        trenutno_stanje.kompletiranaNaruzbina();
     }
 
     /**
      * @param s
      */
     public void promijeniStanje(StanjeNarudzbine s) {
-        // TODO: implement
+        setTrenutno_stanje(s);
+        s.entry();
     }
 
 
@@ -197,8 +206,6 @@ public class Narudzbina {
      */
     public void setTrenutno_stanje(StanjeNarudzbine newStanjeNarudzbine) {
         if (this.trenutno_stanje == null || !this.trenutno_stanje.equals(newStanjeNarudzbine)) {
-            if (this.trenutno_stanje != null)
-                this.trenutno_stanje.setNarudzbina(null);
             this.trenutno_stanje = newStanjeNarudzbine;
             if (this.trenutno_stanje != null)
                 this.trenutno_stanje.setNarudzbina(this);

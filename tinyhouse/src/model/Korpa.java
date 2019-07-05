@@ -102,6 +102,6 @@ public class Korpa {
         for(StavkaNarudzbine s : stavkeNarudzbine){
             s.getProizvod().decreaseKolicinaZaOnline(s.getNarucenaKolicina());
         }
-        removeAllStavkaNarudzbine();
+        stavkeNarudzbine = new ArrayList<>();
     }
 }

@@ -145,11 +145,10 @@ public class ModifyProizvodController extends Controller {
     }
 
 
-    public void setInfo(String idProizvoda){
+    public void setInfo(Object o){
         setBoundaries();
-
-        this.tfIdProizvoda.setText(idProizvoda);
-        Proizvod p = model.pronadjiProizvod(Integer.valueOf(tfIdProizvoda.getText()));
+        Proizvod p = (Proizvod) o;
+        this.tfIdProizvoda.setText(String.valueOf(p.getId()));
         tfNaziv.setText(p.getNaziv());
         taOpis.setText(p.getOpis());
         tfCijena.setText(String.valueOf(p.getTrenutnaCijena().getJedinicnaCena()));

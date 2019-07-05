@@ -6,13 +6,14 @@
 package model;
 
 public class Obrada extends StanjeNarudzbine {
-    public boolean uspesnoDostavljena() {
+    public void uspesnoDostavljena() {
         // TODO: implement
-        return false;
     }
 
+
     public void otkazivanjeNarudzbine() {
-        // TODO: implement
+        StanjeNarudzbine odbijena = new Odbijena();
+        this.narudzbina.promijeniStanje(odbijena);
     }
 
     public void vracanjeNarudzbine() {
@@ -24,7 +25,14 @@ public class Obrada extends StanjeNarudzbine {
     }
 
     public void kompletiranaNaruzbina() {
-        // TODO: implement
+        StanjeNarudzbine uTransportu = new UTransportu(); // <<create>>
+        this.narudzbina.obavijesti();
+        this.narudzbina.promijeniStanje(uTransportu);
+
     }
 
+    @Override
+    public String toString() {
+        return "Obrada";
+    }
 }

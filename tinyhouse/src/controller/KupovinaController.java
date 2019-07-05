@@ -123,7 +123,7 @@ public class KupovinaController extends Controller {
         }
     }
 
-    public void setInfo(String id){
+    public void setInfo(Object o){
         lbCena.setText(String.valueOf(model.getTrenutnaKorpa().getUkupnaCijena()));
         cb.selectedProperty().addListener(
             (ObservableValue<? extends Boolean> observableValue, Boolean oldVal, Boolean newVal) ->

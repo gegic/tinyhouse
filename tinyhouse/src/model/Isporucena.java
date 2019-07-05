@@ -14,10 +14,10 @@ public class Isporucena extends StanjeNarudzbine {
         // TODO: implement
     }
 
-    public boolean uspesnoDostavljena() {
+    public void uspesnoDostavljena() {
         // TODO: implement
-        return false;
     }
+
 
     public void entry() {
         // TODO: implement
@@ -27,4 +27,8 @@ public class Isporucena extends StanjeNarudzbine {
         // TODO: implement
     }
 
+    @Override
+    public String toString() {
+        return "Isporučena";
+    }
 }

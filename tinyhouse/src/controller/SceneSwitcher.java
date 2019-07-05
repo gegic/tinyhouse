@@ -18,22 +18,22 @@ public class SceneSwitcher {
         switchScene(c, path, populate, null);
     }
 
-    public static void switchScene(Controller c, String path, String id){
-        switchScene(c, path, false, id);
+    public static void switchScene(Controller c, String path, Object o){
+        switchScene(c, path, false, o);
     }
 
-    public static void switchScene(Controller c, String path, boolean populate, String id){
+    public static void switchScene(Controller c, String path, boolean populate, Object o){
         try {
             FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(path));
             Parent root = loader.load();
 
             c = loader.getController();
             c.setStage(stage);
+            if (o != null){
+                c.setInfo(o);
+            }
             if (populate){
                 c.populate();
-            }
-            if (id != null){
-                c.setInfo(id);
             }
             stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
         } catch(Exception ex){

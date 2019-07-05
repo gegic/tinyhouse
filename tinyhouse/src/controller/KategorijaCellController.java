@@ -19,10 +19,12 @@ public class KategorijaCellController extends ListCell<Kategorija> {
 
     private FXMLLoader mLLoader;
 
+    private Kategorija k;
+
     @FXML
     public void brisanje(ActionEvent e){
         DeleteKategorijaController c = new DeleteKategorijaController();
-        SceneSwitcher.switchScene(c, "../view/delete_kategorija_view.fxml", lbNaziv.getText());
+        SceneSwitcher.switchScene(c, "../view/delete_kategorija_view.fxml", k);
     }
 
     @Override
@@ -42,7 +44,7 @@ public class KategorijaCellController extends ListCell<Kategorija> {
                     e.printStackTrace();
                 }
             }
-
+            this.k = k;
             lbNaziv.setText(k.getNaziv());
             lbPutanja.setText(k.getPutanja());
             setText(null);

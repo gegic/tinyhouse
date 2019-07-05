@@ -107,7 +107,7 @@ public class ProizvodDetailsController extends Controller {
         ivPhoto.setFitWidth(size);
         ivPhoto.setFitHeight(size);
     }
-    public void setInfo(String id){
+    public void setInfo(Object o){
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
         setTextSizes(stage.getWidth());
@@ -126,7 +126,7 @@ public class ProizvodDetailsController extends Controller {
             setTextSizes(stage.getWidth());
             setImageSize(stage.getWidth());
         });
-        proizvod = model.pronadjiProizvod(Integer.valueOf(id));
+        proizvod = (Proizvod) o;
         if(proizvod.getKolicinaZaOnline() == 0){
             updateButton("Nema na stanju");
         }

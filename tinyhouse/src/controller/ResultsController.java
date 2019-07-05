@@ -44,6 +44,7 @@ public class ResultsController extends Controller {
                 TipSortiranja.NAZIV_RASTUCE, TipSortiranja.NAZIV_OPADAJUCE);
         TopBarController tbc = new TopBarController();
         borderPane.setTop(tbc.create());
+        tilePane.prefWidthProperty().bind(scrollPane.widthProperty());
         for(Proizvod p : results){
             ProizvodTileController c = new ProizvodTileController();
             tilePane.getChildren().add(c.create(p));

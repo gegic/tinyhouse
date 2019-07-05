@@ -67,9 +67,9 @@ public class DeleteKategorijaController extends Controller {
     }
 
 
-    public void setInfo(String naziv_kategorije) {
-        k = model.pronadjiKategoriju(naziv_kategorije);
-        lbNazivKategorije.setText(naziv_kategorije);
+    public void setInfo(Object o) {
+        k = (Kategorija) o;
+        lbNazivKategorije.setText(k.getNaziv());
         lbPutanja.setText(k.getPutanja());
 
         if(!k.getPotkategorije().isEmpty() || !k.getProizvodi().isEmpty()){

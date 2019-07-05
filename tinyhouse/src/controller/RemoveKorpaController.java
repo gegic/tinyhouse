@@ -62,9 +62,9 @@ public class RemoveKorpaController extends Controller {
         this.stage = stage;
     }
 
-    public void setInfo(String idProizvoda) {
+    public void setInfo(Object o) {
+        stavka = (StavkaNarudzbine) o;
         setSizes(stage.getWidth());
-        stavka = model.pronadjiIzKorpe(idProizvoda);
         this.lbNazivProizvoda.setText(stavka.getProizvod().getNaziv());
         stage.widthProperty().addListener(
                 (ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) ->

@@ -60,10 +60,9 @@ public class DeleteProizvodController extends Controller {
         this.stage = stage;
     }
 
-    public void setInfo(String idProizvoda) {
-        int id = Integer.valueOf(idProizvoda);
-        this.lbIdProizvoda.setText(idProizvoda);
-        Proizvod p = model.pronadjiProizvod(id);
+    public void setInfo(Object o) {
+        Proizvod p = (Proizvod) o;
+        this.lbIdProizvoda.setText(String.valueOf(p.getId()));
         this.lbNaziv.setText(p.getNaziv());
     }
 }
