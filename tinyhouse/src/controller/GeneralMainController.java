@@ -43,4 +43,10 @@ public class GeneralMainController extends Controller {
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
     }
+
+    @FXML
+    public void prodavnice(ActionEvent e) {
+        KorisnikStoresController c = new KorisnikStoresController();
+        SceneSwitcher.switchScene(c, "../view/korisnik_stores_view.fxml",true);
+    }
 }

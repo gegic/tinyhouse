@@ -2,7 +2,7 @@ package controller;
 
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
+
 
 public abstract class Controller {
     protected Stage stage;
