@@ -1,6 +1,8 @@
 package controller;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -26,7 +28,6 @@ public class SceneSwitcher {
         try {
             FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(path));
             Parent root = loader.load();
-
             c = loader.getController();
             c.setStage(stage);
             if (o != null){
@@ -37,7 +38,6 @@ public class SceneSwitcher {
             }
             stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));
         } catch(Exception ex){
-            System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
     }

@@ -130,65 +130,67 @@ public class Proizvod implements Serializable {
         }
     }
 
-    /**
-     * @pdGenerated default getter
-     */
-    public List<Proizvod> getSlicanProizvod() {
+    /** @pdGenerated default getter */
+    public java.util.List<Proizvod> getSlicanProizvod() {
         if (slicanProizvod == null)
-            slicanProizvod = new ArrayList<Proizvod>();
+            slicanProizvod = new java.util.ArrayList<Proizvod>();
         return slicanProizvod;
     }
 
-    /**
-     * @pdGenerated default iterator getter
-     */
+    /** @pdGenerated default iterator getter */
     public java.util.Iterator getIteratorSlicanProizvod() {
         if (slicanProizvod == null)
-            slicanProizvod = new ArrayList<Proizvod>();
+            slicanProizvod = new java.util.ArrayList<Proizvod>();
         return slicanProizvod.iterator();
     }
 
-    /**
-     * @param newSlicanProizvod
-     * @pdGenerated default setter
-     */
-    public void setSlicanProizvod(List<Proizvod> newSlicanProizvod) {
+    /** @pdGenerated default setter
+     * @param newSlicanProizvod */
+    public void setSlicanProizvod(java.util.List<Proizvod> newSlicanProizvod) {
         removeAllSlicanProizvod();
-        for (java.util.Iterator iter = newSlicanProizvod.iterator(); iter.hasNext(); )
-            addSlicanProizvod((Proizvod) iter.next());
+        for (java.util.Iterator iter = newSlicanProizvod.iterator(); iter.hasNext();)
+            addSlicanProizvod((Proizvod)iter.next());
     }
 
-    /**
-     * @param newProizvod
-     * @pdGenerated default add
-     */
+    /** @pdGenerated default add
+     * @param newProizvod */
     public void addSlicanProizvod(Proizvod newProizvod) {
         if (newProizvod == null)
             return;
         if (this.slicanProizvod == null)
-            this.slicanProizvod = new ArrayList<Proizvod>();
+            this.slicanProizvod = new java.util.ArrayList<Proizvod>();
         if (!this.slicanProizvod.contains(newProizvod))
+        {
             this.slicanProizvod.add(newProizvod);
+            newProizvod.addSlicanProizvod(this);
+        }
     }
 
-    /**
-     * @param oldProizvod
-     * @pdGenerated default remove
-     */
+    /** @pdGenerated default remove
+     * @param oldProizvod */
     public void removeSlicanProizvod(Proizvod oldProizvod) {
         if (oldProizvod == null)
             return;
         if (this.slicanProizvod != null)
             if (this.slicanProizvod.contains(oldProizvod))
+            {
                 this.slicanProizvod.remove(oldProizvod);
+                oldProizvod.removeSlicanProizvod(this);
+            }
     }
 
-    /**
-     * @pdGenerated default removeAll
-     */
+    /** @pdGenerated default removeAll */
     public void removeAllSlicanProizvod() {
         if (slicanProizvod != null)
-            slicanProizvod.clear();
+        {
+            Proizvod oldProizvod;
+            for (java.util.Iterator iter = getIteratorSlicanProizvod(); iter.hasNext();)
+            {
+                oldProizvod = (Proizvod)iter.next();
+                iter.remove();
+                oldProizvod.removeSlicanProizvod(this);
+            }
+        }
     }
 
     /**

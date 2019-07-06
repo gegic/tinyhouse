@@ -3,7 +3,6 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -109,9 +108,9 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
     }
 
     private void pregledProizvoda(ActionEvent e){
-        ProizvoduprodavniciController c = new ProizvoduprodavniciController();
+        ProizvoduprodavniciPreporukeController c = new ProizvoduprodavniciPreporukeController();
         Object[] obs = {this.p, this.previous};
-        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_view.fxml", true, obs);
+        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_preporuke_view.fxml", true, obs);
     }
 
     private void karta(ActionEvent e){
@@ -122,7 +121,7 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
 
     @FXML
     public void dodajProizvode(ActionEvent event){
-        ProizvoduprodavniciController c = new ProizvoduprodavniciController();
-        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_view.fxml", true, this.p);
+        ProizvoduprodavniciPreporukeController c = new ProizvoduprodavniciPreporukeController();
+        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_preporuke_view.fxml", true, this.p);
     }
 }

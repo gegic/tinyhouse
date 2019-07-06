@@ -120,6 +120,10 @@ public class Aplikacija implements Serializable{
         return null;
     }
 
+    public void dodavanjeSlicnihProizvoda(ArrayList<Proizvod> proizvodi, Proizvod proizvod){
+        proizvod.setSlicanProizvod(proizvodi);
+    }
+
     public void dodavanjeProizvodaProdavnici(ArrayList<Proizvod> proizvodi, Prodavnica prodavnica){
         prodavnica.setProizvodi(proizvodi);
     }

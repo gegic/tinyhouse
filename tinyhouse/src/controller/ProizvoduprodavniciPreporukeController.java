@@ -20,7 +20,7 @@ import model.TipKorisnika;
 import javax.swing.border.Border;
 import java.util.ArrayList;
 
-public class ProizvoduprodavniciController extends Controller {
+public class ProizvoduprodavniciPreporukeController extends Controller {
 
     @FXML
     private ListView<Proizvod> itemsList;
@@ -35,12 +35,14 @@ public class ProizvoduprodavniciController extends Controller {
 
     private Proizvod previous;
 
-    public ProizvoduprodavniciController(){
+    public ProizvoduprodavniciPreporukeController(){
         this.model = Aplikacija.getInstance();
     }
 
     public void populate(){
-        if(Aplikacija.getInstance().getUlogovani() != null && Aplikacija.getInstance().getUlogovani().getTip() == TipKorisnika.moderator) {
+        if(prodavnica != null &&
+                Aplikacija.getInstance().getUlogovani() != null &&
+                Aplikacija.getInstance().getUlogovani().getTip() == TipKorisnika.moderator) {
             ArrayList<Proizvod> populateList = new ArrayList<>(model.proizvodi);
             ObservableList<Proizvod> observableList = FXCollections.observableList(populateList);
             itemsList.setItems(observableList);
@@ -50,7 +52,7 @@ public class ProizvoduprodavniciController extends Controller {
                     itemsList.getSelectionModel().select(pp);
                 }
             }
-        } else{
+        } else if (prodavnica != null){
             TopBarController c = new TopBarController();
             borderPane.setTop(c.create());
             btPotvrdi.setVisible(false);
@@ -58,6 +60,19 @@ public class ProizvoduprodavniciController extends Controller {
             ObservableList<Proizvod> observableList = FXCollections.observableList(prodavnica.getProizvodi());
             itemsList.setItems(observableList);
             itemsList.setCellFactory(e -> new ProizvodCellController(true));
+        } else{
+            TopBarController c = new TopBarController();
+            borderPane.setTop(c.create());
+            ArrayList<Proizvod> populateList = new ArrayList<>(model.proizvodi);
+            populateList.remove(previous);
+            ObservableList<Proizvod> observableList = FXCollections.observableList(populateList);
+            itemsList.setItems(observableList);
+            itemsList.setCellFactory(e -> new ProizvodCellController(true));
+            for (Proizvod pp : previous.getSlicanProizvod()) {
+                if (populateList.contains(pp)) {
+                    itemsList.getSelectionModel().select(pp);
+                }
+            }
         }
     }
 
@@ -71,11 +86,14 @@ public class ProizvoduprodavniciController extends Controller {
 
     @FXML
     public void povratak(ActionEvent e) {
-        if(Aplikacija.getInstance().getUlogovani() != null && Aplikacija.getInstance().getUlogovani().getTip() == TipKorisnika.moderator) {
+        if(prodavnica != null && Aplikacija.getInstance().getUlogovani() != null && Aplikacija.getInstance().getUlogovani().getTip() == TipKorisnika.moderator) {
             ModeratorStoresController c = new ModeratorStoresController();
             SceneSwitcher.switchScene(c, "../view/moderator_stores_view.fxml", true);
-        } else{
+        } else if (prodavnica != null){
             povratakKorisnik(e);
+        } else{
+            ModeratorItemsController c = new ModeratorItemsController();
+            SceneSwitcher.switchScene(c, "../view/moderator_items_view.fxml", true);
         }
     }
 
@@ -87,14 +105,26 @@ public class ProizvoduprodavniciController extends Controller {
     @FXML
     public void potvrdi(ActionEvent e){
         ArrayList<Proizvod> lp = new ArrayList<>(itemsList.getSelectionModel().getSelectedItems());
-        model.dodavanjeProizvodaProdavnici(lp, prodavnica);
+        if(prodavnica != null) {
+            model.dodavanjeProizvodaProdavnici(lp, prodavnica);
+        } else{
+            model.dodavanjeSlicnihProizvoda(lp, previous);
+        }
         povratak(null);
     }
 
     public void setInfo(Object o){
-        Object[] obs = (Object[]) o;
-        prodavnica = (Prodavnica) obs[0];
-        previous = (Proizvod) obs[1];
+        if(o instanceof Object[]){
+            Object[] obs = (Object[]) o;
+            prodavnica = (Prodavnica) obs[0];
+            previous = (Proizvod) obs[1];
+        } else if(o instanceof Prodavnica){
+            prodavnica = (Prodavnica) o;
+
+        } else{
+            prodavnica = null;
+            previous = (Proizvod) o;
+        }
         itemsList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 

@@ -45,6 +45,9 @@ public class ProizvodCellController extends ListCell<Proizvod> {
     @FXML
     private Button izmeni;
 
+    @FXML
+    private Button btPreporuka;
+
     private FXMLLoader mLLoader;
 
     private Proizvod p;
@@ -142,6 +145,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
                 btUvecaj.setVisible(false);
                 izmeni.setVisible(false);
                 izbrisi.setVisible(false);
+                btPreporuka.setVisible(false);
             } else {
                 int kolicina = p.getKolicinaZaOnline();
                 if (kolicina >= 1000) {
@@ -157,4 +161,9 @@ public class ProizvodCellController extends ListCell<Proizvod> {
 
     }
 
+    @FXML
+    public void dodajPreporuku(ActionEvent e){
+        ProizvoduprodavniciPreporukeController c = new ProizvoduprodavniciPreporukeController();
+        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_preporuke_view.fxml", true, this.p);
+    }
 }

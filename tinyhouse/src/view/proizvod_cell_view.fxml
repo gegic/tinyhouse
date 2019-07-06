@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane fx:id="box" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane fx:id="box" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="izbrisi" layoutX="657.0" layoutY="31.0" mnemonicParsing="false" onAction="#brisanje" stylesheets="@../styles/style.css" text="Izbriši" AnchorPane.rightAnchor="25.0">
          <font>
@@ -42,6 +45,11 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="tfKolicina" layoutX="360.0" layoutY="35.0" onKeyPressed="#enter_uvecanje_kolicine" prefWidth="100.0" promptText="količina" stylesheets="@../styles/style.css" visible="false" AnchorPane.rightAnchor="260.0" />
+      <TextField fx:id="tfKolicina" layoutX="360.0" layoutY="35.0" onKeyPressed="#enter_uvecanje_kolicine" prefWidth="70.0" promptText="količina" stylesheets="@../styles/style.css" visible="false" AnchorPane.rightAnchor="240.0" />
+      <Button id="upper_button" fx:id="btPreporuka" layoutX="324.0" layoutY="31.0" mnemonicParsing="false" onAction="#dodajPreporuku" stylesheets="@../styles/style.css" text="Dodaj preporuku" AnchorPane.rightAnchor="324.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
