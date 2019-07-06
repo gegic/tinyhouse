@@ -5,7 +5,9 @@
  ***********************************************************************/
 package model;
 
-public class StavkaNarudzbine {
+import java.io.Serializable;
+
+public class StavkaNarudzbine implements Serializable {
     private int narucenaKolicina;
     private float jedinicnaCena;
     private float ukupno;

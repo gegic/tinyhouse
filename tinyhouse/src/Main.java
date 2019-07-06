@@ -1,4 +1,5 @@
 import controller.GeneralMainController;
+import controller.Loader;
 import controller.SceneSwitcher;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,8 @@ public class Main extends Application {
         primaryStage.setMinHeight(768);
         primaryStage.setMinWidth(1024);
         primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setOnCloseRequest(e -> {SceneSwitcher.odjava(); Loader.save();});
+
         primaryStage.show();
         c.setInfo(null);
 
@@ -26,6 +29,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        Loader.load();
         launch(args);
     }
 }

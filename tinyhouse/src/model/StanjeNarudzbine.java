@@ -5,7 +5,9 @@
  ***********************************************************************/
 package model;
 
-public abstract class StanjeNarudzbine {
+import java.io.Serializable;
+
+public abstract class StanjeNarudzbine implements Serializable {
     protected Narudzbina narudzbina;
 
     public void entry() {

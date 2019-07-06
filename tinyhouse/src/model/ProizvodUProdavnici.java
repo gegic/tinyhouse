@@ -6,7 +6,9 @@
 
 package model;
 
-public class ProizvodUProdavnici {
+import java.io.Serializable;
+
+public class ProizvodUProdavnici implements Serializable {
     private int fizickaKolicina;
 
     public Prodavnica prodavnica;

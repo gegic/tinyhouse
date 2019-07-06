@@ -5,10 +5,12 @@
  ***********************************************************************/
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cenovnik {
+public class Cenovnik implements Serializable {
+
     private int brojCenovnika;
 
     public List<StavkaCenovnika> stavke;

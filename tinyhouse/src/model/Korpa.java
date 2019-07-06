@@ -4,9 +4,10 @@
  * Purpose: Defines the Class Korpa
  ***********************************************************************/
 package model;
+import java.io.Serializable;
 import java.util.*;
 
-public class Korpa {
+public class Korpa implements Serializable {
     private float ukupnaCijena;
 
     public List<StavkaNarudzbine> stavkeNarudzbine;

@@ -5,11 +5,12 @@
  ***********************************************************************/
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Narudzbina {
+public class Narudzbina implements Serializable {
     private int broj;
     private Date datum;
     private String adresaIsporuke;

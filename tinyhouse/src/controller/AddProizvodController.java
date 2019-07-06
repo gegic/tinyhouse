@@ -42,13 +42,14 @@ public class AddProizvodController extends Controller {
     @FXML private TextField tfCijena;
     @FXML private ComboBox<Kategorija> cbKategorija;
     private Image images[];
-
+    private String[] paths;
     private Stage stage;
     private Aplikacija model;
 
     public AddProizvodController(){
         this.model = Aplikacija.getInstance();
         images = new Image[3];
+        paths = new String[3];
     }
 
     public void populate(){
@@ -86,7 +87,8 @@ public class AddProizvodController extends Controller {
 
         File selectedFile = izbor_slike();
         if(selectedFile != null){
-            images[0] = new Image(selectedFile.toURI().toString());
+            paths[0] = selectedFile.toURI().toString();
+            images[0] = new Image(paths[0]);
             iv1.setImage(images[0]);
             pane2.setDisable(false);
             lbDodaj1.setVisible(false);
@@ -98,6 +100,7 @@ public class AddProizvodController extends Controller {
     public void selectImage2(MouseEvent e){
         if(lbDodaj2.getText().equals("ukloni sliku")){
             images[1] = null;
+            paths[1] = null;
             iv2.setImage(null);
             pane3.setDisable(true);
             lbDodaj2.setStyle("-fx-background-color: transparent");
@@ -105,7 +108,8 @@ public class AddProizvodController extends Controller {
         } else{
             File selectedFile = izbor_slike();
             if(selectedFile != null){
-                images[1] = new Image(selectedFile.toURI().toString());
+                paths[1] = selectedFile.toURI().toString();
+                images[1] = new Image(paths[1]);
                 iv2.setImage(images[1]);
                 pane3.setDisable(false);
                 lbDodaj2.setStyle("-fx-background-color: white");
@@ -118,6 +122,7 @@ public class AddProizvodController extends Controller {
     public void selectImage3(MouseEvent e){
         if(lbDodaj3.getText().equals("ukloni sliku")){
             images[2] = null;
+            paths[2] = null;
             iv3.setImage(null);
             lbDodaj3.setStyle("-fx-background-color: transparent");
             lbDodaj3.setText("dodaj sliku");
@@ -126,7 +131,8 @@ public class AddProizvodController extends Controller {
         } else {
             File selectedFile = izbor_slike();
             if (selectedFile != null) {
-                images[2] = new Image(selectedFile.toURI().toString());
+                paths[2] = selectedFile.toURI().toString();
+                images[2] = new Image(paths[2]);
                 iv3.setImage(images[2]);
                 lbDodaj3.setStyle("-fx-background-color: white");
                 lbDodaj3.setText("ukloni sliku");
@@ -179,7 +185,7 @@ public class AddProizvodController extends Controller {
             float cijena = Float.valueOf(tfCijena.getText());
             Kategorija natKategorija = cbKategorija.getSelectionModel().getSelectedItem();
             if ((message = provera(id, tfNaziv.getText(), taOpis.getText(), images, cijena, natKategorija)).equals("")) {
-                model.dodavanjeProizvoda(id, tfNaziv.getText(), taOpis.getText(), images, cijena, natKategorija);
+                model.dodavanjeProizvoda(id, tfNaziv.getText(), taOpis.getText(), images, paths, cijena, natKategorija);
                 povratak();
             } else {
                 warning.setTextFill(Color.RED);

@@ -5,7 +5,9 @@
  ***********************************************************************/
 package model;
 
-public class Isporucena extends StanjeNarudzbine {
+import java.io.Serializable;
+
+public class Isporucena extends StanjeNarudzbine implements Serializable {
     public void otkazivanjeNarudzbine() {
         // TODO: implement
     }

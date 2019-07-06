@@ -5,9 +5,10 @@
  ***********************************************************************/
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class StavkaCenovnika {
+public class StavkaCenovnika implements Serializable {
     private float jedinicnaCena;
     private Date pocetakVazenja;
     private Date krajVazenja;

@@ -5,7 +5,9 @@
  ***********************************************************************/
 package model;
 
-public class Korisnik {
+import java.io.Serializable;
+
+public class Korisnik implements Serializable {
     private String username;
     private String password;
     private TipKorisnika tip;

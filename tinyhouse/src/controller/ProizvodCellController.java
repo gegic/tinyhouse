@@ -55,7 +55,7 @@ public class ProizvodCellController extends ListCell<Proizvod> {
     @FXML
     public void izmena(ActionEvent e) {
         ModifyProizvodController c = new ModifyProizvodController();
-        SceneSwitcher.switchScene(c, "../view/modify_proizvod_view.fxml", true, this.p);
+        SceneSwitcher.switchScene(c, "../view/modify_proizvod_view.fxml", this.p);
     }
 
     @FXML
