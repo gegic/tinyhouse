@@ -126,6 +126,7 @@ public class TopBarController extends Controller{
             CustomMenuItem cmi = new CustomMenuItem();
             SplitMenuButton smb = new SplitMenuButton();
             smb.setPopupSide(Side.RIGHT);
+            smb.setFocusTraversable(false);
             smb.setText(k.getNaziv());
             smb.setOnAction((e) -> pregledKategorije(k));
             smb.setId("upper_split_button");
@@ -149,6 +150,7 @@ public class TopBarController extends Controller{
                 if(k.getPotkategorije().size() == 0){
                     Button m = new Button(k.getNaziv());
                     m.setId("upper_button");
+                    m.setFocusTraversable(false);
                     m.setOnAction((e) -> pregledKategorije(k));
                     m.getStylesheets().add(getClass().getResource("../styles/style.css").toString());
 
@@ -156,6 +158,8 @@ public class TopBarController extends Controller{
                 } else{
                     SplitMenuButton m = new SplitMenuButton();
                     m.setText(k.getNaziv());
+                    m.setFocusTraversable(false);
+
                     m.setOnAction((e) -> pregledKategorije(k));
                     m.setId("upper_split_button");
                     m.getStylesheets().add(getClass().getResource("../styles/style.css").toString());

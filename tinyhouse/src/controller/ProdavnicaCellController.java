@@ -3,13 +3,12 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
-import model.Aplikacija;
 import model.Prodavnica;
-import model.TipKorisnika;
 
 import java.io.IOException;
 
@@ -30,9 +29,22 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
     @FXML
     private Label adresa;
 
+    @FXML
+    private Button btDodaj;
+
     private Prodavnica p;
 
     private FXMLLoader mLLoader;
+
+    private boolean read_only;
+
+    public ProdavnicaCellController(){
+        read_only = false;
+    }
+
+    public ProdavnicaCellController(boolean read_only){
+        this.read_only = read_only;
+    }
 
     @FXML
     public void brisanje(ActionEvent e){
@@ -67,16 +79,44 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
 
             }
             this.p = p;
-            id_prodavnice.setText(String.valueOf(p.getIdProdavnice()));
-            adresa.setText(String.valueOf(p.getAdresa()));
-            if(Aplikacija.getInstance().getUlogovani().getTip() == TipKorisnika.moderator){
-                izbrisi.setVisible(true);
-                izmeni.setVisible(true);
-            }
+            setButtons();
             setText(null);
             setGraphic(box);
         }
 
     }
 
+    private void setButtons() {
+        id_prodavnice.setText(String.valueOf(p.getIdProdavnice()));
+        adresa.setText(String.valueOf(p.getAdresa()));
+        if (read_only) {
+            izbrisi.setText("Pronađi na karti");
+            izbrisi.setOnAction(this::karta);
+            btDodaj.setText("Pregledaj proizvode");
+            btDodaj.setOnAction(this::pregledProizvoda);
+            izbrisi.setVisible(true);
+            btDodaj.setVisible(true);
+
+        } else {
+            izbrisi.setVisible(true);
+            izmeni.setVisible(true);
+            btDodaj.setVisible(true);
+        }
+    }
+
+    private void pregledProizvoda(ActionEvent e){
+        ProizvoduprodavniciController c = new ProizvoduprodavniciController();
+        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_view.fxml", true, this.p);
+    }
+
+    private void karta(ActionEvent e){
+        KartaController c = new KartaController();
+        SceneSwitcher.switchScene(c, "../view/karta_view.fxml", this.p);
+    }
+
+    @FXML
+    public void dodajProizvode(ActionEvent event){
+        ProizvoduprodavniciController c = new ProizvoduprodavniciController();
+        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_view.fxml", true, this.p);
+    }
 }

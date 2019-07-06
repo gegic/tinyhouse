@@ -57,6 +57,8 @@ public class NarudzbinaDetailsController extends Controller {
         lbTrenutno.setText(this.narudzbina.getTrenutno_stanje().toString());
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
+        FooterController fc = new FooterController();
+ borderPane.setBottom(fc.create());
     }
 
     public Stage getStage() {

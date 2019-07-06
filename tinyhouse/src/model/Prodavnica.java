@@ -6,16 +6,15 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Prodavnica implements Serializable {
     private int idProdavnice;
-    private float geoSirina;
-    private float geoDuzina;
+    private double geoSirina;
+    private double geoDuzina;
     private String adresa;
 
-    public List<ProizvodUProdavnici> proizvodi;
+    private List<Proizvod> proizvodi;
 
     public Prodavnica() {
         this.idProdavnice = -1;
@@ -31,97 +30,76 @@ public class Prodavnica implements Serializable {
         geoSirina = 0;
     }
 
-    public Prodavnica(int idProdavnice, String adresa, float geoSirina, float geoDuzina) {
+    public Prodavnica(int idProdavnice, String adresa, double geoSirina, double geoDuzina) {
         this.idProdavnice = idProdavnice;
         this.geoSirina = geoSirina;
         this.geoDuzina = geoDuzina;
         this.adresa = adresa;
     }
 
-    /**
-     * @param p
-     * @param kolicina
-     */
-    public void dodajProizvod(Proizvod p, int kolicina) {
+    public void dodajProizvod(Proizvod p) {
         // TODO: implement
     }
 
-    /**
-     * @param p
-     * @param kolicina
-     */
-    public void izmeniKolicinu(Proizvod p, int kolicina) {
-        // TODO: implement
-    }
-
-
-    /**
-     * @pdGenerated default getter
-     */
-    public List<ProizvodUProdavnici> getProizvodi() {
+    /** @pdGenerated default getter */
+    public java.util.List<Proizvod> getProizvodi() {
         if (proizvodi == null)
-            proizvodi = new ArrayList<ProizvodUProdavnici>();
+            proizvodi = new java.util.ArrayList<Proizvod>();
         return proizvodi;
     }
 
-    /**
-     * @pdGenerated default iterator getter
-     */
+    /** @pdGenerated default iterator getter */
     public java.util.Iterator getIteratorProizvodi() {
         if (proizvodi == null)
-            proizvodi = new ArrayList<ProizvodUProdavnici>();
+            proizvodi = new java.util.ArrayList<Proizvod>();
         return proizvodi.iterator();
     }
 
-    /**
-     * @param newProizvodi
-     * @pdGenerated default setter
-     */
-    public void setProizvodi(List<ProizvodUProdavnici> newProizvodi) {
+    /** @pdGenerated default setter
+     * @param newProizvodi */
+    public void setProizvodi(java.util.List<Proizvod> newProizvodi) {
         removeAllProizvodi();
-        for (java.util.Iterator iter = newProizvodi.iterator(); iter.hasNext(); )
-            addProizvodi((ProizvodUProdavnici) iter.next());
+        for (java.util.Iterator iter = newProizvodi.iterator(); iter.hasNext();)
+            addProizvodi((Proizvod)iter.next());
     }
 
-    /**
-     * @param newProizvodUProdavnici
-     * @pdGenerated default add
-     */
-    public void addProizvodi(ProizvodUProdavnici newProizvodUProdavnici) {
-        if (newProizvodUProdavnici == null)
+    /** @pdGenerated default add
+     * @param newProizvod */
+    public void addProizvodi(Proizvod newProizvod) {
+        if (newProizvod == null)
             return;
         if (this.proizvodi == null)
-            this.proizvodi = new ArrayList<ProizvodUProdavnici>();
-        if (!this.proizvodi.contains(newProizvodUProdavnici)) {
-            this.proizvodi.add(newProizvodUProdavnici);
-            newProizvodUProdavnici.setProdavnica(this);
+            this.proizvodi = new java.util.ArrayList<Proizvod>();
+        if (!this.proizvodi.contains(newProizvod))
+        {
+            this.proizvodi.add(newProizvod);
+            newProizvod.addProdavnice(this);
         }
     }
 
-    /**
-     * @param oldProizvodUProdavnici
-     * @pdGenerated default remove
-     */
-    public void removeProizvodi(ProizvodUProdavnici oldProizvodUProdavnici) {
-        if (oldProizvodUProdavnici == null)
+    /** @pdGenerated default remove
+     * @param oldProizvod */
+    public void removeProizvodi(Proizvod oldProizvod) {
+        if (oldProizvod == null)
             return;
         if (this.proizvodi != null)
-            if (this.proizvodi.contains(oldProizvodUProdavnici)) {
-                this.proizvodi.remove(oldProizvodUProdavnici);
-                oldProizvodUProdavnici.setProdavnica((Prodavnica) null);
+            if (this.proizvodi.contains(oldProizvod))
+            {
+                this.proizvodi.remove(oldProizvod);
+                oldProizvod.removeProdavnice(this);
             }
     }
 
-    /**
-     * @pdGenerated default removeAll
-     */
+    /** @pdGenerated default removeAll */
     public void removeAllProizvodi() {
-        if (proizvodi != null) {
-            ProizvodUProdavnici oldProizvodUProdavnici;
-            for (java.util.Iterator iter = getIteratorProizvodi(); iter.hasNext(); ) {
-                oldProizvodUProdavnici = (ProizvodUProdavnici) iter.next();
+        if (proizvodi != null)
+        {
+            Proizvod oldProizvod;
+            for (java.util.Iterator iter = getIteratorProizvodi(); iter.hasNext();)
+            {
+                oldProizvod = (Proizvod)iter.next();
                 iter.remove();
-                oldProizvodUProdavnici.setProdavnica((Prodavnica) null);
+                oldProizvod.removeProdavnice(this);
             }
         }
     }
@@ -134,19 +112,19 @@ public class Prodavnica implements Serializable {
         this.idProdavnice = idProdavnice;
     }
 
-    public float getGeoSirina() {
+    public double getGeoSirina() {
         return geoSirina;
     }
 
-    public void setGeoSirina(float geoSirina) {
+    public void setGeoSirina(double geoSirina) {
         this.geoSirina = geoSirina;
     }
 
-    public float getGeoDuzina() {
+    public double getGeoDuzina() {
         return geoDuzina;
     }
 
-    public void setGeoDuzina(float geoDuzina) {
+    public void setGeoDuzina(double geoDuzina) {
         this.geoDuzina = geoDuzina;
     }
 

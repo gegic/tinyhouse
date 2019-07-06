@@ -42,11 +42,9 @@ public class GeneralMainController extends Controller {
     public void setInfo(Object o){
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
+        FooterController fc = new FooterController();
+        borderPane.setBottom(fc.create());
     }
 
-    @FXML
-    public void prodavnice(ActionEvent e) {
-        KorisnikStoresController c = new KorisnikStoresController();
-        SceneSwitcher.switchScene(c, "../view/korisnik_stores_view.fxml",true);
-    }
+
 }

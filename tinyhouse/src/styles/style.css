@@ -158,8 +158,9 @@
 
 }
 
-.list-cell:focused{
-    -fx-background-color: transparent;
+#selectable_list .list-cell:selected{
+    -fx-background-color: lightblue;
+    -fx-text-fill: black;
 }
 
 .menu-bar .label {

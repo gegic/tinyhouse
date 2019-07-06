@@ -27,8 +27,9 @@ public class Proizvod implements Serializable {
     private Kategorija kategorija;
     private int kolicinaZaOnline;
 
+    private List<Prodavnica> prodavnice;
+
     public List<Proizvod> slicanProizvod;
-    public List<ProizvodUProdavnici> prodavnice;
     public List<StavkaCenovnika> cijene;
 
     public StavkaCenovnika trenutnaCijena;
@@ -60,8 +61,6 @@ public class Proizvod implements Serializable {
         this.kolicinaZaOnline = 0;
         slike = new Image[3];
         paths = new String[3];
-
-
     }
 
     private void writeObject(java.io.ObjectOutputStream stream)
@@ -87,7 +86,7 @@ public class Proizvod implements Serializable {
         kategorija = (Kategorija) stream.readObject();
         kolicinaZaOnline = stream.readInt();
         slicanProizvod = (List<Proizvod>)stream.readObject();
-        prodavnice = (List<ProizvodUProdavnici>) stream.readObject();
+        prodavnice = (List<Prodavnica>) stream.readObject();
         cijene = (List<StavkaCenovnika>) stream.readObject();
         trenutnaCijena = (StavkaCenovnika) stream.readObject();
 
@@ -195,77 +194,6 @@ public class Proizvod implements Serializable {
     /**
      * @pdGenerated default getter
      */
-    public List<ProizvodUProdavnici> getProdavnice() {
-        if (prodavnice == null)
-            prodavnice = new ArrayList<ProizvodUProdavnici>();
-        return prodavnice;
-    }
-
-    /**
-     * @pdGenerated default iterator getter
-     */
-    public java.util.Iterator getIteratorProdavnice() {
-        if (prodavnice == null)
-            prodavnice = new ArrayList<ProizvodUProdavnici>();
-        return prodavnice.iterator();
-    }
-
-    /**
-     * @param newProdavnice
-     * @pdGenerated default setter
-     */
-    public void setProdavnice(List<ProizvodUProdavnici> newProdavnice) {
-        removeAllProdavnice();
-        for (java.util.Iterator iter = newProdavnice.iterator(); iter.hasNext(); )
-            addProdavnice((ProizvodUProdavnici) iter.next());
-    }
-
-    /**
-     * @param newProizvodUProdavnici
-     * @pdGenerated default add
-     */
-    public void addProdavnice(ProizvodUProdavnici newProizvodUProdavnici) {
-        if (newProizvodUProdavnici == null)
-            return;
-        if (this.prodavnice == null)
-            this.prodavnice = new ArrayList<ProizvodUProdavnici>();
-        if (!this.prodavnice.contains(newProizvodUProdavnici)) {
-            this.prodavnice.add(newProizvodUProdavnici);
-            newProizvodUProdavnici.setProizvod(this);
-        }
-    }
-
-    /**
-     * @param oldProizvodUProdavnici
-     * @pdGenerated default remove
-     */
-    public void removeProdavnice(ProizvodUProdavnici oldProizvodUProdavnici) {
-        if (oldProizvodUProdavnici == null)
-            return;
-        if (this.prodavnice != null)
-            if (this.prodavnice.contains(oldProizvodUProdavnici)) {
-                this.prodavnice.remove(oldProizvodUProdavnici);
-                oldProizvodUProdavnici.setProizvod((Proizvod) null);
-            }
-    }
-
-    /**
-     * @pdGenerated default removeAll
-     */
-    public void removeAllProdavnice() {
-        if (prodavnice != null) {
-            ProizvodUProdavnici oldProizvodUProdavnici;
-            for (java.util.Iterator iter = getIteratorProdavnice(); iter.hasNext(); ) {
-                oldProizvodUProdavnici = (ProizvodUProdavnici) iter.next();
-                iter.remove();
-                oldProizvodUProdavnici.setProizvod((Proizvod) null);
-            }
-        }
-    }
-
-    /**
-     * @pdGenerated default getter
-     */
     public List<StavkaCenovnika> getCijene() {
         if (cijene == null)
             cijene = new ArrayList<StavkaCenovnika>();
@@ -330,6 +258,68 @@ public class Proizvod implements Serializable {
                 oldStavkaCenovnika = (StavkaCenovnika) iter.next();
                 iter.remove();
                 oldStavkaCenovnika.setProizvod((Proizvod) null);
+            }
+        }
+    }
+
+    /** @pdGenerated default getter */
+    public java.util.List<Prodavnica> getProdavnice() {
+        if (prodavnice == null)
+            prodavnice = new java.util.ArrayList<Prodavnica>();
+        return prodavnice;
+    }
+
+    /** @pdGenerated default iterator getter */
+    public java.util.Iterator getIteratorProdavnice() {
+        if (prodavnice == null)
+            prodavnice = new java.util.ArrayList<Prodavnica>();
+        return prodavnice.iterator();
+    }
+    /** @pdGenerated default setter
+     * @param newProdavnice */
+    public void setProdavnice(java.util.List<Prodavnica> newProdavnice) {
+        removeAllProdavnice();
+        for (java.util.Iterator iter = newProdavnice.iterator(); iter.hasNext();)
+            addProdavnice((Prodavnica)iter.next());
+    }
+
+    /** @pdGenerated default add
+     * @param newProdavnica */
+    public void addProdavnice(Prodavnica newProdavnica) {
+        if (newProdavnica == null)
+            return;
+        if (this.prodavnice == null)
+            this.prodavnice = new java.util.ArrayList<Prodavnica>();
+        if (!this.prodavnice.contains(newProdavnica))
+        {
+            this.prodavnice.add(newProdavnica);
+            newProdavnica.addProizvodi(this);
+        }
+    }
+
+    /** @pdGenerated default remove
+     * @param oldProdavnica */
+    public void removeProdavnice(Prodavnica oldProdavnica) {
+        if (oldProdavnica == null)
+            return;
+        if (this.prodavnice != null)
+            if (this.prodavnice.contains(oldProdavnica))
+            {
+                this.prodavnice.remove(oldProdavnica);
+                oldProdavnica.removeProizvodi(this);
+            }
+    }
+
+    /** @pdGenerated default removeAll */
+    public void removeAllProdavnice() {
+        if (prodavnice != null)
+        {
+            Prodavnica oldProdavnica;
+            for (java.util.Iterator iter = getIteratorProdavnice(); iter.hasNext();)
+            {
+                oldProdavnica = (Prodavnica)iter.next();
+                iter.remove();
+                oldProdavnica.removeProizvodi(this);
             }
         }
     }

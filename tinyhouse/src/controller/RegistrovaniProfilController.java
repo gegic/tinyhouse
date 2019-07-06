@@ -26,6 +26,8 @@ public class RegistrovaniProfilController extends Controller {
     public void setInfo(Object o){
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
+        FooterController fc = new FooterController();
+ borderPane.setBottom(fc.create());
         if(ulogovani.getTip()== TipKorisnika.obican){
             lbImePrezime.setText(ulogovani.getKupac().getPrezime() + " " + ulogovani.getKupac().getIme());
             lbKorisnickoIme.setText(ulogovani.getUsername());

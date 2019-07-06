@@ -42,9 +42,22 @@ public class ProizvodCellController extends ListCell<Proizvod> {
     @FXML
     private Button btUvecaj;
 
+    @FXML
+    private Button izmeni;
+
     private FXMLLoader mLLoader;
 
     private Proizvod p;
+
+    private boolean read_only;
+
+    public ProizvodCellController(){
+        read_only = false;
+    }
+
+    public ProizvodCellController(boolean read_only){
+        this.read_only = read_only;
+    }
 
     @FXML
     public void brisanje(ActionEvent e){
@@ -124,11 +137,18 @@ public class ProizvodCellController extends ListCell<Proizvod> {
             this.p = p;
             lb_id_proizvoda.setText(String.valueOf(p.getId()));
             lb_naziv.setText(p.getNaziv());
-            int kolicina = p.getKolicinaZaOnline();
-            if(kolicina >= 1000){
-                lb_kolicina.setText("...");
-            }else {
-                lb_kolicina.setText(String.valueOf(kolicina));
+            if(read_only){
+                lb_kolicina.setVisible(false);
+                btUvecaj.setVisible(false);
+                izmeni.setVisible(false);
+                izbrisi.setVisible(false);
+            } else {
+                int kolicina = p.getKolicinaZaOnline();
+                if (kolicina >= 1000) {
+                    lb_kolicina.setText("...");
+                } else {
+                    lb_kolicina.setText(String.valueOf(kolicina));
+                }
             }
             icon.setImage(p.getSlike()[0]);
             setText(null);

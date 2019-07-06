@@ -77,7 +77,7 @@ public class Aplikacija implements Serializable{
             Kategorija kuhinja = new Kategorija("Kuhinja");
             Kategorija kolica = new Kategorija("Kolica", kuhinja);
             Kategorija d = new Kategorija("Na struju", kolica);
-            prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45, 18));
+            prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45.2597, 19.83562));
             kategorije.add(kuhinja);
             kategorije.add(kolica);
             kategorije.add(d);
@@ -118,6 +118,10 @@ public class Aplikacija implements Serializable{
             }
         }
         return null;
+    }
+
+    public void dodavanjeProizvodaProdavnici(ArrayList<Proizvod> proizvodi, Prodavnica prodavnica){
+        prodavnica.setProizvodi(proizvodi);
     }
 
     public void brisanjeKategorije(Kategorija k){

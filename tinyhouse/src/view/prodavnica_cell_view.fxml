@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="box" prefHeight="161.0" prefWidth="713.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="box" prefHeight="98.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="izbrisi" layoutX="616.0" layoutY="27.0" mnemonicParsing="false" onAction="#brisanje" stylesheets="@../styles/style.css" text="Izbriši" visible="false" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="27.0">
+      <Button fx:id="izbrisi" layoutX="616.0" layoutY="30.0" mnemonicParsing="false" onAction="#brisanje" stylesheets="@../styles/style.css" text="Izbriši" visible="false" AnchorPane.rightAnchor="45.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Label fx:id="id_prodavnice" layoutX="151.0" layoutY="34.0" style="-fx-text-fill: black;" text="IDProdavnice" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="34.0">
+      <Label fx:id="id_prodavnice" layoutX="151.0" layoutY="34.0" style="-fx-text-fill: black;" text="ID" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="34.0">
          <font>
             <Font size="21.0" />
          </font>
@@ -28,12 +28,17 @@
             <Image url="@../styles/images/storeicon.png" />
          </image>
       </ImageView>
-      <Label fx:id="adresa" layoutX="314.0" layoutY="34.0" style="-fx-text-fill: black;" text="Adresa" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="314.0" AnchorPane.topAnchor="34.0">
+      <Label fx:id="adresa" layoutX="314.0" layoutY="34.0" style="-fx-text-fill: black;" text="Adresa" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="34.0">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Button id="upper_button" fx:id="izmeni" layoutX="541.0" layoutY="28.0" mnemonicParsing="false" onAction="#izmena" stylesheets="@../styles/style.css" text="Izmeni" visible="false" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="27.0">
+      <Button id="upper_button" fx:id="izmeni" layoutX="541.0" layoutY="30.0" mnemonicParsing="false" onAction="#izmena" stylesheets="@../styles/style.css" text="Izmeni" visible="false" AnchorPane.rightAnchor="135.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button id="upper_button" fx:id="btDodaj" layoutX="341.0" layoutY="30.0" mnemonicParsing="false" onAction="#dodajProizvode" stylesheets="@../styles/style.css" text="Dodaj proizvode" visible="false" AnchorPane.rightAnchor="220.0">
          <font>
             <Font size="20.0" />
          </font>

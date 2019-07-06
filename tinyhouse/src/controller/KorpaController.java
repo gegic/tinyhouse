@@ -64,6 +64,8 @@ public class KorpaController extends Controller {
         lbUkupno.setText(model.getTrenutnaKorpa().getUkupnaCijena() + " RSD");
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
+        FooterController fc = new FooterController();
+ borderPane.setBottom(fc.create());
     }
 
     public Stage getStage() {

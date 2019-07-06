@@ -110,6 +110,8 @@ public class ProizvodDetailsController extends Controller {
     public void setInfo(Object o){
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
+        FooterController fc = new FooterController();
+        borderPane.setBottom(fc.create());
         setTextSizes(stage.getWidth());
         setImageSize(stage.getHeight());
         stage.widthProperty().addListener(
@@ -148,6 +150,12 @@ public class ProizvodDetailsController extends Controller {
             hbox3.setDisable(false);
         }
 
+    }
+
+    @FXML
+    public void pogledajUzivo(ActionEvent e){
+        KorisnikStoresController c = new KorisnikStoresController();
+        SceneSwitcher.switchScene(c, "../view/korisnik_stores_view.fxml", true, proizvod);
     }
 
     private void updateButton(String text){
