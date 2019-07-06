@@ -57,4 +57,10 @@ public class RegistrovaniProfilController extends Controller {
             SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml");
         }
     }
+
+    @FXML
+    public void izmeni(){
+        EditProfilController c = new EditProfilController();
+        SceneSwitcher.switchScene(c, "../view/edit_profil_view.fxml");
+    }
 }
