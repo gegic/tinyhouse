@@ -65,22 +65,15 @@ public class ResultsController extends Controller {
                 TipSortiranja.NAZIV_RASTUCE, TipSortiranja.NAZIV_OPADAJUCE);
         TopBarController tbc = new TopBarController();
         borderPane.setTop(tbc.create());
+        tilePane.prefWidthProperty().bind(scrollPane.widthProperty());
 
+        if (results.size() == 0) {
+            setNoResults();
+        }
 
         for (Proizvod p : results) {
-
-            tilePane.prefWidthProperty().bind(scrollPane.widthProperty());
-            for (Proizvod t : results) {
-
-                ProizvodTileController c = new ProizvodTileController();
-                tilePane.getChildren().add(c.create(p));
-            }
-
-            if (results.size() == 0) {
-                setNoResults();
-            }
-
-
+            ProizvodTileController c = new ProizvodTileController();
+            tilePane.getChildren().add(c.create(p));
         }
     }
         @FXML

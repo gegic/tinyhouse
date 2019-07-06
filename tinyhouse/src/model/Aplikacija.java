@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+public class Aplikacija implements Serializable{
+
     private String nazivAplikacije;
     private Korpa trenutnaKorpa;
     public static Aplikacija instance;
@@ -88,15 +90,15 @@ import java.util.List;
             p.setKolicinaZaOnline(4);
 
             Proizvod p1 = new Proizvod(1, "Fleischwagen", kolica, "Kolica za meso. Najbolja na svijetu");
-            p1.setSlika(i, 0);
-            p1.setSlika(i2, 1);
+            p1.setSlika(i, "/styles/images/kasewagen.jpg",0);
+            p1.setSlika(i2, "/styles/images/sporet.jpg", 1);
             p1.setTrenutnaCijena(25000, new Date());
             p1.setKolicinaZaOnline(3);
             proizvodi.add(p1);
 
             Proizvod p2 = new Proizvod(1, "Zuckiniwagen", kolica, "Kolica za meso. Najbolja na svijetu");
-            p2.setSlika(i, 0);
-            p2.setSlika(i2, 1);
+            p2.setSlika(i, "/styles/images/kasewagen.jpg", 0);
+            p2.setSlika(i2, "/styles/images/sporet.jpg", 1);
             p2.setTrenutnaCijena(50000, new Date());
             p2.setKolicinaZaOnline(3);
             proizvodi.add(p2);
@@ -304,6 +306,7 @@ import java.util.List;
      * @param username
      * @param password
      */
+
     public Korisnik prijava(String username, String password) {
         for (Korisnik k : korisnici) {
             if (k.provera_informacija(username.toLowerCase(), password)){
