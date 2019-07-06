@@ -43,6 +43,7 @@ public class ModifyProizvodController extends Controller {
 
     private Image images[];
 
+    private String paths[];
     private Stage stage;
 
     private Aplikacija model;
@@ -88,7 +89,7 @@ public class ModifyProizvodController extends Controller {
             float cijena = Float.valueOf(tfCijena.getText());
             Kategorija selected = cbKategorija.getSelectionModel().getSelectedItem();
             if((message = provera(id, tfNaziv.getText(), taOpis.getText(), images, cijena, selected)).equals("")){
-                model.izmeniProizvod(id, tfNaziv.getText(), taOpis.getText(), images, cijena, selected);
+                model.izmeniProizvod(id, tfNaziv.getText(), taOpis.getText(), images, paths, cijena, selected);
                 povratak();
             }
             else{
@@ -126,11 +127,6 @@ public class ModifyProizvodController extends Controller {
         this.stage = stage;
     }
 
-    public void populate(){
-        ObservableList<Kategorija> observableList = FXCollections.observableList(model.getKategorije());
-        cbKategorija.setItems(observableList);
-    }
-
     private void setBoundaries(){
         tfCijena.textProperty().addListener(
                 (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
@@ -145,16 +141,18 @@ public class ModifyProizvodController extends Controller {
     }
 
 
-    public void setInfo(String idProizvoda){
+    public void setInfo(Object o){
+        Proizvod p = (Proizvod) o;
+        ObservableList<Kategorija> observableList = FXCollections.observableList(model.getKategorije());
+        cbKategorija.setItems(observableList);
         setBoundaries();
-
-        this.tfIdProizvoda.setText(idProizvoda);
-        Proizvod p = model.pronadjiProizvod(Integer.valueOf(tfIdProizvoda.getText()));
+        this.tfIdProizvoda.setText(String.valueOf(p.getId()));
         tfNaziv.setText(p.getNaziv());
         taOpis.setText(p.getOpis());
         tfCijena.setText(String.valueOf(p.getTrenutnaCijena().getJedinicnaCena()));
         cbKategorija.getSelectionModel().select(p.getKategorija());
         images = p.getSlike();
+        paths = p.getPaths();
         if(images[0] != null){
             iv1.setImage(images[0]);
             pane2.setDisable(false);
@@ -183,7 +181,8 @@ public class ModifyProizvodController extends Controller {
 
         File selectedFile = izbor_slike();
         if(selectedFile != null){
-            images[0] = new Image(selectedFile.toURI().toString());
+            paths[0] = selectedFile.toURI().toString();
+            images[0] = new Image(paths[0]);
             iv1.setImage(images[0]);
             pane2.setDisable(false);
             lbDodaj1.setVisible(false);
@@ -195,6 +194,7 @@ public class ModifyProizvodController extends Controller {
     public void selectImage2(MouseEvent e){
         if(lbDodaj2.getText().equals("ukloni sliku")){
             images[1] = null;
+            paths[1] = null;
             iv2.setImage(null);
             pane3.setDisable(true);
             lbDodaj2.setStyle("-fx-background-color: transparent");
@@ -202,7 +202,8 @@ public class ModifyProizvodController extends Controller {
         } else{
             File selectedFile = izbor_slike();
             if(selectedFile != null){
-                images[1] = new Image(selectedFile.toURI().toString());
+                paths[1] = selectedFile.toURI().toString();
+                images[1] = new Image(paths[1]);
                 iv2.setImage(images[1]);
                 pane3.setDisable(false);
                 lbDodaj2.setStyle("-fx-background-color: white");
@@ -215,6 +216,7 @@ public class ModifyProizvodController extends Controller {
     public void selectImage3(MouseEvent e){
         if(lbDodaj3.getText().equals("ukloni sliku")){
             images[2] = null;
+            paths[2] = null;
             iv3.setImage(null);
             lbDodaj3.setStyle("-fx-background-color: transparent");
             lbDodaj3.setText("dodaj sliku");
@@ -223,7 +225,8 @@ public class ModifyProizvodController extends Controller {
         } else {
             File selectedFile = izbor_slike();
             if (selectedFile != null) {
-                images[2] = new Image(selectedFile.toURI().toString());
+                paths[2] = selectedFile.toURI().toString();
+                images[2] = new Image(paths[2]);
                 iv3.setImage(images[2]);
                 lbDodaj3.setStyle("-fx-background-color: white");
                 lbDodaj3.setText("ukloni sliku");

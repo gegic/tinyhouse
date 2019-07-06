@@ -5,10 +5,11 @@
  ***********************************************************************/
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Kupac {
+public class Kupac implements Serializable {
     private String ime;
     private String prezime;
     private String adresa;

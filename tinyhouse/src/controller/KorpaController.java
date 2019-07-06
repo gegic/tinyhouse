@@ -60,7 +60,7 @@ public class KorpaController extends Controller {
     }
 
 
-    public void setInfo(String id){
+    public void setInfo(Object o){
         lbUkupno.setText(model.getTrenutnaKorpa().getUkupnaCijena() + " RSD");
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());

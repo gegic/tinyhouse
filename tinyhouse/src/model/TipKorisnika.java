@@ -5,7 +5,9 @@
  ***********************************************************************/
 package model;
 
-public enum TipKorisnika {
+import java.io.Serializable;
+
+public enum TipKorisnika implements Serializable {
     obican,
     moderator,
     admin;

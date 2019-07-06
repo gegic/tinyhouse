@@ -24,12 +24,67 @@ public class NarudzbinaCellController extends ListCell<Narudzbina> {
     @FXML private Label lbAdresa;
     @FXML private Label lbCijena;
     @FXML private AnchorPane box;
+    @FXML private Button btPromena;
+    @FXML private Button btPromena1;
+    @FXML private Label lbTrenutno;
+    private Narudzbina narudzbina;
 
     private FXMLLoader mLLoader;
 
     @FXML
-    public void promenaStanja(ActionEvent e){
+    public void kompletiranje(ActionEvent e){
+        narudzbina.kompletiranaNaruzbina();
+        btPromena.setOnAction(this::dostavljeno);
+        btPromena.setText("Dostavljeno");
+        btPromena1.setOnAction(this::vracanje);
+        btPromena1.setText("Vraćanje");
+        lbTrenutno.setText(narudzbina.getTrenutno_stanje().toString());
+    }
 
+    @FXML
+    public void otkazivanje(ActionEvent e){
+        narudzbina.otkazivanjeNarudzbine();
+        btPromena1.setVisible(false);
+        btPromena.setVisible(false);
+        lbTrenutno.setText(narudzbina.getTrenutno_stanje().toString());
+    }
+
+    public void vracanje(ActionEvent e){
+        narudzbina.vracanjeNarudzbine();
+        btPromena.setVisible(false);
+        btPromena1.setVisible(false);
+        lbTrenutno.setText(narudzbina.getTrenutno_stanje().toString());
+    }
+
+    @FXML
+    public void dostavljeno(ActionEvent e){
+        narudzbina.uspesnoDostavljena();
+        btPromena.setOnAction(this::vracanje);
+        btPromena.setText("Vraćanje");
+        btPromena1.setVisible(false);
+        lbTrenutno.setText(narudzbina.getTrenutno_stanje().toString());
+    }
+
+    private void setButtons(){
+        switch(narudzbina.getTrenutno_stanje().toString()){
+            case "Odbijena":
+                btPromena1.setVisible(false);
+                btPromena.setVisible(false);
+                break;
+            case "Isporučena":
+                btPromena.setOnAction(this::vracanje);
+                btPromena.setText("Vraćanje");
+                btPromena1.setVisible(false);
+                break;
+            case "U transportu":
+                btPromena.setOnAction(this::dostavljeno);
+                btPromena.setText("Dostavljeno");
+                btPromena1.setOnAction(this::vracanje);
+                btPromena1.setText("Vraćanje");
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -49,7 +104,9 @@ public class NarudzbinaCellController extends ListCell<Narudzbina> {
                     e.printStackTrace();
                 }
             }
-
+            narudzbina = n;
+            lbTrenutno.setText(narudzbina.getTrenutno_stanje().toString());
+            setButtons();
             lbIdNarudzbine.setText(String.valueOf(n.getBroj()));
             lbAdresa.setText(n.getAdresaIsporuke());
             lbCijena.setText(String.valueOf(n.getCijena()));
@@ -59,5 +116,10 @@ public class NarudzbinaCellController extends ListCell<Narudzbina> {
 
     }
 
+    @FXML
+    public void detaljno(ActionEvent e){
+        NarudzbinaDetailsController c = new NarudzbinaDetailsController();
+        SceneSwitcher.switchScene(c, "../view/narudzbina_details_view.fxml", true, narudzbina);
+    }
 
 }

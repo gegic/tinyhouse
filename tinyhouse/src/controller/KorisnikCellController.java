@@ -30,10 +30,12 @@ public class KorisnikCellController extends ListCell<Korisnik> {
 
     private FXMLLoader mLLoader;
 
+    private Korisnik k;
+
     @FXML
     public void brisanje(ActionEvent e){
         DeleteModeratorController c = new DeleteModeratorController();
-        SceneSwitcher.switchScene(c, "../view/delete_moderator_view.fxml", korisnicko_ime.getText());
+        SceneSwitcher.switchScene(c, "../view/delete_moderator_view.fxml", k);
     }
 
     @Override
@@ -56,7 +58,7 @@ public class KorisnikCellController extends ListCell<Korisnik> {
                 }
 
             }
-
+            this.k = k;
             korisnicko_ime.setText(String.valueOf(k.getUsername()));
             if(k.getTip() == TipKorisnika.obican) {
                 Image image = new Image(getClass().getResourceAsStream("/styles/images/usericon.png"));

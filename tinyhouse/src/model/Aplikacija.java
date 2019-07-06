@@ -8,11 +8,11 @@ package model;
 
 import javafx.scene.image.Image;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Aplikacija {
     private String nazivAplikacije;
     private Korpa trenutnaKorpa;
     public static Aplikacija instance;
@@ -47,6 +47,12 @@ public class Aplikacija {
         return instance;
     }
 
+    public static void setInstance(Aplikacija a){
+        if(instance == null){
+            instance = a;
+        }
+    }
+
     public void ukloniIzKorpe(StavkaNarudzbine s){
         trenutnaKorpa.removeStavkaNarudzbine(s);
     }
@@ -59,6 +65,7 @@ public class Aplikacija {
         // TODO: load
 
         if (this.korisnici.isEmpty()) {
+            System.err.println("Serijalizacija nije ucitala korisnike. Možda zbog promena u kodu");
             korisnici.add(new Korisnik("admin", "admin", TipKorisnika.admin));
             korisnici.add(new Korisnik("m", "m", TipKorisnika.moderator));
             Korisnik k = new Korisnik("h", "h", TipKorisnika.obican);
@@ -75,10 +82,11 @@ public class Aplikacija {
             Image i = new Image(getClass().getResourceAsStream("/styles/images/kasewagen.jpg"));
             Image i2 = new Image(getClass().getResourceAsStream("/styles/images/sporet.jpg"));
             Proizvod p = new Proizvod(1, "Kasewagen", kolica, "Kolica za sir. Najbolja na svijetu");
-            p.setSlika(i, 0);
-            p.setSlika(i2, 1);
+            p.setSlika(i, "/styles/images/kasewagen.jpg", 0);
+            p.setSlika(i2, "/styles/images/sporet.jpg",1);
             p.setTrenutnaCijena(75000, new Date());
             p.setKolicinaZaOnline(4);
+
             Proizvod p1 = new Proizvod(1, "Fleischwagen", kolica, "Kolica za meso. Najbolja na svijetu");
             p1.setSlika(i, 0);
             p1.setSlika(i2, 1);
@@ -92,6 +100,12 @@ public class Aplikacija {
             p2.setTrenutnaCijena(50000, new Date());
             p2.setKolicinaZaOnline(3);
             proizvodi.add(p2);
+
+            proizvodi.add(p);
+
+            addToKorpa(new StavkaNarudzbine(p.getKolicinaZaOnline(), p.getTrenutnaCijena().getJedinicnaCena(), p));
+            kupovina(k.getKupac().getAdresa(), k.getKupac());
+
         }
     }
 
@@ -135,12 +149,12 @@ public class Aplikacija {
         return trenutnaKorpa.pronadji(id);
     }
 
-    public void izmeniProizvod(int id, String naziv, String opis, Image[] slike, float cijena, Kategorija k){
+    public void izmeniProizvod(int id, String naziv, String opis, Image[] slike, String[] paths, float cijena, Kategorija k){
         for(Proizvod p : proizvodi){
             if(p.getId() == id){
                 p.setNaziv(naziv);
                 p.setOpis(opis);
-                p.setSlike(slike);
+                p.setSlike(slike, paths);
                 p.setTrenutnaCijena(cijena, new Date());
                 p.setKategorija(k);
                 return;
@@ -164,11 +178,11 @@ public class Aplikacija {
         return false;
     }
 
-    public void dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike, float cijena, Kategorija k){
+    public void dodavanjeProizvoda(int id, String naziv, String opis, Image[] slike, String[] paths, float cijena, Kategorija k){
 
         Proizvod p = new Proizvod(id, naziv, k, opis);
         p.setTrenutnaCijena(cijena, new Date());
-        p.setSlike(slike);
+        p.setSlike(slike, paths);
         proizvodi.add(p);
     }
 

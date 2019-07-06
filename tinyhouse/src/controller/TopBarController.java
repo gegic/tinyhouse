@@ -108,7 +108,7 @@ public class TopBarController extends Controller{
             FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource("../view/results_view.fxml"));
             Parent root = loader.load();
             ResultsController c = loader.getController();
-            c.setList(k.getProizvodi());
+            c.setList(k.getAllProizvodi());
             c.setStage(stage);
             c.populate();
             stage.setScene(new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight()));

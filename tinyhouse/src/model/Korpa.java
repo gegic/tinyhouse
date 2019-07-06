@@ -4,9 +4,10 @@
  * Purpose: Defines the Class Korpa
  ***********************************************************************/
 package model;
+import java.io.Serializable;
 import java.util.*;
 
-public class Korpa {
+public class Korpa implements Serializable {
     private float ukupnaCijena;
 
     public List<StavkaNarudzbine> stavkeNarudzbine;
@@ -102,6 +103,6 @@ public class Korpa {
         for(StavkaNarudzbine s : stavkeNarudzbine){
             s.getProizvod().decreaseKolicinaZaOnline(s.getNarucenaKolicina());
         }
-        removeAllStavkaNarudzbine();
+        stavkeNarudzbine = new ArrayList<>();
     }
 }

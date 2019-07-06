@@ -33,11 +33,14 @@ public class ProizvodTileController{
 
     private String id_proizvoda;
 
+    private Proizvod p;
+
     public ProizvodTileController(){
         model = Aplikacija.getInstance();
     }
 
     public AnchorPane create(Proizvod p){
+        this.p = p;
         id_proizvoda = String.valueOf(p.getId());
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/proizvod_tile_view.fxml"));
@@ -56,7 +59,7 @@ public class ProizvodTileController{
     @FXML
     public void detaljnije() {
         ProizvodDetailsController c = new ProizvodDetailsController();
-        SceneSwitcher.switchScene(c, "../view/proizvod_details_view.fxml", id_proizvoda);
+        SceneSwitcher.switchScene(c, "../view/proizvod_details_view.fxml", p);
     };
 
     @FXML

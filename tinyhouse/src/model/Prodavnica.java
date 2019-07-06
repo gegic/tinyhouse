@@ -5,10 +5,11 @@
  ***********************************************************************/
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Prodavnica {
+public class Prodavnica implements Serializable {
     private int idProdavnice;
     private float geoSirina;
     private float geoDuzina;

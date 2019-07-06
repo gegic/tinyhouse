@@ -40,54 +40,6 @@ public class ResultsController extends Controller {
         results = new ArrayList<>();
     }
 
-    public void populate() {
-        cb.getItems().setAll(
-                TipSortiranja.CIJENA_RASTUCE, TipSortiranja.CIJENA_OPADAJUCE,
-                TipSortiranja.NAZIV_RASTUCE, TipSortiranja.NAZIV_OPADAJUCE);
-        TopBarController tbc = new TopBarController();
-        borderPane.setTop(tbc.create());
-
-
-
-        for (Proizvod p : results) {
-            ProizvodTileController c = new ProizvodTileController();
-            tilePane.getChildren().add(c.create(p));
-        }
-
-        if(results.size() == 0){
-            setNoResults();
-        }
-
-
-    }
-
-    @FXML public void akcija(ActionEvent e){
-        if (cb.getSelectionModel().getSelectedItem()==TipSortiranja.CIJENA_RASTUCE){
-            Collections.sort(results,new ProizvodComparator("price_asc"));
-
-            }
-        else if (cb.getSelectionModel().getSelectedItem()==TipSortiranja.CIJENA_OPADAJUCE){
-            Collections.sort(results,new ProizvodComparator("price_desc"));
-
-
-        }
-
-        else if (cb.getSelectionModel().getSelectedItem()==TipSortiranja.NAZIV_RASTUCE){
-            Collections.sort(results,new ProizvodComparator("name_asc"));
-
-
-        }
-        else if (cb.getSelectionModel().getSelectedItem()==TipSortiranja.NAZIV_OPADAJUCE){
-            Collections.sort(results,new ProizvodComparator("name_desc"));
-
-
-        }
-
-
-
-        }
-
-
 
 
     private void setNoResults() {
@@ -106,6 +58,50 @@ public class ResultsController extends Controller {
         icon.setFitWidth(100);
         tilePane.getChildren().addAll(icon, prazno);
     }
+
+    public void populate() {
+        cb.getItems().setAll(
+                TipSortiranja.CIJENA_RASTUCE, TipSortiranja.CIJENA_OPADAJUCE,
+                TipSortiranja.NAZIV_RASTUCE, TipSortiranja.NAZIV_OPADAJUCE);
+        TopBarController tbc = new TopBarController();
+        borderPane.setTop(tbc.create());
+
+
+        for (Proizvod p : results) {
+
+            tilePane.prefWidthProperty().bind(scrollPane.widthProperty());
+            for (Proizvod t : results) {
+
+                ProizvodTileController c = new ProizvodTileController();
+                tilePane.getChildren().add(c.create(p));
+            }
+
+            if (results.size() == 0) {
+                setNoResults();
+            }
+
+
+        }
+    }
+        @FXML
+        public void akcija(ActionEvent e){
+            if (cb.getSelectionModel().getSelectedItem() == TipSortiranja.CIJENA_RASTUCE) {
+                Collections.sort(results, new ProizvodComparator("price_asc"));
+
+            } else if (cb.getSelectionModel().getSelectedItem() == TipSortiranja.CIJENA_OPADAJUCE) {
+                Collections.sort(results, new ProizvodComparator("price_desc"));
+
+
+            } else if (cb.getSelectionModel().getSelectedItem() == TipSortiranja.NAZIV_RASTUCE) {
+                Collections.sort(results, new ProizvodComparator("name_asc"));
+
+
+            } else if (cb.getSelectionModel().getSelectedItem() == TipSortiranja.NAZIV_OPADAJUCE) {
+                Collections.sort(results, new ProizvodComparator("name_desc"));
+            }
+        }
+
+
 
     @FXML
     public void povratak(ActionEvent e){

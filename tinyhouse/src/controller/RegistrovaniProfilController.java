@@ -23,7 +23,7 @@ public class RegistrovaniProfilController extends Controller {
         ulogovani = Aplikacija.getInstance().getUlogovani();
     }
 
-    public void setInfo(String id){
+    public void setInfo(Object o){
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
         if(ulogovani.getTip()== TipKorisnika.obican){

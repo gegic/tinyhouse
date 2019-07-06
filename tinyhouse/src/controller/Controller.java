@@ -14,6 +14,6 @@ public abstract class Controller {
 
     public void populate(){};
 
-    public void setInfo(String id){};
+    public void setInfo(Object o){};
 
 }

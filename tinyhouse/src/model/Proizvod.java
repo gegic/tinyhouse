@@ -5,18 +5,25 @@
  ***********************************************************************/
 package model;
 
+import com.sun.javafx.fxml.builder.JavaFXImageBuilder;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class Proizvod {
+public class Proizvod implements Serializable {
     private int id;
     private String naziv;
     private String opis;
-    private Image[] slike;
+    private transient Image[] slike;
+    private String[] paths;
     private Kategorija kategorija;
     private int kolicinaZaOnline;
 
@@ -32,6 +39,7 @@ public class Proizvod {
         opis = "";
         kolicinaZaOnline = -1;
         slike = new Image[3];
+        paths = new String[3];
     }
 
     public Proizvod(int id, String naziv, String opis) {
@@ -40,32 +48,78 @@ public class Proizvod {
         this.opis = opis;
         this.kolicinaZaOnline = 0;
         slike = new Image[3];
+        paths = new String[3];
+
     }
 
     public Proizvod(int id, String naziv, Kategorija kategorija, String opis) {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
-        kategorija.addProizvod(this);
+        setKategorija(kategorija);
         this.kolicinaZaOnline = 0;
         slike = new Image[3];
+        paths = new String[3];
+
+
     }
+
+    private void writeObject(java.io.ObjectOutputStream stream)
+            throws IOException {
+        stream.writeInt(id);
+        stream.writeObject(naziv);
+        stream.writeObject(opis);
+        stream.writeObject(paths);
+        stream.writeObject(kategorija);
+        stream.writeInt(kolicinaZaOnline);
+        stream.writeObject(slicanProizvod);
+        stream.writeObject(prodavnice);
+        stream.writeObject(cijene);
+        stream.writeObject(trenutnaCijena);
+    }
+    @SuppressWarnings("unchecked")
+    private void readObject(java.io.ObjectInputStream stream)
+            throws IOException, ClassNotFoundException {
+        id = stream.readInt();
+        naziv = (String) stream.readObject();
+        opis = (String) stream.readObject();
+        paths = (String[]) stream.readObject();
+        kategorija = (Kategorija) stream.readObject();
+        kolicinaZaOnline = stream.readInt();
+        slicanProizvod = (List<Proizvod>)stream.readObject();
+        prodavnice = (List<ProizvodUProdavnici>) stream.readObject();
+        cijene = (List<StavkaCenovnika>) stream.readObject();
+        trenutnaCijena = (StavkaCenovnika) stream.readObject();
+
+
+        if(slike == null){
+            slike = new Image[3];
+        }
+        for(int i = 0; i < paths.length; ++i){
+            if(paths[i] != null) slike[i] = new Image(paths[i]);
+        }
+    }
+
 
     public Kategorija getKategorija() {
         return kategorija;
     }
 
-    public void setKategorija(Kategorija kategorija) {
-        if(this.kategorija != null){
-            kategorija.addProizvod(this);
+    public void setKategorija(Kategorija newKategorija) {
+        if (this.kategorija == null || !this.kategorija.equals(newKategorija))
+        {
+            if (this.kategorija != null)
+            {
+                Kategorija oldKategorija = this.kategorija;
+                this.kategorija = null;
+                oldKategorija.removeProizvodi(this);
+            }
+            if (newKategorija != null)
+            {
+                this.kategorija = newKategorija;
+                this.kategorija.addProizvod(this);
+            }
         }
-    }
-
-    /**
-     * @param kolicina
-     */
-    public void umanjiKolicinu(int kolicina) {
-        // TODO: implement
     }
 
     /**
@@ -76,21 +130,6 @@ public class Proizvod {
             kolicinaZaOnline += kolicina;
         }
     }
-
-    /**
-     * @param kolicina
-     */
-    public void kupljeno(int kolicina) {
-        // TODO: implement
-    }
-
-    /**
-     * @param kolicina
-     */
-    public void restokovano(int kolicina) {
-        // TODO: implement
-    }
-
 
     /**
      * @pdGenerated default getter
@@ -323,10 +362,9 @@ public class Proizvod {
         return slike;
     }
 
-    public void setSlike(Image[] slike) {
-        this.slike[0] = slike[0];
-        this.slike[1] = slike[1];
-        this.slike[2] = slike[2];
+    public void setSlike(Image[] slike, String[] paths) {
+        this.slike = slike;
+        this.paths = paths;
     }
 
     public int getKolicinaZaOnline() {
@@ -337,9 +375,11 @@ public class Proizvod {
         this.kolicinaZaOnline = kolicinaZaOnline;
     }
 
-    public void setSlika(Image slika, int index){
-        if(index < 3 && index >= 0)
+    public void setSlika(Image slika, String path, int index){
+        if(index < 3 && index >= 0) {
             this.slike[index] = slika;
+            this.paths[index] = path;
+        }
     }
 
     public StavkaCenovnika getTrenutnaCijena() {
@@ -373,7 +413,14 @@ public class Proizvod {
         return Objects.hash(id);
     }
 
+    public String[] getPaths() {
+        return paths;
+    }
+
     public void decreaseKolicinaZaOnline(int k){
         kolicinaZaOnline -= k;
+    }
+    public void increaseKolicinaZaOnline(int k){
+        kolicinaZaOnline += k;
     }
 }

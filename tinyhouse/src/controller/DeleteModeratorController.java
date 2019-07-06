@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.Aplikacija;
+import model.Korisnik;
 
 import java.io.IOException;
 
@@ -65,8 +66,9 @@ public class DeleteModeratorController extends Controller {
         return korisnicko_ime;
     }
 
-    public void setInfo(String korisnicko_ime) {
-        this.korisnicko_ime = korisnicko_ime;
+    public void setInfo(Object o) {
+        Korisnik k = (Korisnik) o;
+        this.korisnicko_ime = k.getUsername();
         label.setText(korisnicko_ime);
         if(korisnicko_ime.equals(model.getUlogovani().getUsername())){
             obrisi_button.setDisable(true);

@@ -1,10 +1,9 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.*;
 
-public class Kategorija {
+public class Kategorija implements Serializable {
     private String naziv;
     private String putanja;
     private Kategorija natkategorija;
@@ -105,18 +104,36 @@ public class Kategorija {
         this.proizvodi = proizvodi;
     }
 
-    public void addProizvod(Proizvod p){
-        if(p == null) return;
-        if(this.proizvodi == null) this.proizvodi = new ArrayList<>();
-        if(p.getKategorija() == null){
-            this.proizvodi.add(p);
-            p.setKategorija(this);
-        } else if(p.getKategorija() == this){
-            this.proizvodi.add(p);
-        } else{
+    public void addProizvod(Proizvod newProizvod) {
+        if (newProizvod == null)
             return;
+        if (this.proizvodi == null)
+            this.proizvodi = new java.util.ArrayList<Proizvod>();
+        if (!this.proizvodi.contains(newProizvod))
+        {
+            this.proizvodi.add(newProizvod);
+            newProizvod.setKategorija(this);
         }
+    }
 
+    public void removeProizvodi(Proizvod oldProizvod) {
+        if (oldProizvod == null)
+            return;
+        if (this.proizvodi != null)
+            if (this.proizvodi.contains(oldProizvod))
+            {
+                this.proizvodi.remove(oldProizvod);
+                oldProizvod.setKategorija((Kategorija)null);
+            }
+    }
+
+    public ArrayList<Proizvod> getAllProizvodi(){
+        Set<Proizvod> skup = new HashSet<>(proizvodi);
+        for(Kategorija pk : potkategorije){
+            skup.addAll(pk.getAllProizvodi());
+        }
+        ArrayList<Proizvod> lista = new ArrayList<>(skup);
+        return lista;
     }
 
     @Override

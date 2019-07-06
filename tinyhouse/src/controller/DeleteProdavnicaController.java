@@ -72,10 +72,10 @@ public class DeleteProdavnicaController extends Controller {
         return id_prodavnice;
     }
 
-    public void setInfo(String id_prodavnice) {
-        this.id_prodavnice = Integer.valueOf(id_prodavnice);
+    public void setInfo(Object o) {
+        Prodavnica p = (Prodavnica) o;
+        this.id_prodavnice = p.getIdProdavnice();
         id_prodavnice_label.setText(String.valueOf(id_prodavnice));
-        Prodavnica p = model.pronadji_prodavnicu(this.id_prodavnice);
         adresa_label.setText(p.getAdresa());
 
     }

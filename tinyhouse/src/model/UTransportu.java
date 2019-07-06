@@ -11,13 +11,15 @@ public class UTransportu extends StanjeNarudzbine {
     }
 
     public void vracanjeNarudzbine() {
-        // TODO: implement
+        StanjeNarudzbine vracena = new Odbijena(); // <<create>>
+        this.narudzbina.promijeniStanje(vracena);
     }
 
-    public boolean uspesnoDostavljena() {
-        // TODO: implement
-        return false;
+    public void uspesnoDostavljena() {
+        StanjeNarudzbine isporucena = new Isporucena();
+        this.narudzbina.promijeniStanje(isporucena);
     }
+
 
     public void entry() {
         // TODO: implement
@@ -27,4 +29,8 @@ public class UTransportu extends StanjeNarudzbine {
         // TODO: implement
     }
 
+    @Override
+    public String toString() {
+        return "U transportu";
+    }
 }

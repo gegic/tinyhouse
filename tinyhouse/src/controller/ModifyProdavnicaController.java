@@ -97,9 +97,9 @@ public class ModifyProdavnicaController extends Controller {
         return Integer.valueOf(id_prodavnice_text.getText());
     }
 
-    public void setInfo(String id_prodavnice_text){
-        this.id_prodavnice_text.setText(id_prodavnice_text);
-        Prodavnica p = model.pronadji_prodavnicu(Integer.valueOf(id_prodavnice_text));
+    public void setInfo(Object o){
+        Prodavnica p = (Prodavnica) o;
+        this.id_prodavnice_text.setText(String.valueOf(p.getIdProdavnice()));
         adresa_text.setText(p.getAdresa());
         g_sirina_text.setText(String.valueOf(p.getGeoSirina()));
         g_duzina_text.setText(String.valueOf(p.getGeoDuzina()));
