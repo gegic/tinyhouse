@@ -92,6 +92,11 @@ public class ResultsController extends Controller {
             } else if (cb.getSelectionModel().getSelectedItem() == TipSortiranja.NAZIV_OPADAJUCE) {
                 Collections.sort(results, new ProizvodComparator("name_desc"));
             }
+            tilePane.getChildren().clear();
+            for (Proizvod p : results) {
+                ProizvodTileController c = new ProizvodTileController();
+                tilePane.getChildren().add(c.create(p));
+            }
         }
 
 
