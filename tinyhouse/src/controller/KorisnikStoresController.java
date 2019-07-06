@@ -20,7 +20,7 @@ public class KorisnikStoresController extends Controller {
     @FXML
     BorderPane borderPane;
     private Stage stage;
-
+    private Proizvod p;
     private Aplikacija model;
 
     private List<Prodavnica> prodavnice;
@@ -34,7 +34,7 @@ public class KorisnikStoresController extends Controller {
         borderPane.setTop(c.create());
         ObservableList<Prodavnica> observableList = FXCollections.observableList(prodavnice);
         prodList.setItems(observableList);
-        prodList.setCellFactory(e -> new ProdavnicaCellController(true));
+        prodList.setCellFactory(e -> new ProdavnicaCellController(true, this.p));
     }
 
     public Stage getStage() {
@@ -45,16 +45,19 @@ public class KorisnikStoresController extends Controller {
         this.stage = stage;
     }
 
-
-
     @FXML
     public void povratak(ActionEvent e) {
-        GeneralMainController c = new GeneralMainController();
-        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
+        if(p == null) {
+            GeneralMainController c = new GeneralMainController();
+            SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
+        } else{
+            ProizvodDetailsController c = new ProizvodDetailsController();
+            SceneSwitcher.switchScene(c, "../view/proizvod_details_view.fxml", p);
+        }
     }
 
     public void setInfo(Object o){
-        Proizvod p = (Proizvod) o;
+        p = (Proizvod) o;
         prodavnice = p.getProdavnice();
     }
 }

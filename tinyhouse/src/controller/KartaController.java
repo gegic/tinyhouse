@@ -26,6 +26,7 @@ public class KartaController extends Controller {
 
     private Aplikacija model;
     private Prodavnica prodavnica;
+    private Proizvod previous;
 
     public KartaController(){
         model = Aplikacija.getInstance();
@@ -33,12 +34,16 @@ public class KartaController extends Controller {
 
     @FXML
     public void povratak(ActionEvent e){
-        GeneralMainController c = new GeneralMainController();
-        SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
+        KorisnikStoresController c = new KorisnikStoresController();
+        SceneSwitcher.switchScene(c, "../view/korisnik_stores_view.fxml", true, previous);
     }
 
     public void setInfo(Object o){
-        prodavnica = (Prodavnica) o;
+        Object[] obs = (Object[]) o;
+        prodavnica = (Prodavnica) obs[0];
+        TopBarController c = new TopBarController();
+        borderPane.setTop(c.create());
+        previous = (Proizvod) obs[1];
         webView.getEngine().load("https://www.google.com/maps/@" + prodavnica.getGeoSirina() + "," + prodavnica.getGeoDuzina() + ",17z");
     }
 }

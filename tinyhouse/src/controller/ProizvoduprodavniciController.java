@@ -33,6 +33,8 @@ public class ProizvoduprodavniciController extends Controller {
 
     private Prodavnica prodavnica;
 
+    private Proizvod previous;
+
     public ProizvoduprodavniciController(){
         this.model = Aplikacija.getInstance();
     }
@@ -79,7 +81,7 @@ public class ProizvoduprodavniciController extends Controller {
 
     private void povratakKorisnik(ActionEvent e){
         KorisnikStoresController c = new KorisnikStoresController();
-        SceneSwitcher.switchScene(c, "../view/korisnik_stores_view.fxml", true);
+        SceneSwitcher.switchScene(c, "../view/korisnik_stores_view.fxml", true, previous);
     }
 
     @FXML
@@ -90,7 +92,9 @@ public class ProizvoduprodavniciController extends Controller {
     }
 
     public void setInfo(Object o){
-        prodavnica = (Prodavnica) o;
+        Object[] obs = (Object[]) o;
+        prodavnica = (Prodavnica) obs[0];
+        previous = (Proizvod) obs[1];
         itemsList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 

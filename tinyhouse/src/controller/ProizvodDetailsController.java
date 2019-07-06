@@ -52,9 +52,9 @@ public class ProizvodDetailsController extends Controller {
 
     private Aplikacija model;
     private Proizvod proizvod;
+
     public ProizvodDetailsController(){
         model = Aplikacija.getInstance();
-
     }
 
     @FXML

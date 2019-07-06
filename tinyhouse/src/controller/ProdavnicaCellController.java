@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 import model.Prodavnica;
+import model.Proizvod;
 
 import java.io.IOException;
 
@@ -38,12 +39,15 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
 
     private boolean read_only;
 
+    private Proizvod previous;
+
     public ProdavnicaCellController(){
         read_only = false;
     }
 
-    public ProdavnicaCellController(boolean read_only){
+    public ProdavnicaCellController(boolean read_only, Proizvod p){
         this.read_only = read_only;
+        previous = p;
     }
 
     @FXML
@@ -106,12 +110,14 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
 
     private void pregledProizvoda(ActionEvent e){
         ProizvoduprodavniciController c = new ProizvoduprodavniciController();
-        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_view.fxml", true, this.p);
+        Object[] obs = {this.p, this.previous};
+        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_view.fxml", true, obs);
     }
 
     private void karta(ActionEvent e){
         KartaController c = new KartaController();
-        SceneSwitcher.switchScene(c, "../view/karta_view.fxml", this.p);
+        Object[] obs = {this.p, this.previous};
+        SceneSwitcher.switchScene(c, "../view/karta_view.fxml", obs);
     }
 
     @FXML
