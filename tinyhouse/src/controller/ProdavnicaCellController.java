@@ -7,7 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
+import model.Aplikacija;
 import model.Prodavnica;
+import model.TipKorisnika;
 
 import java.io.IOException;
 
@@ -18,6 +20,9 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
 
     @FXML
     private Button izbrisi;
+
+    @FXML
+    private Button izmeni;
 
     @FXML
     private AnchorPane box;
@@ -64,6 +69,10 @@ public class ProdavnicaCellController extends ListCell<Prodavnica> {
             this.p = p;
             id_prodavnice.setText(String.valueOf(p.getIdProdavnice()));
             adresa.setText(String.valueOf(p.getAdresa()));
+            if(Aplikacija.getInstance().getUlogovani().getTip() == TipKorisnika.moderator){
+                izbrisi.setVisible(true);
+                izmeni.setVisible(true);
+            }
             setText(null);
             setGraphic(box);
         }
