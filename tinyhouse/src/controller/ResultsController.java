@@ -16,8 +16,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import model.Aplikacija;
 import model.Proizvod;
+import comparators.ProizvodComparator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -38,20 +40,55 @@ public class ResultsController extends Controller {
         results = new ArrayList<>();
     }
 
-    public void populate(){
+    public void populate() {
         cb.getItems().setAll(
-                TipSortiranja.CIJENA_RASUTCE, TipSortiranja.CIJENA_OPADAJUCE,
+                TipSortiranja.CIJENA_RASTUCE, TipSortiranja.CIJENA_OPADAJUCE,
                 TipSortiranja.NAZIV_RASTUCE, TipSortiranja.NAZIV_OPADAJUCE);
         TopBarController tbc = new TopBarController();
         borderPane.setTop(tbc.create());
-        for(Proizvod p : results){
+
+
+
+        for (Proizvod p : results) {
             ProizvodTileController c = new ProizvodTileController();
             tilePane.getChildren().add(c.create(p));
         }
+
         if(results.size() == 0){
             setNoResults();
         }
+
+
     }
+
+    @FXML public void akcija(ActionEvent e){
+        if (cb.getSelectionModel().getSelectedItem()==TipSortiranja.CIJENA_RASTUCE){
+            Collections.sort(results,new ProizvodComparator("price_asc"));
+
+            }
+        else if (cb.getSelectionModel().getSelectedItem()==TipSortiranja.CIJENA_OPADAJUCE){
+            Collections.sort(results,new ProizvodComparator("price_desc"));
+
+
+        }
+
+        else if (cb.getSelectionModel().getSelectedItem()==TipSortiranja.NAZIV_RASTUCE){
+            Collections.sort(results,new ProizvodComparator("name_asc"));
+
+
+        }
+        else if (cb.getSelectionModel().getSelectedItem()==TipSortiranja.NAZIV_OPADAJUCE){
+            Collections.sort(results,new ProizvodComparator("name_desc"));
+
+
+        }
+
+
+
+        }
+
+
+
 
     private void setNoResults() {
         Label prazno = new Label("Nema rezultata");

@@ -1,7 +1,7 @@
 package controller;
 
 public enum TipSortiranja {
-    CIJENA_RASUTCE ("Cijena rastuće"),
+    CIJENA_RASTUCE ("Cijena rastuće"),
     CIJENA_OPADAJUCE ("Cijena opadajuće"),
     NAZIV_RASTUCE ("Naziv rastuće"),
     NAZIV_OPADAJUCE ("Naziv opadajuće");

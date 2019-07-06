@@ -79,7 +79,19 @@ public class Aplikacija {
             p.setSlika(i2, 1);
             p.setTrenutnaCijena(75000, new Date());
             p.setKolicinaZaOnline(4);
-            proizvodi.add(p);
+            Proizvod p1 = new Proizvod(1, "Fleischwagen", kolica, "Kolica za meso. Najbolja na svijetu");
+            p1.setSlika(i, 0);
+            p1.setSlika(i2, 1);
+            p1.setTrenutnaCijena(25000, new Date());
+            p1.setKolicinaZaOnline(3);
+            proizvodi.add(p1);
+
+            Proizvod p2 = new Proizvod(1, "Zuckiniwagen", kolica, "Kolica za meso. Najbolja na svijetu");
+            p2.setSlika(i, 0);
+            p2.setSlika(i2, 1);
+            p2.setTrenutnaCijena(50000, new Date());
+            p2.setKolicinaZaOnline(3);
+            proizvodi.add(p2);
         }
     }
 
