@@ -98,11 +98,8 @@ public class TopBarController extends Controller{
     }
 
     private ArrayList<Proizvod> search(String term){
-        ArrayList<Proizvod> proizvodi = new ArrayList<>();
-        for(Proizvod p : model.proizvodi){
-            if(p.getNaziv().toLowerCase().contains(term.toLowerCase())) proizvodi.add(p);
-        }
-        return proizvodi;
+        if(term.equals("")) return new ArrayList<>();
+        return model.search(term);
     }
 
     private void pregledKategorije(Kategorija k){

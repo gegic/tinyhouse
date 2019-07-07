@@ -64,50 +64,8 @@ public class Aplikacija implements Serializable{
     }
 
     public void ucitaj() {
-        // TODO: load
-
         if (this.korisnici.isEmpty()) {
-            System.err.println("Serijalizacija nije ucitala korisnike. Možda zbog promena u kodu");
             korisnici.add(new Korisnik("admin", "admin", TipKorisnika.admin));
-            korisnici.add(new Korisnik("m", "m", TipKorisnika.moderator));
-            Korisnik k = new Korisnik("h", "h", TipKorisnika.obican);
-            Kupac ja = new Kupac("Haris", "Gegic", "Adresa", "Mail", k);
-            kupci.add(ja);
-            korisnici.add(k);
-            Kategorija kuhinja = new Kategorija("Kuhinja");
-            Kategorija kolica = new Kategorija("Kolica", kuhinja);
-            Kategorija d = new Kategorija("Na struju", kolica);
-            prodavnice.add(new Prodavnica(1, "Kraljevica Marka 1", 45.2597, 19.83562));
-            kategorije.add(kuhinja);
-            kategorije.add(kolica);
-            kategorije.add(d);
-            Image i = new Image(getClass().getResourceAsStream("/styles/images/kasewagen.jpg"));
-            Image i2 = new Image(getClass().getResourceAsStream("/styles/images/sporet.jpg"));
-            Proizvod p = new Proizvod(1, "Kasewagen", kolica, "Kolica za sir. Najbolja na svijetu");
-            p.setSlika(i, "/styles/images/kasewagen.jpg", 0);
-            p.setSlika(i2, "/styles/images/sporet.jpg",1);
-            p.setTrenutnaCijena(75000, new Date());
-            p.setKolicinaZaOnline(4);
-
-            Proizvod p1 = new Proizvod(1, "Fleischwagen", kolica, "Kolica za meso. Najbolja na svijetu");
-            p1.setSlika(i, "/styles/images/kasewagen.jpg",0);
-            p1.setSlika(i2, "/styles/images/sporet.jpg", 1);
-            p1.setTrenutnaCijena(25000, new Date());
-            p1.setKolicinaZaOnline(3);
-            proizvodi.add(p1);
-
-            Proizvod p2 = new Proizvod(1, "Zuckiniwagen", kolica, "Kolica za meso. Najbolja na svijetu");
-            p2.setSlika(i, "/styles/images/kasewagen.jpg", 0);
-            p2.setSlika(i2, "/styles/images/sporet.jpg", 1);
-            p2.setTrenutnaCijena(50000, new Date());
-            p2.setKolicinaZaOnline(3);
-            proizvodi.add(p2);
-
-            proizvodi.add(p);
-
-            addToKorpa(new StavkaNarudzbine(p.getKolicinaZaOnline(), p.getTrenutnaCijena().getJedinicnaCena(), p));
-            kupovina(k.getKupac().getAdresa(), k.getKupac());
-
         }
     }
 
@@ -285,9 +243,6 @@ public class Aplikacija implements Serializable{
         korisnici.add(new Korisnik(k_ime_lower, password, TipKorisnika.moderator));
         return "";
     }
-    public void dodajKolicinu() {
-        // TODO: implement
-    }
 
     /**
      * @param username
@@ -319,10 +274,20 @@ public class Aplikacija implements Serializable{
         for (Korisnik k : korisnici) {
             if (k.provera_informacija(username.toLowerCase(), password)){
                 if(k.getTip() == TipKorisnika.obican) trenutnaKorpa = k.getKupac().getKorpa();
+                ulogovani = k;
                 return k;
             }
         }
         return null;
+    }
+
+    public ArrayList<Proizvod> search(String term){
+        ArrayList<Proizvod> proizvodi = new ArrayList<>();
+        for(Proizvod p : this.proizvodi){
+            if(p.getNaziv().toLowerCase().contains(term.toLowerCase()) ||
+            p.getOpis().toLowerCase().contains(term.toLowerCase())) proizvodi.add(p);
+        }
+        return proizvodi;
     }
 
     public void odjava() {

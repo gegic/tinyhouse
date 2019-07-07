@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
@@ -11,22 +13,102 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GeneralMainController">
    <center>
-      <VBox id="tile" alignment="CENTER" maxHeight="600.0" maxWidth="800.0" prefHeight="200.0" prefWidth="100.0" stylesheets="@../styles/style.css" BorderPane.alignment="CENTER">
+      <AnchorPane>
          <children>
-            <ImageView id="tile_icon" fitHeight="63.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../styles/images/underconstructionicon.png" />
-               </image>
-            </ImageView>
-            <Label id="tile_text" text="IZRAĐUJE SE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
+            <GridPane fx:id="gridPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="277.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="523.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="281.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="10.0" prefHeight="319.0" vgrow="ALWAYS" />
+               </rowConstraints>
+               <children>
+                  <VBox id="tile" fx:id="box1" alignment="CENTER" layoutX="47.0" layoutY="47.0" onMouseClicked="#details1" stylesheets="@../styles/style.css" BorderPane.alignment="CENTER" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <ImageView id="tile_icon" fx:id="iv1" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                           <image>
+                              <Image url="@../styles/images/kasewagen.jpg" />
+                           </image>
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </ImageView>
+                        <Label id="tile_text" fx:id="lbNaziv1" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </BorderPane.margin>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </VBox>
+                  <VBox id="tile" fx:id="box3" alignment="CENTER" onMouseClicked="#details3" stylesheets="@../styles/style.css" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <ImageView id="tile_icon" fx:id="iv3" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                           <image>
+                              <Image url="@../styles/images/kasewagen.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label id="tile_text" fx:id="lbNaziv3" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </VBox>
+                  <VBox id="tile" fx:id="box2" alignment="CENTER" onMouseClicked="#details2" stylesheets="@../styles/style.css" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <ImageView id="tile_icon" fx:id="iv2" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                           <image>
+                              <Image url="@../styles/images/kasewagen.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label id="tile_text" fx:id="lbNaziv2" stylesheets="@../styles/style.css" text="NAZIV PROIZVODA">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </VBox>
+               </children>
+            </GridPane>
          </children>
-         <BorderPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-         </BorderPane.margin>
-      </VBox>
+      </AnchorPane>
    </center>
 </BorderPane>

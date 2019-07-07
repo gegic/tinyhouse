@@ -54,15 +54,12 @@ public class LoginController extends Controller {
             lbGreska.setText("Pogrešno uneti podaci, pokušaj ponovo!");
         } else if(k.getTip() == TipKorisnika.admin){
             lbGreska.setText("");
-            model.setUlogovani(k);
             scenaAdminGlavna();
         } else if (k.getTip() == TipKorisnika.moderator){
             lbGreska.setText("");
-            model.setUlogovani(k);
             scenaModeratorGlavna();
         } else if(k.getTip() == TipKorisnika.obican){
             lbGreska.setText("");
-            model.setUlogovani(k);
             scenaKorisnikGlavna();
         }
     }

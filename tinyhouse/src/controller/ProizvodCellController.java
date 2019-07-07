@@ -52,14 +52,20 @@ public class ProizvodCellController extends ListCell<Proizvod> {
 
     private Proizvod p;
 
-    private boolean read_only;
-
-    public ProizvodCellController(){
-        read_only = false;
+    public enum TipPregleda{
+        DODAVANJE,
+        LISTA_ZELJA,
+        PREGLED;
     }
 
-    public ProizvodCellController(boolean read_only){
-        this.read_only = read_only;
+    private TipPregleda tipPregleda;
+
+    public ProizvodCellController(){
+        tipPregleda = TipPregleda.DODAVANJE;
+    }
+
+    public ProizvodCellController(TipPregleda tipPregleda){
+        this.tipPregleda = tipPregleda;
     }
 
     @FXML
@@ -140,25 +146,37 @@ public class ProizvodCellController extends ListCell<Proizvod> {
             this.p = p;
             lb_id_proizvoda.setText(String.valueOf(p.getId()));
             lb_naziv.setText(p.getNaziv());
-            if(read_only){
+            if(tipPregleda.equals(TipPregleda.PREGLED)){
                 lb_kolicina.setVisible(false);
                 btUvecaj.setVisible(false);
                 izmeni.setVisible(false);
                 izbrisi.setVisible(false);
                 btPreporuka.setVisible(false);
-            } else {
+            } else if (tipPregleda.equals(TipPregleda.DODAVANJE)) {
                 int kolicina = p.getKolicinaZaOnline();
                 if (kolicina >= 1000) {
                     lb_kolicina.setText("...");
                 } else {
                     lb_kolicina.setText(String.valueOf(kolicina));
                 }
+            } else{
+                lb_kolicina.setVisible(false);
+                btUvecaj.setVisible(false);
+                izmeni.setVisible(false);
+                btPreporuka.setVisible(false);
+                izbrisi.setText("Ukloni");
+                izbrisi.setOnAction(this::ukloniIzListeZelja);
             }
             icon.setImage(p.getSlike()[0]);
             setText(null);
             setGraphic(box);
         }
+    }
 
+    private void ukloniIzListeZelja(ActionEvent e){
+        Aplikacija.getInstance().getUlogovani().getKupac().removeListaZelja(this.p);
+        ProizvoduprodavniciPreporukeController c = new ProizvoduprodavniciPreporukeController();
+        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_preporuke_view.fxml", true, "nebitno");
     }
 
     @FXML

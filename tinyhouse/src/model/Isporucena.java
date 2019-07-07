@@ -13,7 +13,8 @@ public class Isporucena extends StanjeNarudzbine implements Serializable {
     }
 
     public void vracanjeNarudzbine() {
-        // TODO: implement
+        StanjeNarudzbine vracena = new Odbijena(); // <<create>>
+        this.narudzbina.promijeniStanje(vracena);;
     }
 
     public void uspesnoDostavljena() {

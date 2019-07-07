@@ -39,6 +39,8 @@ public class RegistrovaniProfilController extends Controller {
             lbImePrezime.setText(ulogovani.getUsername());
             lbKorisnickoIme.setText(ulogovani.getUsername());
             box.setVisible(false);
+            btZelje.setVisible(false);
+            btNarudzbine.setVisible(false);
         }
     }
 
@@ -64,7 +66,8 @@ public class RegistrovaniProfilController extends Controller {
 
     @FXML
     public void listaZelja(ActionEvent e){
-
+        ProizvoduprodavniciPreporukeController c = new ProizvoduprodavniciPreporukeController();
+        SceneSwitcher.switchScene(c, "../view/proizvoduprodavnici_preporuke_view.fxml", true, "nebitno");
     }
 
     @FXML

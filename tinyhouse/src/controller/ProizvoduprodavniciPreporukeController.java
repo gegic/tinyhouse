@@ -4,12 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Aplikacija;
@@ -17,8 +14,8 @@ import model.Prodavnica;
 import model.Proizvod;
 import model.TipKorisnika;
 
-import javax.swing.border.Border;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProizvoduprodavniciPreporukeController extends Controller {
 
@@ -43,39 +40,62 @@ public class ProizvoduprodavniciPreporukeController extends Controller {
         if(prodavnica != null &&
                 Aplikacija.getInstance().getUlogovani() != null &&
                 Aplikacija.getInstance().getUlogovani().getTip() == TipKorisnika.moderator) {
-            ArrayList<Proizvod> populateList = new ArrayList<>(model.proizvodi);
-            ObservableList<Proizvod> observableList = FXCollections.observableList(populateList);
-            itemsList.setItems(observableList);
-            itemsList.setCellFactory(e -> new ProizvodCellController(true));
-            for (Proizvod pp : prodavnica.getProizvodi()) {
-                if (populateList.contains(pp)) {
-                    itemsList.getSelectionModel().select(pp);
-                }
-            }
-        } else if (prodavnica != null){
-            TopBarController c = new TopBarController();
-            borderPane.setTop(c.create());
-            btPotvrdi.setVisible(false);
+            dodavanjeUProdavnicu();
 
-            ObservableList<Proizvod> observableList = FXCollections.observableList(prodavnica.getProizvodi());
-            itemsList.setItems(observableList);
-            itemsList.setCellFactory(e -> new ProizvodCellController(true));
+        } else if (prodavnica != null){
+            pregledIzProdavnice();
+        } else if (previous != null){
+            dodavanjeSlicnih();
         } else{
-            TopBarController c = new TopBarController();
-            borderPane.setTop(c.create());
-            ArrayList<Proizvod> populateList = new ArrayList<>(model.proizvodi);
-            populateList.remove(previous);
-            ObservableList<Proizvod> observableList = FXCollections.observableList(populateList);
-            itemsList.setItems(observableList);
-            itemsList.setCellFactory(e -> new ProizvodCellController(true));
-            for (Proizvod pp : previous.getSlicanProizvod()) {
-                if (populateList.contains(pp)) {
-                    itemsList.getSelectionModel().select(pp);
-                }
+            pregledListeZelja();
+        }
+    }
+
+    private void pregledListeZelja(){
+        ArrayList<Proizvod> populateList = new ArrayList<>(model.getUlogovani().getKupac().getListaZelja());
+        ObservableList<Proizvod> observableList = FXCollections.observableList(populateList);
+        itemsList.setItems(observableList);
+        itemsList.setCellFactory(e -> new ProizvodCellController(ProizvodCellController.TipPregleda.LISTA_ZELJA));
+        btPotvrdi.setVisible(false);
+
+    }
+
+    private void dodavanjeUProdavnicu(){
+        ArrayList<Proizvod> populateList = new ArrayList<>(model.proizvodi);
+        ObservableList<Proizvod> observableList = FXCollections.observableList(populateList);
+        itemsList.setItems(observableList);
+        itemsList.setCellFactory(e -> new ProizvodCellController(ProizvodCellController.TipPregleda.PREGLED));
+        for (Proizvod pp : prodavnica.getProizvodi()) {
+            if (populateList.contains(pp)) {
+                itemsList.getSelectionModel().select(pp);
             }
         }
     }
 
+    private void pregledIzProdavnice(){
+        TopBarController c = new TopBarController();
+        borderPane.setTop(c.create());
+        btPotvrdi.setVisible(false);
+
+        ObservableList<Proizvod> observableList = FXCollections.observableList(prodavnica.getProizvodi());
+        itemsList.setItems(observableList);
+        itemsList.setCellFactory(e -> new ProizvodCellController(ProizvodCellController.TipPregleda.PREGLED));
+    }
+
+    private void dodavanjeSlicnih(){
+        TopBarController c = new TopBarController();
+        borderPane.setTop(c.create());
+        ArrayList<Proizvod> populateList = new ArrayList<>(model.proizvodi);
+        populateList.remove(previous);
+        ObservableList<Proizvod> observableList = FXCollections.observableList(populateList);
+        itemsList.setItems(observableList);
+        itemsList.setCellFactory(e -> new ProizvodCellController(ProizvodCellController.TipPregleda.PREGLED));
+        for (Proizvod pp : previous.getSlicanProizvod()) {
+            if (populateList.contains(pp)) {
+                itemsList.getSelectionModel().select(pp);
+            }
+        }
+    }
     public Stage getStage() {
         return stage;
     }
@@ -91,9 +111,12 @@ public class ProizvoduprodavniciPreporukeController extends Controller {
             SceneSwitcher.switchScene(c, "../view/moderator_stores_view.fxml", true);
         } else if (prodavnica != null){
             povratakKorisnik(e);
-        } else{
+        } else if (previous != null){
             ModeratorItemsController c = new ModeratorItemsController();
             SceneSwitcher.switchScene(c, "../view/moderator_items_view.fxml", true);
+        } else{
+            RegistrovaniProfilController c = new RegistrovaniProfilController();
+            SceneSwitcher.switchScene(c, "../view/registrovani_profil_view.fxml", "nebitno");
         }
     }
 
@@ -114,6 +137,8 @@ public class ProizvoduprodavniciPreporukeController extends Controller {
     }
 
     public void setInfo(Object o){
+        TopBarController c = new TopBarController();
+        borderPane.setTop(c.create());
         if(o instanceof Object[]){
             Object[] obs = (Object[]) o;
             prodavnica = (Prodavnica) obs[0];
@@ -121,7 +146,7 @@ public class ProizvoduprodavniciPreporukeController extends Controller {
         } else if(o instanceof Prodavnica){
             prodavnica = (Prodavnica) o;
 
-        } else{
+        } else if (o instanceof Proizvod){
             prodavnica = null;
             previous = (Proizvod) o;
         }

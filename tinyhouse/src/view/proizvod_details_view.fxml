@@ -109,16 +109,16 @@
                                     </HBox>
                                  </graphic>
                               </Button>
-                              <Button disable="true" mnemonicParsing="false" prefHeight="38.0" stylesheets="@../styles/style.css">
+                              <Button fx:id="btZelje" disable="true" mnemonicParsing="false" onAction="#dodajUListuZelja" prefHeight="38.0" stylesheets="@../styles/style.css">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                                  <graphic>
-                                    <HBox alignment="CENTER_LEFT" spacing="7.0">
+                                    <HBox alignment="CENTER" spacing="7.0">
                                        <children>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="ivZelje" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                              <image>
-                                                <Image url="@../styles/images/wish-list-icon.png" />
+                                                <Image url="@../styles/images/notinwishlist.png" />
                                              </image>
                                           </ImageView>
                                        </children>

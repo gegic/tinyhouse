@@ -43,12 +43,17 @@ public class ProizvodDetailsController extends Controller {
     @FXML private VBox vbox;
     @FXML private BorderPane borderPane;
     @FXML private ListView<Proizvod> listView;
+    @FXML private Button btZelje;
+    @FXML private ImageView ivZelje;
+
+    private boolean zeljeSet;
 
     private Aplikacija model;
     private Proizvod proizvod;
 
     public ProizvodDetailsController(){
         model = Aplikacija.getInstance();
+        zeljeSet = false;
     }
 
     @FXML
@@ -106,6 +111,7 @@ public class ProizvodDetailsController extends Controller {
         borderPane.setTop(c.create());
         FooterController fc = new FooterController();
         borderPane.setBottom(fc.create());
+
         setTextSizes(stage.getWidth());
         setImageSize(stage.getHeight());
         stage.widthProperty().addListener(
@@ -135,6 +141,14 @@ public class ProizvodDetailsController extends Controller {
         Image[] images = proizvod.getSlike();
         ivPhoto.setImage(images[0]);
         iv2.setImage(images[0]);
+        if(model.getUlogovani() != null) {
+            btZelje.setDisable(false);
+            ivZelje.setVisible(true);
+            if (model.getUlogovani().getKupac().getListaZelja().contains(proizvod)) {
+                ivZelje.setImage(new Image(getClass().getResourceAsStream("../styles/images/inwishlist.png")));
+                zeljeSet = true;
+            }
+        }
         if(images[1] != null) {
             iv1.setImage(proizvod.getSlike()[1]);
             hbox1.setDisable(false);
@@ -165,5 +179,18 @@ public class ProizvodDetailsController extends Controller {
         hboxButton.setSpacing(0);
         lbDodaj.setText(text);
         btDodaj.setDisable(true);
+    }
+
+    @FXML
+    public void dodajUListuZelja(ActionEvent e){
+        if(!zeljeSet) {
+            model.getUlogovani().getKupac().addListaZelja(this.proizvod);
+            ivZelje.setImage(new Image(getClass().getResourceAsStream("../styles/images/inwishlist.png")));
+            zeljeSet = true;
+        } else{
+            model.getUlogovani().getKupac().removeListaZelja(this.proizvod);
+            ivZelje.setImage(new Image(getClass().getResourceAsStream("../styles/images/notinwishlist.png")));
+            zeljeSet = false;
+        }
     }
 }
