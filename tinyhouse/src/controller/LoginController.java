@@ -69,12 +69,12 @@ public class LoginController extends Controller {
 
     private void scenaModeratorGlavna(){
         ModeratorMainController c = new ModeratorMainController();
-        SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml", "nebitno");
     }
 
     private void scenaAdminGlavna() {
         AdminMainController c = new AdminMainController();
-        SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml", "nebitno");
     }
 
     private void scenaKorisnikGlavna(){

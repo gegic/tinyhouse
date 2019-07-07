@@ -21,6 +21,7 @@ import javafx.scene.layout.Region;
 import model.Aplikacija;
 import model.Kategorija;
 import model.Proizvod;
+import model.TipKorisnika;
 
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class TopBarController extends Controller{
     @FXML private Button btOdjava;
     @FXML private HBox box;
     @FXML private HBox menuBar;
+    @FXML private Button btKorpa;
     private Aplikacija model;
 
     public TopBarController(){model = Aplikacija.getInstance();}
@@ -186,10 +188,17 @@ public class TopBarController extends Controller{
         }
         if (model.getUlogovani() != null){
             btPrijava.setText("Profil");
-            btPrijava.setOnAction(e -> profil(e));
+            btPrijava.setOnAction(this::profil);
             btOdjava.setPrefWidth(93);
+            if(model.getUlogovani().getTip() != TipKorisnika.obican) {
+                btPretraga.setVisible(false);
+                btKorpa.setMinWidth(0);
+                btKorpa.setPrefWidth(0);
+                btKorpa.setVisible(false);
+            }
+
         }
-        setCategories();
+        if(model.getUlogovani() == null || model.getUlogovani().getTip() == TipKorisnika.obican) setCategories();
         return box;
     }
 }

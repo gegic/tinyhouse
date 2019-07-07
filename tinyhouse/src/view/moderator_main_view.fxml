@@ -9,41 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModeratorMainController">
-   <top>
-      <HBox>
-         <children>
-            <Label id="title" style="-fx-letter-spacing: 14px;" stylesheets="@../styles/style.css" text="tinyhouse">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Region HBox.hgrow="ALWAYS" />
-            <Button id="upper_button" disable="true" mnemonicParsing="false" stylesheets="@../styles/style.css" text="Profil">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#odjava" stylesheets="@../styles/style.css" text="Odjavi se">
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </HBox>
-   </top>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModeratorMainController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>

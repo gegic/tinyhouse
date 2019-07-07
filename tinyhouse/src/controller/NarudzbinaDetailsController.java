@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
@@ -42,8 +41,8 @@ public class NarudzbinaDetailsController extends Controller {
 
     @FXML
     public void povratak(ActionEvent e){
-        ModeratorOrdersController c = new ModeratorOrdersController();
-        SceneSwitcher.switchScene(c, "../view/moderator_orders_view.fxml", true);
+        OrdersController c = new OrdersController();
+        SceneSwitcher.switchScene(c, "../view/orders_view.fxml", true);
     }
 
     @FXML

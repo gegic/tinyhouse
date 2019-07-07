@@ -44,7 +44,7 @@ public class ModeratorStoresController extends Controller {
     @FXML
     public void povratak(ActionEvent e) {
         ModeratorMainController c = new ModeratorMainController();
-        SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml", "nebitno");
     }
 
     @FXML

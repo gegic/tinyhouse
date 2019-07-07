@@ -44,7 +44,7 @@ public class AdminUsersController extends Controller {
     @FXML
     public void povratak(ActionEvent e) {
         AdminMainController c = new AdminMainController();
-        SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml", "nebitno");
     }
 
     @FXML

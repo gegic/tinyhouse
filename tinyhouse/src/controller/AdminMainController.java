@@ -2,11 +2,13 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Aplikacija;
 
 public class AdminMainController extends Controller {
-
+    @FXML private BorderPane borderPane;
     private Stage stage;
 
 
@@ -40,5 +42,10 @@ public class AdminMainController extends Controller {
         RegistrovaniProfilController c = new RegistrovaniProfilController();
         SceneSwitcher.switchScene(c, "../view/registrovani_profil_view.fxml");
 
+    }
+
+    public void setInfo(Object o){
+        TopBarController c = new TopBarController();
+        borderPane.setTop(c.create());
     }
 }

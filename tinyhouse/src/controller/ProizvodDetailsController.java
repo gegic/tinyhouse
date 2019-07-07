@@ -148,6 +148,7 @@ public class ProizvodDetailsController extends Controller {
             if(!lp.contains(p)) lp.add(p);
         }
         ObservableList<Proizvod> observableList = FXCollections.observableList(lp);
+        observableList.remove(proizvod);
         listView.setItems(observableList);
         listView.setCellFactory(e -> new PreporukaCellController());
     }

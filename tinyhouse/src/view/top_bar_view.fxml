@@ -48,7 +48,7 @@
             <Insets left="10.0" />
          </HBox.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#korpa" stylesheets="@../styles/style.css">
+      <Button fx:id="btKorpa" mnemonicParsing="false" onAction="#korpa" stylesheets="@../styles/style.css">
          <font>
             <Font size="16.0" />
          </font>

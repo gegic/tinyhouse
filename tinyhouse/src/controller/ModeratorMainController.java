@@ -2,12 +2,16 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Aplikacija;
 
 import java.io.IOException;
 
 public class ModeratorMainController extends Controller {
+
+    @FXML
+    private BorderPane borderPane;
 
     private Stage stage;
 
@@ -44,14 +48,19 @@ public class ModeratorMainController extends Controller {
 
     @FXML
     public void pregledajNarudzbine(ActionEvent e){
-        ModeratorOrdersController c = new ModeratorOrdersController();
-        SceneSwitcher.switchScene(c, "../view/moderator_orders_view.fxml", true);
+        OrdersController c = new OrdersController();
+        SceneSwitcher.switchScene(c, "../view/orders_view.fxml", true);
     }
 
     @FXML
     public void pregledajKategorije(ActionEvent e){
         ModeratorCategoriesController c = new ModeratorCategoriesController();
         SceneSwitcher.switchScene(c, "../view/moderator_categories_view.fxml", true);
+    }
+
+    public void setInfo(Object o){
+        TopBarController c = new TopBarController();
+        borderPane.setTop(c.create());
     }
 }
 

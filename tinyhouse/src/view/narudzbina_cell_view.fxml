@@ -37,7 +37,7 @@
             <Image url="@../styles/images/ordericon.png" />
          </image>
       </ImageView>
-      <Label fx:id="lbAdresa" layoutX="137.0" layoutY="34.0" style="-fx-text-fill: black;" text="Adresa" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="34.0">
+      <Label fx:id="lbAdresa" layoutX="137.0" layoutY="34.0" maxWidth="130.0" prefWidth="130.0" style="-fx-text-fill: black;" text="Adresa" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="34.0">
          <font>
             <Font size="21.0" />
          </font>

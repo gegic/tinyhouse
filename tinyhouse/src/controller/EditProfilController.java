@@ -141,19 +141,7 @@ public class EditProfilController extends Controller {
 
     @FXML
     private void povratak(){
-        if (ulogovani.getTip() == TipKorisnika.obican){
-            GeneralMainController c = new GeneralMainController();
-            SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
-        } else if (ulogovani.getTip() == TipKorisnika.moderator){
-            ModeratorMainController c = new ModeratorMainController();
-            SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml");
-        } else{
-            AdminMainController c = new AdminMainController();
-            SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml");
-        }
-
-        /*RegistrovaniProfilController c = new RegistrovaniProfilController();
-        SceneSwitcher.switchScene(c, "../view/registrovani_profil_view.fxml");*/ //Kad ovde vratim ona mi ne izmeni one tf-ove nego im stoji onaj podrazumevani tekst
-
+        RegistrovaniProfilController c = new RegistrovaniProfilController();
+        SceneSwitcher.switchScene(c, "../view/registrovani_profil_view.fxml", "nebitno");
     }
 }

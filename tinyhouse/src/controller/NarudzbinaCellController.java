@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import model.Aplikacija;
 import model.Narudzbina;
 import model.Proizvod;
+import model.TipKorisnika;
 
 import java.io.IOException;
 
@@ -110,6 +111,10 @@ public class NarudzbinaCellController extends ListCell<Narudzbina> {
             lbIdNarudzbine.setText(String.valueOf(n.getBroj()));
             lbAdresa.setText(n.getAdresaIsporuke());
             lbCijena.setText(String.valueOf(n.getCijena()));
+            if(Aplikacija.getInstance().getUlogovani().getTip() == TipKorisnika.obican){
+                btPromena1.setVisible(false);
+                btPromena.setVisible(false);
+            }
             setText(null);
             setGraphic(box);
         }

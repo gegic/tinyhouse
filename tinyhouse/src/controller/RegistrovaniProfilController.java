@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import model.Aplikacija;
 import model.Korisnik;
 import model.TipKorisnika;
@@ -13,6 +14,7 @@ public class RegistrovaniProfilController extends Controller {
 
     @FXML private Label lbImePrezime, lbKorisnickoIme, lbAdresa, lbEmail;
     @FXML private Button btIzmena, btZelje, btNarudzbine;
+    @FXML private VBox box;
     @FXML private BorderPane borderPane;
 
     private Korisnik ulogovani;
@@ -26,8 +28,7 @@ public class RegistrovaniProfilController extends Controller {
     public void setInfo(Object o){
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
-        FooterController fc = new FooterController();
- borderPane.setBottom(fc.create());
+
         if(ulogovani.getTip()== TipKorisnika.obican){
             lbImePrezime.setText(ulogovani.getKupac().getPrezime() + " " + ulogovani.getKupac().getIme());
             lbKorisnickoIme.setText(ulogovani.getUsername());
@@ -37,10 +38,7 @@ public class RegistrovaniProfilController extends Controller {
         else {
             lbImePrezime.setText(ulogovani.getUsername());
             lbKorisnickoIme.setText(ulogovani.getUsername());
-            lbAdresa.setVisible(false);
-            lbEmail.setVisible(false);
-            btNarudzbine.setVisible(false);
-            btZelje.setVisible(false);
+            box.setVisible(false);
         }
     }
 
@@ -51,10 +49,10 @@ public class RegistrovaniProfilController extends Controller {
             SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
         } else if (ulogovani.getTip() == TipKorisnika.moderator){
             ModeratorMainController c = new ModeratorMainController();
-            SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml");
+            SceneSwitcher.switchScene(c, "../view/moderator_main_view.fxml", "nebitno");
         } else{
             AdminMainController c = new AdminMainController();
-            SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml");
+            SceneSwitcher.switchScene(c, "../view/admin_main_view.fxml", "nebitno");
         }
     }
 
@@ -63,4 +61,16 @@ public class RegistrovaniProfilController extends Controller {
         EditProfilController c = new EditProfilController();
         SceneSwitcher.switchScene(c, "../view/edit_profil_view.fxml", "nebitno");
     }
+
+    @FXML
+    public void listaZelja(ActionEvent e){
+
+    }
+
+    @FXML
+    public  void narudzbine(ActionEvent e){
+        OrdersController c = new OrdersController();
+        SceneSwitcher.switchScene(c, "../view/orders_view.fxml", true);
+    }
+
 }
