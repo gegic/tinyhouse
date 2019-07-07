@@ -121,6 +121,13 @@
     -fx-padding: 0;
 }
 
+#preporuke .scroll-bar:horizontal .increment-arrow,
+#preporuke .scroll-bar:horizontal .decrement-arrow,
+#preporuke .scroll-bar:horizontal .increment-button,
+#preporuke .scroll-bar:horizontal .decrement-button {
+    -fx-padding:0;
+}
+
 .h-box .pane:hover{
     -fx-border-color: black;
     -fx-border-width: 1px;

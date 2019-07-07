@@ -1,26 +1,19 @@
 package controller;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.Aplikacija;
 import model.Proizvod;
@@ -49,6 +42,7 @@ public class ProizvodDetailsController extends Controller {
     @FXML private HBox hboxButton;
     @FXML private VBox vbox;
     @FXML private BorderPane borderPane;
+    @FXML private ListView<Proizvod> listView;
 
     private Aplikacija model;
     private Proizvod proizvod;
@@ -149,7 +143,13 @@ public class ProizvodDetailsController extends Controller {
             iv3.setImage(proizvod.getSlike()[2]);
             hbox3.setDisable(false);
         }
-
+        ArrayList<Proizvod> lp = new ArrayList<>(proizvod.getSlicanProizvod());
+        for(Proizvod p : proizvod.getKategorija().getAllProizvodi()){
+            if(!lp.contains(p)) lp.add(p);
+        }
+        ObservableList<Proizvod> observableList = FXCollections.observableList(lp);
+        listView.setItems(observableList);
+        listView.setCellFactory(e -> new PreporukaCellController());
     }
 
     @FXML

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="box" maxHeight="140.0" maxWidth="140.0" onMouseClicked="#detaljnije" onMouseEntered="#hoverStarted" onMouseExited="#hoverStopped" prefHeight="140.0" prefWidth="140.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="vbProizvod" alignment="TOP_CENTER" layoutX="8.0" layoutY="10.0" maxHeight="140.0" maxWidth="140.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="140.0" style="-fx-background-color: white; -fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="ivItem" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../styles/images/sporet.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#0000007f" height="50.0" offsetY="5.0" radius="19.5" spread="0.5" width="30.0" />
+         </effect>
+      </VBox>
+      <Label id="itemtile_text" fx:id="lbNaziv" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="8.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: black; -fx-background-radius: 15 15 0 0; -fx-opacity: 0.7;" text="Šporet" textFill="WHITE" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label id="itemtile_text" fx:id="lbCijena" alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="18.0" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: black; -fx-background-radius: 0 0 15 15; -fx-opacity: 0.7;" text="12.000,00 RSD" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</AnchorPane>
