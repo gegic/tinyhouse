@@ -41,7 +41,6 @@ public class EditProfilController extends Controller {
 
     @FXML
     private void cbImeAction(){
-        setInfo(this);
         if(cbIme.isSelected()){
             tfIme.setDisable(false);
             tfPrezime.setDisable(false);
@@ -103,8 +102,9 @@ public class EditProfilController extends Controller {
             alert.setHeaderText("GREŠKA");
             alert.setContentText("Unesite ispravnu lozinku.");
             alert.showAndWait();
+            return;
         }
-        izmenaUlogovanog();
+        if(!izmenaUlogovanog()) return;
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText("Uspšno");
@@ -113,7 +113,7 @@ public class EditProfilController extends Controller {
         povratak();
     }
 
-    private void izmenaUlogovanog(){
+    private boolean izmenaUlogovanog(){
         if(cbLozinka.isSelected()){
             if(tfLozinkaNova.getText().length()<8){
                 tfLozinkaStara.setStyle("-fx-border-color: red");
@@ -122,11 +122,12 @@ public class EditProfilController extends Controller {
                 alert.setHeaderText("GREŠKA");
                 alert.setContentText("Lozinka mora da ima više od  karaktera.");
                 alert.showAndWait();
-                return;
+                return false;
             }
             ulogovani.setPassword(tfLozinkaNova.getText().trim());
         }
         postavljanePodataka();
+        return true;
     }
 
     private void postavljanePodataka(){

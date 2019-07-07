@@ -61,6 +61,6 @@ public class RegistrovaniProfilController extends Controller {
     @FXML
     public void izmeni(){
         EditProfilController c = new EditProfilController();
-        SceneSwitcher.switchScene(c, "../view/edit_profil_view.fxml");
+        SceneSwitcher.switchScene(c, "../view/edit_profil_view.fxml", "nebitno");
     }
 }
