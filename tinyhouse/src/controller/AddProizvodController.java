@@ -21,6 +21,8 @@ import model.Proizvod;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Key;
 
 public class AddProizvodController extends Controller {
@@ -45,11 +47,13 @@ public class AddProizvodController extends Controller {
     private String[] paths;
     private Stage stage;
     private Aplikacija model;
+    private Path cwd;
 
     public AddProizvodController(){
         this.model = Aplikacija.getInstance();
         images = new Image[3];
         paths = new String[3];
+        cwd = Paths.get(".").toAbsolutePath().normalize();
     }
 
     public void populate(){
@@ -87,8 +91,8 @@ public class AddProizvodController extends Controller {
 
         File selectedFile = izbor_slike();
         if(selectedFile != null){
-            paths[0] = selectedFile.toURI().toString();
-            images[0] = new Image(paths[0]);
+            paths[0] = cwd.relativize(Paths.get(selectedFile.toURI())).toString();
+            images[0] = new Image(selectedFile.toURI().toString());
             iv1.setImage(images[0]);
             pane2.setDisable(false);
             lbDodaj1.setVisible(false);
@@ -108,8 +112,8 @@ public class AddProizvodController extends Controller {
         } else{
             File selectedFile = izbor_slike();
             if(selectedFile != null){
-                paths[1] = selectedFile.toURI().toString();
-                images[1] = new Image(paths[1]);
+                paths[1] = cwd.relativize(Paths.get(selectedFile.toURI())).toString();
+                images[1] = new Image(selectedFile.toURI().toString());
                 iv2.setImage(images[1]);
                 pane3.setDisable(false);
                 lbDodaj2.setStyle("-fx-background-color: white");
@@ -131,8 +135,8 @@ public class AddProizvodController extends Controller {
         } else {
             File selectedFile = izbor_slike();
             if (selectedFile != null) {
-                paths[2] = selectedFile.toURI().toString();
-                images[2] = new Image(paths[2]);
+                paths[2] = cwd.relativize(Paths.get(selectedFile.toURI())).toString();
+                images[2] = new Image(selectedFile.toURI().toString());
                 iv3.setImage(images[2]);
                 lbDodaj3.setStyle("-fx-background-color: white");
                 lbDodaj3.setText("ukloni sliku");

@@ -11,8 +11,11 @@ import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +29,8 @@ public class Proizvod implements Serializable {
     private String[] paths;
     private Kategorija kategorija;
     private int kolicinaZaOnline;
+
+    public static Path cwd = Paths.get(".").toAbsolutePath().normalize();
 
     private List<Prodavnica> prodavnice;
 
@@ -95,7 +100,7 @@ public class Proizvod implements Serializable {
             slike = new Image[3];
         }
         for(int i = 0; i < paths.length; ++i){
-            if(paths[i] != null) slike[i] = new Image(paths[i]);
+            if(paths[i] != null) slike[i] = new Image(new File(cwd.toString() + "\\" + paths[i]).toURI().toString());
         }
     }
 

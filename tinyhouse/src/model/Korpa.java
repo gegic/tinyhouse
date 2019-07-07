@@ -104,5 +104,6 @@ public class Korpa implements Serializable {
             s.getProizvod().decreaseKolicinaZaOnline(s.getNarucenaKolicina());
         }
         stavkeNarudzbine = new ArrayList<>();
+        ukupnaCijena = 0;
     }
 }

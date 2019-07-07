@@ -80,11 +80,8 @@ public class KupovinaController extends Controller {
         }
         if(model.getUlogovani() != null){
             model.kupovina(adresa, model.getUlogovani().getKupac());
-            model.getTrenutnaKorpa().setUkupnaCijena(0);
         } else{
             model.kupovina(adresa, new Kupac(tfIme.getText(), tfPrezime.getText(), tfAdresaKupca.getText(), tfMail.getText()));
-            model.getTrenutnaKorpa().setUkupnaCijena(0);
-
         }
         GeneralMainController c = new GeneralMainController();
         SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
