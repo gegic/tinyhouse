@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Aplikacija;
 import model.Korisnik;
+import model.Korpa;
 import model.Kupac;
 
 import java.io.IOException;
@@ -79,8 +80,11 @@ public class KupovinaController extends Controller {
         }
         if(model.getUlogovani() != null){
             model.kupovina(adresa, model.getUlogovani().getKupac());
+            model.getTrenutnaKorpa().setUkupnaCijena(0);
         } else{
             model.kupovina(adresa, new Kupac(tfIme.getText(), tfPrezime.getText(), tfAdresaKupca.getText(), tfMail.getText()));
+            model.getTrenutnaKorpa().setUkupnaCijena(0);
+
         }
         GeneralMainController c = new GeneralMainController();
         SceneSwitcher.switchScene(c, "../view/general_main_view.fxml", "nebitno");
@@ -124,6 +128,7 @@ public class KupovinaController extends Controller {
     }
 
     public void setInfo(Object o){
+
         lbCena.setText(String.valueOf(model.getTrenutnaKorpa().getUkupnaCijena()));
         cb.selectedProperty().addListener(
             (ObservableValue<? extends Boolean> observableValue, Boolean oldVal, Boolean newVal) ->

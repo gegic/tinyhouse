@@ -65,7 +65,7 @@ public class KorpaController extends Controller {
         TopBarController c = new TopBarController();
         borderPane.setTop(c.create());
         FooterController fc = new FooterController();
- borderPane.setBottom(fc.create());
+        borderPane.setBottom(fc.create());
     }
 
     public Stage getStage() {
