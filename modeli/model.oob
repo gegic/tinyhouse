@@ -5270,7 +5270,7 @@ Shadow=0</a:DisplayPreferences>
 </o:UseCaseAssociationSymbol>
 <o:DependencySymbol Id="o113">
 <a:ModificationDate>1562630625</a:ModificationDate>
-<a:Rect>((-11832,109480), (10008,110870))</a:Rect>
+<a:Rect>((-11832,109479), (10008,110870))</a:Rect>
 <a:ListOfPoints>((-11832,110480),(-7199,110480),(-7199,110570),(10008,110570))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -5350,7 +5350,7 @@ Shadow=0</a:DisplayPreferences>
 </o:UseCaseAssociationSymbol>
 <o:DependencySymbol Id="o124">
 <a:ModificationDate>1562630625</a:ModificationDate>
-<a:Rect>((-3789,103692), (10470,105115))</a:Rect>
+<a:Rect>((-3789,103692), (10470,105113))</a:Rect>
 <a:ListOfPoints>((-3789,104146),(1027,104146),(1027,103992),(10470,103992))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -5569,7 +5569,7 @@ Shadow=0</a:DisplayPreferences>
 </o:UseCaseAssociationSymbol>
 <o:DependencySymbol Id="o153">
 <a:ModificationDate>1562630625</a:ModificationDate>
-<a:Rect>((-28767,18660), (-16527,19983))</a:Rect>
+<a:Rect>((-28767,18660), (-16527,19978))</a:Rect>
 <a:ListOfPoints>((-16527,18960),(-28767,18960))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -8443,7 +8443,7 @@ Shadow=0</a:DisplayPreferences>
 </o:InteractionSymbol>
 <o:MessageSymbol Id="o306">
 <a:ModificationDate>1562630047</a:ModificationDate>
-<a:Rect>((-15269,4232), (-1712,5379))</a:Rect>
+<a:Rect>((-15269,4232), (-1712,5375))</a:Rect>
 <a:ListOfPoints>((-15269,4457),(-1712,4457))</a:ListOfPoints>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>12615808</a:LineColor>
@@ -8463,7 +8463,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:MessageSymbol>
 <o:MessageSymbol Id="o310">
 <a:ModificationDate>1562630047</a:ModificationDate>
-<a:Rect>((-1680,1533), (11909,2680))</a:Rect>
+<a:Rect>((-1680,1533), (11909,2676))</a:Rect>
 <a:ListOfPoints>((-1680,1758),(11909,1758))</a:ListOfPoints>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>12615808</a:LineColor>
