@@ -1,5 +1,7 @@
 # SIMS Predmetni projekat WEBSHOP - tinyhouse
 
+A webshop simulation developed using JavaFX.
+
 ## Članovi tima - Team members
 
 * Gegić Haris - [gegic](https://github.com/gegic)
